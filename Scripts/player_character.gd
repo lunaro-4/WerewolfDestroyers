@@ -9,6 +9,7 @@ signal player_got_hit(value)
 
 func _ready():
 	attack_component.attack()
+	$RegenerationComponent.regen_start()
 	pass 
 
 
