@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://dchas3vmr1e1d"]
+
+[ext_resource type="Script" path="res://Scenes/pausem.gd" id="1_utk3g"]
+[ext_resource type="Texture2D" uid="uid://bckotsjc3wyhj" path="res://Fon.png" id="2_riy60"]
+
+[node name="pausem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_utk3g")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = -132.0
+offset_right = 144.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.5
+offset_top = -98.5
+offset_right = 92.5
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Продолжить
+"
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Главное меню"
+
+[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Выход
+"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.3409
+offset_top = 6.72717
+offset_right = 62.6591
+offset_bottom = 29.7272
+grow_horizontal = 2
+text = "Пауза"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(619.182, 345.458)
+scale = Vector2(1.60408, 1.24541)
+texture = ExtResource("2_riy60")
