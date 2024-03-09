@@ -30,3 +30,6 @@ func _on_player_got_hit(value):
 	var cur_text = gold_label.get_text() as float
 	gold_label.set_text(str(cur_text+value))
 	pass # Replace with function body.
+
+
+
