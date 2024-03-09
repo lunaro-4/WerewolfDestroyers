@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvyo57sxna7be"]
+
+[ext_resource type="Script" path="res://Scrips/base_enemy.gd" id="1_6loy8"]
+[ext_resource type="PackedScene" uid="uid://cj6bda8y1k831" path="res://CustomComponents/health_component.tscn" id="1_ov811"]
+[ext_resource type="PackedScene" uid="uid://cuad5o64p42de" path="res://CustomComponents/hurt_box_component.tscn" id="2_l2qp2"]
+[ext_resource type="PackedScene" uid="uid://d0u057ptfmdxl" path="res://CustomComponents/attack_component.tscn" id="3_q5x8q"]
+[ext_resource type="PackedScene" uid="uid://laivrmt2olyg" path="res://CustomComponents/hit_box_component.tscn" id="4_tolpl"]
+[ext_resource type="PackedScene" uid="uid://bselw8ieny17t" path="res://CustomComponents/pathfinding_logic.tscn" id="6_5mq0u"]
+[ext_resource type="Script" path="res://Scrips/AttackArea.gd" id="7_a4phv"]
+
+[node name="BaseEnemy" type="CharacterBody2D"]
+script = ExtResource("1_6loy8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.384314, 0.313726, 1)
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_ov811")]
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_l2qp2")]
+collision_mask = 2
+health_component = NodePath("../HealthComponent")
+
+[node name="Attacks" type="Node2D" parent="."]
+
+[node name="AttackComponent" parent="Attacks" node_paths=PackedStringArray("hitbox") instance=ExtResource("3_q5x8q")]
+hit_window = 1.0
+hitbox = NodePath("../HitBoxComponent")
+
+[node name="HitBoxComponent" parent="Attacks" node_paths=PackedStringArray("attack_component") instance=ExtResource("4_tolpl")]
+collision_mask = 0
+damage = 1.0
+attack_component = NodePath("../AttackComponent")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+
+[node name="PathfindingLogic" parent="." instance=ExtResource("6_5mq0u")]
+
+[node name="AttackArea" type="Area2D" parent="."]
+script = ExtResource("7_a4phv")
+
+[connection signal="attack_finished" from="Attacks/AttackComponent" to="AttackArea" method="_on_attack_component_attack_finished"]
+[connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://muxh1e056wbv"]
+
+[ext_resource type="PackedScene" uid="uid://hlpd5bjmqiwk" path="res://Scenes/player_character.tscn" id="1_gc7h8"]
+[ext_resource type="Script" path="res://Scrips/level.gd" id="1_i5uxt"]
+[ext_resource type="PackedScene" uid="uid://bwim87x2n21w1" path="res://Scenes/enemy_1.tscn" id="2_3fusf"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_djj5l"]
+vertices = PackedVector2Array(2078, -517, 2169, 1209, -285, 948, -214, -596)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-296, 957, -224, -607, 2088, -527, 2180, 1221)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_i5uxt")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_djj5l")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("1_gc7h8")]
+
+[node name="Enemy1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_3fusf")]
+position = Vector2(1767, 817)
+player = NodePath("../PlayerCharacter")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(832, 227)
+zoom = Vector2(0.425, 0.425)
