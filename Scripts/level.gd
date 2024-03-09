@@ -5,7 +5,7 @@ extends Node2D
 var enemy_1 = preload("res://Scenes/enemy_1.tscn")
 
 @onready var gold_label = %GoldLabel as Label
-@onready var current_gold :=5
+@onready var current_gold :=50
 
 
 

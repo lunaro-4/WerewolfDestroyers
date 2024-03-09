@@ -33,6 +33,7 @@ func decrease(damage):
 func increase(heal):
 	current_health += heal
 	hp_changed.emit(current_health)
+	#print(max_health, " INCR ", current_health)
 	if current_health > max_health:
 		current_health = max_health
 	pass
@@ -47,5 +48,13 @@ func _ready():
 		hp_bar.max_value = max_health
 	pass 
 
+func multiply_health(value):
+	max_health *= value
+	increase(max_health)
+	#print(max_health, " MULT ", current_health)
 
 
+
+func _on_hp_changed(value):
+	#print(max_health, "  ", current_health)
+	pass # Replace with function body.
