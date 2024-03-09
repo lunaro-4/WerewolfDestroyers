@@ -10,11 +10,12 @@ signal attack_finished
 
 
 func attack():
+	
 	#print("Hit initialized")
 	var delay_wait = delay * speed_modifyer
 	var hit_wait = hit_window * speed_modifyer
 	animate_attack(delay_wait, hit_wait)
-	wait(delay_wait)
+	await wait(delay_wait)
 	var hitbox_collisions_array := hitbox.get_children().filter(func(shape):
 		return shape.get_class() == "CollisionShape2D")
 	swich_hitbox_state(hitbox_collisions_array, false)

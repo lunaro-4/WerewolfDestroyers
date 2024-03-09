@@ -1,13 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://bppxfgu0s0hi4"]
+[gd_scene load_steps=20 format=3 uid="uid://bppxfgu0s0hi4"]
 
-[ext_resource type="Texture2D" uid="uid://s3c7fuducd2" path="res://TileSet/Texture/TX Tileset Grass.png" id="1_nh27l"]
+[ext_resource type="Texture2D" uid="uid://s3c7fuducd2" path="res://Assets/Texture/TX Tileset Grass.png" id="1_nh27l"]
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tmsga"]
-[ext_resource type="Texture2D" uid="uid://cok8kthmmx7di" path="res://TileSet/Texture/TX Plant.png" id="2_rpiml"]
-[ext_resource type="Texture2D" uid="uid://bm6r6x7ksq1aq" path="res://TileSet/Texture/TX Props.png" id="3_rexlu"]
-[ext_resource type="Texture2D" uid="uid://cdahpi2ht4svs" path="res://TileSet/Texture/TX Tileset Wall.png" id="4_vak8d"]
-[ext_resource type="Texture2D" uid="uid://1peq7cdhy5wu" path="res://TileSet/Texture/TX Struct.png" id="5_ybo3q"]
-[ext_resource type="Texture2D" uid="uid://colqh1ug3qkg5" path="res://TileSet/Texture/TX Tileset Stone Ground.png" id="6_kh7xx"]
+[ext_resource type="Texture2D" uid="uid://cok8kthmmx7di" path="res://Assets/Texture/TX Plant.png" id="2_rpiml"]
+[ext_resource type="Texture2D" uid="uid://bm6r6x7ksq1aq" path="res://Assets/Texture/TX Props.png" id="3_rexlu"]
+[ext_resource type="Texture2D" uid="uid://cdahpi2ht4svs" path="res://Assets/Texture/TX Tileset Wall.png" id="4_vak8d"]
+[ext_resource type="Texture2D" uid="uid://1peq7cdhy5wu" path="res://Assets/Texture/TX Struct.png" id="5_ybo3q"]
+[ext_resource type="Texture2D" uid="uid://colqh1ug3qkg5" path="res://Assets/Texture/TX Tileset Stone Ground.png" id="6_kh7xx"]
 [ext_resource type="PackedScene" uid="uid://hlpd5bjmqiwk" path="res://Scenes/player_character.tscn" id="8_g6a5b"]
+[ext_resource type="Texture2D" uid="uid://cri1d7p5sm35b" path="res://Assets/Icons/Pixel Blender_fFl9NovcT0yKkzMpsNOOaQ_a highly detailed badge icon for a fantasy role playing game, game ui icon_inference-txt2img_1710000721.png" id="9_o6l7g"]
+[ext_resource type="Theme" uid="uid://lk60rpu5lxfr" path="res://core_theme.tres" id="9_wmyj5"]
+[ext_resource type="Texture2D" uid="uid://diuykx4dqar12" path="res://Assets/Icons/Pixel Blender_cD0MffqsRMO6574gw0akIg_a highly detailed badge icon for a fantasy role playing game, game ui icon_inference-img2img_1710000670.png" id="10_2fxyr"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ui8kn"]
 vertices = PackedVector2Array(1171, 62, 1165, 693, 23, 691, 20, 47)
@@ -827,7 +830,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_hjsjs"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 15
+physics_layer_0/collision_layer = 0
 physics_layer_0/collision_mask = 15
 sources/0 = SubResource("TileSetAtlasSource_vc8ch")
 sources/2 = SubResource("TileSetAtlasSource_nyqn0")
@@ -840,11 +843,12 @@ sources/6 = SubResource("TileSetAtlasSource_7ihiq")
 script = ExtResource("1_tmsga")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_ui8kn")
 
 [node name="TileMaps" type="Node" parent="NavigationRegion2D"]
 
-[node name="GroundMap" type="TileMap" parent="NavigationRegion2D"]
+[node name="GroundMap" type="TileMap" parent="."]
 z_index = -2
 z_as_relative = false
 position = Vector2(7.0791, 33.0356)
@@ -870,3 +874,45 @@ layer_5/tile_data = PackedInt32Array(262165, 196614, 2, 262170, 196614, 2)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("8_g6a5b")]
 position = Vector2(292, 248)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+offset_left = 46.0
+offset_top = 41.0
+offset_right = 102.0
+offset_bottom = 94.0
+theme = ExtResource("9_wmyj5")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("10_2fxyr")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "100"
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/GridContainer"]
+modulate = Color(1, 1, 0.270588, 1)
+layout_mode = 2
+texture = ExtResource("9_o6l7g")
+expand_mode = 2
+
+[node name="GoldLabel" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
+
+[connection signal="player_got_hit" from="PlayerCharacter" to="." method="_on_player_got_hit"]

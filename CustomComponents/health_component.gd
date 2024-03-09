@@ -19,7 +19,7 @@ signal on_health_decrease(value : float)
 ## 
 func decrease(damage):
 	current_health -= damage
-	on_health_decrease.emit()
+	on_health_decrease.emit(damage)
 	if current_health <= 0:
 		alive = false
 		on_death.emit()
