@@ -19,7 +19,7 @@ func _process(_delta):
 	
 
 func _on_attack_finished(finished_attack):
-	print("Entity deleted")
+	#print("Entity deleted")
 	got_hit_by_list.erase(finished_attack)
 	print(got_hit_by_list)
 
@@ -32,8 +32,8 @@ func _on_area_entered(area):
 			#var this_thing = selfd
 			var area_owner = area.attack_component as AttackComponent
 			area_owner.attack_finished.connect(_on_attack_finished.bind(area), 4)
-			print(area_owner.attack_finished, " bind ", area, " ", _on_attack_finished)
-			print("Array is : ", got_hit_by_list)
+			#print(area_owner.attack_finished, " bind ", area, " ", _on_attack_finished)
+			#print("Array is : ", got_hit_by_list)
 			hurt(area.damage)
 	
 	

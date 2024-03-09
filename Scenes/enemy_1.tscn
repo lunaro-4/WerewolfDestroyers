@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwim87x2n21w1"]
+
+[ext_resource type="PackedScene" uid="uid://bvyo57sxna7be" path="res://Scenes/base_enemy.tscn" id="1_7lleq"]
+[ext_resource type="Script" path="res://Scrips/enemy_1.gd" id="2_qi38l"]
+[ext_resource type="Texture2D" uid="uid://cudjykfkea80j" path="res://icon.svg" id="2_qjwl3"]
+[ext_resource type="PackedScene" uid="uid://bselw8ieny17t" path="res://CustomComponents/pathfinding_logic.tscn" id="3_schnj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cavlj"]
+size = Vector2(132, 136)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6f4rn"]
+radius = 178.101
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_471sg"]
+size = Vector2(112, 112)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xvf0a"]
+radius = 382.774
+
+[node name="Enemy1" instance=ExtResource("1_7lleq")]
+script = ExtResource("2_qi38l")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_qjwl3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent" index="0"]
+visible = false
+shape = SubResource("RectangleShape2D_cavlj")
+
+[node name="HitBoxComponent" parent="Attacks" index="1"]
+damage = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attacks/HitBoxComponent" index="0"]
+shape = SubResource("CircleShape2D_6f4rn")
+disabled = true
+
+[node name="PathfindingLogic2" parent="." index="4" instance=ExtResource("3_schnj")]
+
+[node name="CollisionShape" parent="." index="5"]
+shape = SubResource("RectangleShape2D_471sg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
+shape = SubResource("CircleShape2D_xvf0a")
