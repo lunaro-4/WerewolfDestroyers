@@ -7,6 +7,7 @@ class_name HurtBoxComponent extends Area2D
 
 
 func hurt(damage: float):
+	#print("got hurt for ", damage)
 	health_component.decrease(damage)
 	pass
 
@@ -21,7 +22,7 @@ func _process(_delta):
 func _on_attack_finished(finished_attack):
 	#print("Entity deleted")
 	got_hit_by_list.erase(finished_attack)
-	print(got_hit_by_list)
+	#print(got_hit_by_list)
 
 func _on_area_entered(area):
 	#print("area detected ", area)

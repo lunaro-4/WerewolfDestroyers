@@ -1,3 +1,4 @@
+@icon("res://CustomComponents/CustomIcons/EMPTY BLANK.svg")
 class_name BaseEnemy  extends CharacterBody2D
 
 

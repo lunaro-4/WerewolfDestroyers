@@ -27,3 +27,12 @@ func _physics_process(_delta : float):
 	direction = pathfinder.target_path_vector
 	velocity = direction * SPEED
 	move_and_slide()
+
+
+func _on_health_component_on_health_decrease(value):
+	#print(self, " got hit for ", value)
+	pass # Replace with function body.
+
+
+func _on_health_component_on_death():
+	queue_free()

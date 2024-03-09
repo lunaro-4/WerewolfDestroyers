@@ -1,26 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://hlpd5bjmqiwk"]
+[gd_scene load_steps=11 format=3 uid="uid://hlpd5bjmqiwk"]
 
 [ext_resource type="PackedScene" uid="uid://cj6bda8y1k831" path="res://CustomComponents/health_component.tscn" id="1_1jvnx"]
-[ext_resource type="Script" path="res://Scrips/player_character.gd" id="1_64xnh"]
+[ext_resource type="Script" path="res://Scripts/player_character.gd" id="1_64xnh"]
 [ext_resource type="Texture2D" uid="uid://cudjykfkea80j" path="res://icon.svg" id="1_niawy"]
 [ext_resource type="PackedScene" uid="uid://cuad5o64p42de" path="res://CustomComponents/hurt_box_component.tscn" id="2_ywnae"]
 [ext_resource type="PackedScene" uid="uid://d0u057ptfmdxl" path="res://CustomComponents/attack_component.tscn" id="3_hm7q6"]
 [ext_resource type="PackedScene" uid="uid://laivrmt2olyg" path="res://CustomComponents/hit_box_component.tscn" id="4_oswv2"]
+[ext_resource type="Script" path="res://Scripts/HeroAttackAnimation.gd" id="6_kkaox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_inrhm"]
 size = Vector2(128, 130)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrykn"]
-radius = 119.067
+radius = 192.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aueyh"]
 size = Vector2(112, 112)
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 script = ExtResource("1_64xnh")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_niawy")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_1jvnx")]
 max_health = 30
@@ -37,18 +35,36 @@ shape = SubResource("RectangleShape2D_inrhm")
 [node name="Attacks" type="Node2D" parent="."]
 
 [node name="AttackComponent" parent="Attacks" node_paths=PackedStringArray("hitbox") instance=ExtResource("3_hm7q6")]
+hit_window = 1.0
 hitbox = NodePath("../HitBoxComponent")
 
-[node name="HitBoxComponent" parent="Attacks" node_paths=PackedStringArray("attack_component") instance=ExtResource("4_oswv2")]
+[node name="HitBoxComponent" parent="Attacks" node_paths=PackedStringArray("attack_component", "hit_animation_object") instance=ExtResource("4_oswv2")]
 collision_layer = 2
 collision_mask = 0
+damage = 7.0
 attack_component = NodePath("../AttackComponent")
+hit_animation_object = NodePath("HeroAttackAnimation")
 
 [node name="HitBoxShape" type="CollisionShape2D" parent="Attacks/HitBoxComponent"]
 shape = SubResource("CircleShape2D_wrykn")
 disabled = true
 
+[node name="HeroAttackAnimation" type="Polygon2D" parent="Attacks/HitBoxComponent"]
+position = Vector2(-0.253113, 0)
+scale = Vector2(1.50622, 1.55462)
+color = Color(0.211765, 0.611765, 1, 0)
+polygon = PackedVector2Array(-5, 119, -16, 32, -75, 89, -37, 15, -120, -3, -39, -26, -84, -81, -22, -38, -1, -119, 12, -40, 74, -90, 32, -15, 121, 2, 36, 24, 84, 76, 23, 38)
+script = ExtResource("6_kkaox")
+
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_aueyh")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_niawy")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="on_death" from="HealthComponent" to="." method="_on_death"]
+[connection signal="on_health_decrease" from="HealthComponent" to="." method="_on_health_component_on_health_decrease"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

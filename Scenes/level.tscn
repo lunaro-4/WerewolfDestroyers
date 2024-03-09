@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://muxh1e056wbv"]
 
 [ext_resource type="PackedScene" uid="uid://hlpd5bjmqiwk" path="res://Scenes/player_character.tscn" id="1_gc7h8"]
-[ext_resource type="Script" path="res://Scrips/level.gd" id="1_i5uxt"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_i5uxt"]
 [ext_resource type="PackedScene" uid="uid://bwim87x2n21w1" path="res://Scenes/enemy_1.tscn" id="2_3fusf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_djj5l"]
-vertices = PackedVector2Array(2078, -517, 2169, 1209, -285, 948, -214, -596)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+vertices = PackedVector2Array(-214, -596, 2078, -517, 1387, -91, 553, -290, 2169, 1209, 1240, 536, -285, 948, 472, 455)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 0, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-296, 957, -224, -607, 2088, -527, 2180, 1221)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
@@ -16,10 +16,14 @@ script = ExtResource("1_i5uxt")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_djj5l")
 
+[node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D"]
+polygon = PackedVector2Array(483, 446, 562, -278, 1375, -84, 1232, 525)
+
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_gc7h8")]
 
 [node name="Enemy1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_3fusf")]
 position = Vector2(1767, 817)
+motion_mode = 0
 player = NodePath("../PlayerCharacter")
 
 [node name="Camera2D" type="Camera2D" parent="."]
