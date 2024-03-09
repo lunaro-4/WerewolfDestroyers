@@ -12,8 +12,8 @@ signal attack_finished
 func attack():
 	var delay_wait = delay * speed_modifyer
 	var hit_wait = hit_window * speed_modifyer
-	animate_attack(delay_wait, hit_wait)
 	await wait(delay_wait)
+	animate_attack(delay_wait, hit_wait)
 	var hitbox_collisions_array := hitbox.get_children().filter(func(shape):
 		return shape.get_class() == "CollisionShape2D")
 	swich_hitbox_state(hitbox_collisions_array, false)
@@ -43,3 +43,5 @@ func _ready():
 		speed_modifyer = 1 / speed_modifyer
 	pass
 
+func tweak_damage(value):
+	hitbox.damage = value * hitbox.base_damage
