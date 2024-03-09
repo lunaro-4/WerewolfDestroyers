@@ -1,4 +1,20 @@
-[gd_resource type="Theme" format=3 uid="uid://lk60rpu5lxfr"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://lk60rpu5lxfr"]
+
+[sub_resource type="CameraTexture" id="CameraTexture_xv5jx"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_67s6d"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_v7i5a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebftn"]
+bg_color = Color(0, 0.72549, 0.129412, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ktxg"]
 
 [resource]
+HSlider/icons/grabber = SubResource("CameraTexture_xv5jx")
+HSlider/icons/grabber_disabled = SubResource("CanvasTexture_67s6d")
+HSlider/icons/grabber_highlight = SubResource("CanvasTexture_v7i5a")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_ebftn")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxEmpty_2ktxg")
 Label/font_sizes/font_size = 30

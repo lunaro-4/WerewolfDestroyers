@@ -8,18 +8,22 @@ class_name HealthComponent extends Node
 ## Является ли объект "Живым" на момент спавна
 @export var alive : bool = true
 
+@export var hp_bar : Node
+
 
 var current_health : float = start_health
 
 
 signal on_death
 signal on_health_decrease(value : float)
+signal hp_changed(value: float)
 
 
 ## 
 func decrease(damage):
 	current_health -= damage
 	on_health_decrease.emit(damage)
+	hp_changed.emit(current_health)
 	if current_health <= 0:
 		alive = false
 		on_death.emit()
@@ -28,6 +32,7 @@ func decrease(damage):
 ## 
 func increase(heal):
 	current_health += heal
+	hp_changed.emit(current_health)
 	if current_health > max_health:
 		current_health = max_health
 	pass
@@ -37,6 +42,9 @@ func increase(heal):
 func _ready():
 	if start_health == 0:
 		current_health =max_health
+	hp_changed.emit(current_health)
+	if hp_bar :
+		hp_bar.max_value = max_health
 	pass 
 
 

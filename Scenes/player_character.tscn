@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://hlpd5bjmqiwk"]
+[gd_scene load_steps=14 format=3 uid="uid://hlpd5bjmqiwk"]
 
 [ext_resource type="PackedScene" uid="uid://cj6bda8y1k831" path="res://CustomComponents/health_component.tscn" id="1_1jvnx"]
 [ext_resource type="Script" path="res://Scripts/player_character.gd" id="1_64xnh"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://d0u057ptfmdxl" path="res://CustomComponents/attack_component.tscn" id="3_hm7q6"]
 [ext_resource type="PackedScene" uid="uid://laivrmt2olyg" path="res://CustomComponents/hit_box_component.tscn" id="4_oswv2"]
 [ext_resource type="Script" path="res://Scripts/HeroAttackAnimation.gd" id="6_kkaox"]
+[ext_resource type="Theme" uid="uid://lk60rpu5lxfr" path="res://core_theme.tres" id="8_g5nkn"]
+[ext_resource type="Script" path="res://Scripts/HSlider.gd" id="9_ic7l6"]
+[ext_resource type="PackedScene" uid="uid://cg5holg485hji" path="res://CustomComponents/regeneration_component.tscn" id="10_kwqux"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_inrhm"]
 size = Vector2(128, 130)
@@ -20,8 +23,9 @@ size = Vector2(112, 112)
 [node name="PlayerCharacter" type="CharacterBody2D"]
 script = ExtResource("1_64xnh")
 
-[node name="HealthComponent" parent="." instance=ExtResource("1_1jvnx")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("hp_bar") instance=ExtResource("1_1jvnx")]
 max_health = 30
+hp_bar = NodePath("../HPbar")
 
 [node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_ywnae")]
 collision_layer = 1
@@ -69,6 +73,22 @@ texture = ExtResource("1_niawy")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="HPbar" type="HSlider" parent="."]
+offset_left = -66.0
+offset_top = -57.0
+offset_right = 55.0
+offset_bottom = -41.0
+theme = ExtResource("8_g5nkn")
+value = 50.0
+editable = false
+scrollable = false
+tick_count = 1
+script = ExtResource("9_ic7l6")
+
+[node name="RegenerationComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("10_kwqux")]
+health_component = NodePath("../HealthComponent")
+
+[connection signal="hp_changed" from="HealthComponent" to="HPbar" method="_on_health_component_hp_changed"]
 [connection signal="on_death" from="HealthComponent" to="." method="_on_death"]
 [connection signal="on_health_decrease" from="HealthComponent" to="." method="_on_health_component_on_health_decrease"]
 [connection signal="attack_finished" from="Attacks/Attack1Component" to="." method="_on_attack_1_component_attack_finished"]
