@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cri1d7p5sm35b" path="res://Assets/Icons/Pixel Blender_fFl9NovcT0yKkzMpsNOOaQ_a highly detailed badge icon for a fantasy role playing game, game ui icon_inference-txt2img_1710000721.png" id="9_o6l7g"]
 [ext_resource type="Theme" uid="uid://lk60rpu5lxfr" path="res://core_theme.tres" id="9_wmyj5"]
 [ext_resource type="Texture2D" uid="uid://diuykx4dqar12" path="res://Assets/Icons/Pixel Blender_cD0MffqsRMO6574gw0akIg_a highly detailed badge icon for a fantasy role playing game, game ui icon_inference-img2img_1710000670.png" id="10_2fxyr"]
-[ext_resource type="PackedScene" uid="uid://dchas3vmr1e1d" path="res://Scenes/pausem.tscn" id="12_h72wx"]
+[ext_resource type="PackedScene" uid="uid://cdx88upr5nv6n" path="res://Scenes/pausem.tscn" id="12_h72wx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ui8kn"]
 vertices = PackedVector2Array(1171, 62, 1165, 693, 23, 691, 20, 47)
@@ -879,49 +879,50 @@ layer_5/name = "Ground 2"
 layer_5/tile_data = PackedInt32Array(262165, 196614, 2, 262170, 196614, 2)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("8_g6a5b")]
-position = Vector2(292, 248)
+position = Vector2(144, 368)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CurrencyTable" type="CanvasLayer" parent="."]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+[node name="CurrencyContainer" type="PanelContainer" parent="CurrencyTable"]
 offset_left = 46.0
 offset_top = 41.0
 offset_right = 102.0
 offset_bottom = 94.0
 theme = ExtResource("9_wmyj5")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CurrencyTable/CurrencyContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="CurrencyTable/CurrencyContainer/MarginContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/GridContainer"]
+[node name="SilverIcon" type="TextureRect" parent="CurrencyTable/CurrencyContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("10_2fxyr")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/GridContainer"]
+[node name="SilverLabel" type="Label" parent="CurrencyTable/CurrencyContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 text = "100"
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/GridContainer"]
+[node name="GoldIcon" type="TextureRect" parent="CurrencyTable/CurrencyContainer/MarginContainer/GridContainer"]
 modulate = Color(1, 1, 0.270588, 1)
 layout_mode = 2
 texture = ExtResource("9_o6l7g")
 expand_mode = 2
 
-[node name="GoldLabel" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/GridContainer"]
+[node name="GoldLabel" type="Label" parent="CurrencyTable/CurrencyContainer/MarginContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "100"
 
 [node name="PauseMenulayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="pausem" parent="PauseMenulayer" instance=ExtResource("12_h72wx")]
 process_mode = 2

@@ -86,6 +86,7 @@ tick_count = 1
 script = ExtResource("9_ic7l6")
 
 [node name="RegenerationComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("10_kwqux")]
+regen_amount = 10.0
 health_component = NodePath("../HealthComponent")
 
 [connection signal="hp_changed" from="HealthComponent" to="HPbar" method="_on_health_component_hp_changed"]
