@@ -8,10 +8,8 @@ class_name AttackComponent extends Node
 
 signal attack_finished
 
-
+## Метод атаки
 func attack():
-	
-	#print("Hit initialized")
 	var delay_wait = delay * speed_modifyer
 	var hit_wait = hit_window * speed_modifyer
 	animate_attack(delay_wait, hit_wait)
@@ -21,14 +19,11 @@ func attack():
 	swich_hitbox_state(hitbox_collisions_array, false)
 	await wait(hit_wait)
 	swich_hitbox_state(hitbox_collisions_array, true)
-	#print("Hit finished")
 	attack_finished.emit()
 
 
 func wait(time) -> void:
-	#print("Timer started for ", time)
 	await get_tree().create_timer(time).timeout
-	#print("Timer ended.")
 	
 
 func animate_attack(delay_wait, hit_wait):
