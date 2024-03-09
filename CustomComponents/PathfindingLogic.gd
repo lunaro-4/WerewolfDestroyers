@@ -42,6 +42,8 @@ func _physics_process(_delta : float):
 
 	
 func makepath():
+	if target == null:
+		return
 	nav_agent.target_position = target.global_position
 	target_path_vector = to_local(nav_agent.get_next_path_position()).normalized()
 

@@ -1,7 +1,9 @@
 @icon("res://CustomComponents/CustomIcons/PLUS.svg")
 class_name Player extends CharacterBody2D
 
-@onready var attack_component = $Attacks/AttackComponent as AttackComponent
+@onready var attack_component = $Attacks/Attack1Component as AttackComponent
+
+signal player_got_hit(value)
 
 
 
@@ -21,5 +23,11 @@ func _on_timer_timeout():
 
 
 func _on_health_component_on_health_decrease(value):
+	player_got_hit.emit(value)
 	#print(self, " got hit for ", value)
+	pass # Replace with function body.
+
+
+func _on_attack_1_component_attack_finished():
+	attack_component.attack()
 	pass # Replace with function body.
