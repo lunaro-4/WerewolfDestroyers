@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2kmgews1lfht"]
+
+[ext_resource type="Texture2D" uid="uid://cudjykfkea80j" path="res://icon.svg" id="1_3su2d"]
+
+[node name="Control" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(956.008, 282.843)
+scale = Vector2(3.07713, 2.59099)
+texture = ExtResource("1_3su2d")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -577.0
+offset_top = -328.0
+offset_right = 577.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -164.0
+offset_right = 128.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ну здравствуй! Я твой пк. И знаешь что? Я, пожалуй перейду сразу к делу.
+Мне надоело, что ты постоянно убиваешь моих созданий. Нам пожалуй стоит
+поменяться местами!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dalshe" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 128.0
+offset_right = 321.0
+offset_bottom = 248.0
+text = "Чего?"

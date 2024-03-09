@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsuawjs4wtprh"]
+
+[ext_resource type="Texture2D" uid="uid://c2bjcyguyvk8s" path="res://Error.png" id="1_mx70m"]
+
+[node name="Error" type="Node"]
+
+[node name="Er" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Er"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Eror" type="Button" parent="Er/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 131.0
+offset_top = 76.0
+offset_right = -213.0
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("1_mx70m")

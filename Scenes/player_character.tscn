@@ -88,6 +88,13 @@ script = ExtResource("9_ic7l6")
 [node name="RegenerationComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("10_kwqux")]
 health_component = NodePath("../HealthComponent")
 
+[node name="Label" type="Label" parent="."]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = -24.0
+text = "Player 2012"
+
 [connection signal="hp_changed" from="HealthComponent" to="HPbar" method="_on_health_component_hp_changed"]
 [connection signal="on_death" from="HealthComponent" to="." method="_on_death"]
 [connection signal="on_health_decrease" from="HealthComponent" to="." method="_on_health_component_on_health_decrease"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dchas3vmr1e1d"]
 
-[ext_resource type="Script" path="res://Scenes/pausem.gd" id="1_utk3g"]
+[ext_resource type="Script" path="res://Scripts/pausem.gd" id="1_utk3g"]
 [ext_resource type="Texture2D" uid="uid://bckotsjc3wyhj" path="res://Fon.png" id="2_riy60"]
 
 [node name="pausem" type="Control"]
