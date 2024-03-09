@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://1t3n7wk2yfnf"]
+
+[ext_resource type="PackedScene" uid="uid://cke6x55tsq2m2" path="res://Scenes/ground_map.tscn" id="1_nn33e"]
+[ext_resource type="Script" path="res://Scenes/ManagerSujet.gd" id="1_nriic"]
+[ext_resource type="PackedScene" uid="uid://dsuawjs4wtprh" path="res://Scenes/error.tscn" id="3_pgehp"]
+[ext_resource type="PackedScene" uid="uid://b2kmgews1lfht" path="res://Scenes/Suget.tscn" id="4_rctje"]
+
+[node name="FirstScene" type="Node2D"]
+
+[node name="ManagerSujet" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("1_nriic")
+
+[node name="GroundMap" parent="." instance=ExtResource("1_nn33e")]
+
+[node name="Suget" type="CanvasLayer" parent="."]
+
+[node name="Error" parent="Suget" instance=ExtResource("3_pgehp")]
+
+[node name="Er" parent="Suget/Error" index="0"]
+process_mode = 2
+
+[node name="Control" parent="Suget" instance=ExtResource("4_rctje")]
+
+[connection signal="pressed" from="Suget/Error/Er/Panel/Eror" to="ManagerSujet" method="_on_eror_pressed"]
+[connection signal="pressed" from="Suget/Control/Panel/dalshe" to="ManagerSujet" method="_on_dalshe_pressed"]
+
+[editable path="Suget/Error"]
+[editable path="Suget/Control"]

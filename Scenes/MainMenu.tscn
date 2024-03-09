@@ -9,26 +9,36 @@ script = ExtResource("1_epbaf")
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="New" type="Button" parent="CanvasLayer/Control"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="New" type="Button" parent="CanvasLayer/Control/Panel"]
 layout_mode = 0
-offset_left = 512.0
-offset_top = 192.0
-offset_right = 832.0
-offset_bottom = 288.0
+offset_left = 408.0
+offset_top = 200.0
+offset_right = 728.0
+offset_bottom = 296.0
 text = "Новая игра"
 
-[node name="Exit" type="Button" parent="CanvasLayer/Control"]
+[node name="Exit" type="Button" parent="CanvasLayer/Control/Panel"]
 layout_mode = 0
-offset_left = 512.0
-offset_top = 296.0
-offset_right = 832.0
-offset_bottom = 344.0
+offset_left = 408.0
+offset_top = 312.0
+offset_right = 728.0
+offset_bottom = 360.0
 text = "ВЫХОД
 "
 
-[connection signal="pressed" from="CanvasLayer/Control/New" to="." method="_on_new_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/New" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/Exit" to="." method="_on_exit_pressed"]

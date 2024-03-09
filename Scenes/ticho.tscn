@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://8ny0uwtybld3"]
+
+[ext_resource type="Texture2D" uid="uid://cudjykfkea80j" path="res://icon.svg" id="1_hd4qm"]
+
+[node name="Ticho" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(936, 280)
+scale = Vector2(2.61354, 2.63108)
+texture = ExtResource("1_hd4qm")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -575.0
+offset_top = -328.0
+offset_right = 576.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 703.0
+offset_bottom = 128.0
+text = "ПОДУМАЙ НАД СВОИМ ПОВЕДЕНИЕМ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="A" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 128.0
+offset_right = 447.0
+offset_bottom = 256.0
+text = "..."
