@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bwim87x2n21w1"]
 
 [ext_resource type="PackedScene" uid="uid://bvyo57sxna7be" path="res://Scenes/base_enemy.tscn" id="1_7lleq"]
-[ext_resource type="Script" path="res://Scrips/enemy_1.gd" id="2_qi38l"]
+[ext_resource type="Script" path="res://Scripts/enemy_1.gd" id="2_akjvr"]
 [ext_resource type="Texture2D" uid="uid://cudjykfkea80j" path="res://icon.svg" id="2_qjwl3"]
-[ext_resource type="PackedScene" uid="uid://bselw8ieny17t" path="res://CustomComponents/pathfinding_logic.tscn" id="3_schnj"]
+[ext_resource type="Script" path="res://Scripts/Polygon2D.gd" id="3_sm40s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cavlj"]
 size = Vector2(132, 136)
@@ -18,26 +18,42 @@ size = Vector2(112, 112)
 radius = 382.774
 
 [node name="Enemy1" instance=ExtResource("1_7lleq")]
-script = ExtResource("2_qi38l")
+script = ExtResource("2_akjvr")
 
-[node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_qjwl3")
+[node name="HealthComponent" parent="." index="0"]
+max_health = 10
+
+[node name="HurtBoxComponent" parent="." index="1"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent" index="0"]
 visible = false
 shape = SubResource("RectangleShape2D_cavlj")
 
-[node name="HitBoxComponent" parent="Attacks" index="1"]
-damage = 5.0
+[node name="AttackComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hitbox")]
+hitbox = NodePath("../HitBoxComponent")
+
+[node name="HitBoxComponent" parent="Attacks" index="1" node_paths=PackedStringArray("hit_animation_object")]
+damage = 3.0
+hit_animation_object = NodePath("Polygon2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attacks/HitBoxComponent" index="0"]
 shape = SubResource("CircleShape2D_6f4rn")
 disabled = true
 
-[node name="PathfindingLogic2" parent="." index="4" instance=ExtResource("3_schnj")]
+[node name="Polygon2D" type="Polygon2D" parent="Attacks/HitBoxComponent" index="1"]
+color = Color(1, 0.454902, 0.47451, 0)
+polygon = PackedVector2Array(-360, 29, -279, 229, -136, 309, 80, 350, 213, 290, 330, 162, 368, -5, 289, -226, 59, -352, -132, -342, -296, -204, -360, -24, -362, 48)
+script = ExtResource("3_sm40s")
 
-[node name="CollisionShape" parent="." index="5"]
+[node name="CollisionShape" parent="." index="3"]
 shape = SubResource("RectangleShape2D_471sg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
 shape = SubResource("CircleShape2D_xvf0a")
+
+[node name="Sprite2D" parent="." index="6"]
+texture = ExtResource("2_qjwl3")
+
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
+[connection signal="attack_finished" from="Attacks/AttackComponent" to="AttackArea" method="_on_attack_component_attack_finished"]

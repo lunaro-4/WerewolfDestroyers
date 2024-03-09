@@ -13,7 +13,9 @@ func _on_area_entered(area):
 
 
 func _on_attack_component_attack_finished():
-	if get_overlapping_areas().find(func(area): 
-		return area.get_class() == "HurtBoxComponent"):
+	var filtered_areas = get_overlapping_areas().filter(func(area): 
+		return area is HurtBoxComponent)
+	#print(filtered_areas)
+	if filtered_areas.size() > 0 :
 		attack_component.attack()
 	pass 

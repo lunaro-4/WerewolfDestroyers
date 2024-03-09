@@ -13,7 +13,7 @@ var current_health : float = start_health
 
 
 signal on_death
-signal on_health_decrease
+signal on_health_decrease(value : float)
 
 
 ## 
