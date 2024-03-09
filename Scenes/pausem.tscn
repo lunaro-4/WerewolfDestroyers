@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dchas3vmr1e1d"]
+[gd_scene load_steps=3 format=3 uid="uid://cdx88upr5nv6n"]
 
 [ext_resource type="Script" path="res://Scripts/pausem.gd" id="1_utk3g"]
 [ext_resource type="Texture2D" uid="uid://bckotsjc3wyhj" path="res://Fon.png" id="2_riy60"]
@@ -11,6 +11,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_utk3g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(619.182, 345.458)
+scale = Vector2(1.60408, 1.24541)
+texture = ExtResource("2_riy60")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -66,8 +71,3 @@ offset_bottom = 29.7272
 grow_horizontal = 2
 text = "Пауза"
 horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(619.182, 345.458)
-scale = Vector2(1.60408, 1.24541)
-texture = ExtResource("2_riy60")

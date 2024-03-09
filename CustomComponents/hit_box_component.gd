@@ -7,6 +7,7 @@ class_name HitBoxComponent extends Area2D
 ## Указатель компонента анимации данной атаки
 @export var hit_animation_object : Node
 
+@onready var base_damage = damage
 
 ## Проверяем, что компонент атаки подключен. 
 ## иначе урон проходить не будет!
@@ -20,3 +21,11 @@ func _ready():
 func animate(delay_wait, hit_wait):
 	if hit_animation_object != null and hit_animation_object.has_method("animate"):
 		hit_animation_object.animate(delay_wait, hit_wait)
+
+
+
+
+
+
+
+
