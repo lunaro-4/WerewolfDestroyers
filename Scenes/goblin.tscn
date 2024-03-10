@@ -147,6 +147,7 @@ frame = 9
 frame_progress = 0.449849
 
 [node name="AttackSprite" type="AnimatedSprite2D" parent="." index="9"]
+visible = false
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ewpdl")
 frame = 9

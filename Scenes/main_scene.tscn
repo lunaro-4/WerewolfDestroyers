@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bppxfgu0s0hi4"]
+[gd_scene load_steps=18 format=3 uid="uid://bppxfgu0s0hi4"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tmsga"]
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="2_xrha5"]
@@ -20,6 +20,9 @@ vertices = PackedVector2Array(1171, 62, 1165, 693, 23, 691, 20, 47)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(14, 701, 10, 37, 1182, 53, 1175, 704)])
 source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0aqky"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Theme" id="Theme_iigil"]
 default_font_size = 19
@@ -148,6 +151,12 @@ layout_mode = 2
 [node name="PanelContainer" type="PanelContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton"]
 layout_mode = 2
 
+[node name="SlimePanel" type="Panel" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton/PanelContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0aqky")
+
 [node name="SlimeButton" type="TextureButton" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton/PanelContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 70)
@@ -176,6 +185,12 @@ layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2"]
 layout_mode = 2
+
+[node name="GoblinPanel" type="Panel" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2/PanelContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0aqky")
 
 [node name="GoblinButton" type="TextureButton" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2/PanelContainer"]
 unique_name_in_owner = true
