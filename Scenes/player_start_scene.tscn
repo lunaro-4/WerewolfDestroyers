@@ -1,13 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://fw88l4xk2wtv"]
+[gd_scene load_steps=18 format=3 uid="uid://fw88l4xk2wtv"]
 
 [ext_resource type="Texture2D" uid="uid://s3c7fuducd2" path="res://Assets/Texture/TX Tileset Grass.png" id="1_mqk1x"]
 [ext_resource type="Script" path="res://Scripts/player_start_scene.gd" id="1_ogbpn"]
+[ext_resource type="Script" path="res://Scenes/SugMan.gd" id="2_nd6w3"]
 [ext_resource type="Texture2D" uid="uid://d07sk3rgrldee" path="res://Assets/Texture/eart.png" id="3_c21wt"]
 [ext_resource type="PackedScene" uid="uid://dpvqt7nfeb7ek" path="res://Scenes/controlable_player_character.tscn" id="3_n2nw5"]
 [ext_resource type="Texture2D" uid="uid://k8akcdx6vk50" path="res://Assets/Texture/Sprite-0001.png" id="4_fj2we"]
 [ext_resource type="PackedScene" uid="uid://wu5uidudhb3c" path="res://Scenes/slime.tscn" id="6_2v2up"]
 [ext_resource type="AudioStream" uid="uid://bhnrvx2a2hwa5" path="res://Music/FMT.mp3" id="7_dmpe4"]
 [ext_resource type="AudioStream" uid="uid://cqsexmk1hrjag" path="res://Music/Boss.mp3" id="8_kn1cf"]
+[ext_resource type="PackedScene" uid="uid://dsuawjs4wtprh" path="res://Scenes/error.tscn" id="9_0u7iy"]
+[ext_resource type="PackedScene" uid="uid://b2kmgews1lfht" path="res://Scenes/Suget.tscn" id="10_cjs06"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5fhag"]
 texture = ExtResource("1_mqk1x")
@@ -306,6 +309,10 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [node name="PlayerStartScene" type="Node2D"]
 script = ExtResource("1_ogbpn")
 
+[node name="SugMan" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("2_nd6w3")
+
 [node name="FloorTiles" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ovq7p")
 format = 2
@@ -344,4 +351,19 @@ stream = ExtResource("8_kn1cf")
 [node name="BossSpawn" type="Marker2D" parent="."]
 position = Vector2(576, -1519)
 
+[node name="Eror" type="CanvasLayer" parent="."]
+
+[node name="Error" parent="Eror" instance=ExtResource("9_0u7iy")]
+
+[node name="Er" parent="Eror/Error" index="0"]
+process_mode = 2
+
+[node name="Control" parent="Eror" instance=ExtResource("10_cjs06")]
+
+[connection signal="on_on_boss_death" from="." to="SugMan" method="_on_player_start_scene_on_on_boss_death"]
 [connection signal="on_slime_death" from="Slime" to="." method="_on_slime_death"]
+[connection signal="pressed" from="Eror/Error/Er/Panel/Eror" to="SugMan" method="_on_eror_pressed"]
+[connection signal="pressed" from="Eror/Control/Panel/dalshe" to="." method="_on_dalshe_pressed"]
+
+[editable path="Eror/Error"]
+[editable path="Eror/Control"]
