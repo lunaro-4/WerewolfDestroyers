@@ -25,6 +25,7 @@ func _process(_delta):
 			var enemy_instance = enemy_1.instantiate() as EnemyOne
 			enemy_instance.player = $PlayerCharacter
 			enemy_instance.position = get_global_mouse_position()
+			enemy_instance.is_static = false
 			current_gold -=5
 			add_child(enemy_instance)
 		else:
