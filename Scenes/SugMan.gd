@@ -40,3 +40,8 @@ func _on_player_start_scene_on_on_boss_death():
 func _on_eror_pressed():
 	sug = 1
 	pass # Replace with function body.
+
+
+func _on_dalshe_pressed():
+	get_tree().paused = true
+	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
