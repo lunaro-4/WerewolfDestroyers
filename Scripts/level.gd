@@ -5,6 +5,8 @@ extends Node2D
 var slime = preload("res://Scenes/slime.tscn") 
 var goblin = preload("res://Scenes/goblin.tscn")
 
+@onready var mouse_over_button := false
+
 @onready var gold_label = %GoldLabel as Label
 @onready var current_gold :=50
 @onready var player = $PlayerCharacter as Player
@@ -36,7 +38,7 @@ func refresh_gold_lable():
 	set_gold_lable_text(current_gold)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("LMBclick"):
+	if Input.is_action_just_pressed("LMBclick")and !mouse_over_button:
 		if current_gold >= 0:
 			if chosen_creature == creatures[0]:
 				return
@@ -49,7 +51,7 @@ func _process(_delta):
 	pass
 
 func spawn_enemy(type, cost):
-	print("spawn ", goblin, " for ", cost)
+	#print("spawn ", goblin, " for ", cost)
 	var enemy_instance = type.instantiate()
 	if player != null:
 		enemy_instance.player = player
@@ -117,3 +119,13 @@ func _on_slime_button_toggled(toggled_on):
 	elif chosen_creature == creatures[1] and !active_refresh:
 		chosen_creature = creatures[0]
 		buttons_refresh()
+
+
+func _on_mouse_entered():
+	#print("enter")
+	mouse_over_button = true
+
+
+func _on_mouse_exited():
+	#print("exit")
+	mouse_over_button = false
