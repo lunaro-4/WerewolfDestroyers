@@ -368,7 +368,7 @@ process_mode = 2
 
 [node name="Error2" parent="Eror" instance=ExtResource("13_w3auk")]
 
-[node name="Er" parent="Eror/Error2" index="0"]
+[node name="Erche" parent="Eror/Error2" index="0"]
 process_mode = 2
 
 [node name="ST" type="AudioStreamPlayer" parent="."]
@@ -378,10 +378,12 @@ stream = ExtResource("12_ypvcc")
 [connection signal="on_on_boss_death" from="." to="SugMan" method="_on_player_start_scene_on_on_boss_death"]
 [connection signal="on_slime_death" from="Slime" to="." method="_on_slime_death"]
 [connection signal="pressed" from="Eror/Error/Er/Panel/ButOk" to="SugMan" method="_on_but_ok_pressed"]
+[connection signal="pressed" from="Eror/Error/Er/Panel/ButKrest" to="SugMan" method="_on_but_krest_pressed"]
 [connection signal="pressed" from="Eror/Control/Panel/dalshe" to="SugMan" method="_on_dalshe_pressed"]
 [connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Button" to="SugMan" method="_on_button_pressed"]
 [connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Button2" to="SugMan" method="_on_button_2_pressed"]
 [connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Button3" to="SugMan" method="_on_button_3_pressed"]
+[connection signal="pressed" from="Eror/Error2/Erche/Panel/ButOk2" to="SugMan" method="_on_but_ok_2_pressed"]
 
 [editable path="Eror/Error"]
 [editable path="Eror/Control"]
