@@ -44,7 +44,7 @@ func _process(_delta):
 	if ray_coursor:
 		look_at(get_global_mouse_position())
 		rotation_degrees += add_rotation
-	if ray_target:
+	if ray_target != null:
 		look_at(ray_target.global_position)
 		rotation_degrees += add_rotation
 

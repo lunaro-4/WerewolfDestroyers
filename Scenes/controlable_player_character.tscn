@@ -28,6 +28,8 @@ height = 118.0
 size = Vector2(112, 112)
 
 [node name="ControlablePlayerCharacter" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 4
 script = ExtResource("1_tye0m")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_enhey")]

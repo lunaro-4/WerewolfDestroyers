@@ -1,0 +1,129 @@
+[gd_scene load_steps=17 format=3 uid="uid://wu5uidudhb3c"]
+
+[ext_resource type="PackedScene" uid="uid://bvyo57sxna7be" path="res://Scenes/base_enemy.tscn" id="1_bf6qc"]
+[ext_resource type="Script" path="res://Scripts/slime.gd" id="2_0rxs1"]
+[ext_resource type="Script" path="res://Scripts/slime_attack_1.gd" id="3_xk2ka"]
+[ext_resource type="Texture2D" uid="uid://cudjykfkea80j" path="res://icon.svg" id="4_m66bx"]
+[ext_resource type="PackedScene" uid="uid://cb6lbhk8j2sy0" path="res://CustomComponents/detection_area.tscn" id="5_ae3xp"]
+[ext_resource type="Texture2D" uid="uid://bfrjlwsjyxydv" path="res://Assets/EntitySprite/slime_front.png" id="6_jn5be"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cavlj"]
+size = Vector2(132, 136)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6f4rn"]
+radius = 123.415
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c5nu4"]
+radius = 65.048
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xvf0a"]
+radius = 382.774
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3i77q"]
+radius = 289.389
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgrdq"]
+atlas = ExtResource("6_jn5be")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_643yi"]
+atlas = ExtResource("6_jn5be")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frlbm"]
+atlas = ExtResource("6_jn5be")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0ivf"]
+atlas = ExtResource("6_jn5be")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o825d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgrdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_643yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frlbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_643yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0ivf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
+
+[node name="Slime" instance=ExtResource("1_bf6qc")]
+script = ExtResource("2_0rxs1")
+is_static = false
+
+[node name="HealthComponent" parent="." index="0"]
+max_health = 20
+
+[node name="HurtBoxComponent" parent="." index="1" node_paths=PackedStringArray("knockback_component")]
+collision_layer = 2
+knockback_component = NodePath("../KnockBackComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent" index="0"]
+visible = false
+shape = SubResource("RectangleShape2D_cavlj")
+
+[node name="AttackComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hitbox")]
+hitbox = NodePath("../HitBoxComponent")
+
+[node name="HitBoxComponent" parent="Attacks" index="1" node_paths=PackedStringArray("hit_animation_object")]
+damage = 3.0
+hit_animation_object = NodePath("Polygon2D")
+add_rotation = 180.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attacks/HitBoxComponent" index="0"]
+position = Vector2(-45, -2.5)
+shape = SubResource("CircleShape2D_6f4rn")
+disabled = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Attacks/HitBoxComponent" index="1" node_paths=PackedStringArray("main_sprite")]
+scale = Vector2(0.4, 0.4)
+color = Color(1, 0.454902, 0.47451, 0)
+polygon = PackedVector2Array(-350, 150, -318.75, 225, -256.25, 287.5, -150, 350, -62.5, 337.5, 0, 243.75, 0, 6.25, 6.25, -218.75, -87.5, -362.5, -187.5, -343.75, -337.5, -175, -360, -24, -375, 75)
+script = ExtResource("3_xk2ka")
+main_sprite = NodePath("../../../MainSprite")
+
+[node name="EntityCollision" parent="." index="3"]
+position = Vector2(-1, -7)
+shape = SubResource("CircleShape2D_c5nu4")
+
+[node name="AttackArea" parent="." index="5"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
+scale = Vector2(0.4, 0.4)
+shape = SubResource("CircleShape2D_xvf0a")
+
+[node name="Sprite2D" parent="." index="6"]
+visible = false
+texture = ExtResource("4_m66bx")
+
+[node name="DetectionArea" parent="." index="8" instance=ExtResource("5_ae3xp")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
+shape = SubResource("CircleShape2D_3i77q")
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="." index="9"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_o825d")
+frame_progress = 0.986362
+
+[node name="AttackSprite" type="AnimatedSprite2D" parent="." index="10"]
+
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
+[connection signal="attack_finished" from="Attacks/AttackComponent" to="AttackArea" method="_on_attack_component_attack_finished"]
+[connection signal="target_detected" from="DetectionArea" to="." method="_on_detection_area_target_detected"]

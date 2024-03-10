@@ -45,6 +45,8 @@ func makepath():
 	#print("[]")
 	if target == null:
 		target_path_vector = Vector2(0,0)
+		if get_parent().has_method("animate_sprite"):
+			get_parent().is_static = true
 	else:
 		nav_agent.target_position = target.global_position
 		target_path_vector = to_local(nav_agent.get_next_path_position()).normalized()

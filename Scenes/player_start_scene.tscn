@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d07sk3rgrldee" path="res://Assets/Texture/eart.png" id="3_c21wt"]
 [ext_resource type="PackedScene" uid="uid://dpvqt7nfeb7ek" path="res://Scenes/controlable_player_character.tscn" id="3_n2nw5"]
 [ext_resource type="Texture2D" uid="uid://k8akcdx6vk50" path="res://Assets/Texture/Sprite-0001.png" id="4_fj2we"]
-[ext_resource type="PackedScene" uid="uid://bwim87x2n21w1" path="res://Scenes/enemy_1.tscn" id="5_0nt0r"]
+[ext_resource type="PackedScene" uid="uid://wu5uidudhb3c" path="res://Scenes/slime.tscn" id="6_2v2up"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5fhag"]
 texture = ExtResource("1_mqk1x")
@@ -317,14 +317,16 @@ layer_0/tile_data = PackedInt32Array(-3407863, 65536, 0, -3407862, 0, 0, -334232
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_n2nw5")]
 position = Vector2(182, 349)
 
-[node name="Enemy1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_0nt0r")]
-position = Vector2(130, -1378)
-is_static = true
-player = NodePath("../PlayerCharacter")
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_ptx5a")
+
+[node name="Slime" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_2v2up")]
+position = Vector2(132, -970)
+collision_layer = 1
+collision_mask = 1
+is_static = true
+player = NodePath("../PlayerCharacter")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
