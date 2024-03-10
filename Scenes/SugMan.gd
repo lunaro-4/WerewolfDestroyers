@@ -4,6 +4,7 @@ extends Node
 
 @onready var eror = $"../Eror/Error/Er"
 @onready var suget = $"../Eror/Control"
+@onready var st = $"../ST"
 
 var game_paused: bool = false
 var sug = 0
@@ -39,6 +40,7 @@ func _on_player_start_scene_on_on_boss_death():
 
 func _on_eror_pressed():
 	sug = 1
+	st.play()
 	pass # Replace with function body.
 
 
