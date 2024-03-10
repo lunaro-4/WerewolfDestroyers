@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmg6fwg7oxvxm"]
+[gd_scene load_steps=4 format=3 uid="uid://dmg6fwg7oxvxm"]
 
+[ext_resource type="Texture2D" uid="uid://chohpeh5icflg" path="res://Assets/EntitySprite/ErorWindFon.png" id="1_fqpgi"]
 [ext_resource type="Texture2D" uid="uid://dftbsclsoarxs" path="res://Assets/EntitySprite/ErwindChe.png" id="1_y6e3t"]
 [ext_resource type="Texture2D" uid="uid://cws00ybwu0jm3" path="res://Assets/EntitySprite/But1.png" id="2_3ib2h"]
 
@@ -21,6 +22,11 @@ anchor_bottom = 1.0
 offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Erche/Panel"]
+position = Vector2(609, 333)
+scale = Vector2(1.69, 1.12333)
+texture = ExtResource("1_fqpgi")
 
 [node name="Sprite2D" type="Sprite2D" parent="Erche/Panel"]
 position = Vector2(575, 315)
