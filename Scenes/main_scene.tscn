@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bppxfgu0s0hi4"]
+[gd_scene load_steps=13 format=3 uid="uid://bppxfgu0s0hi4"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tmsga"]
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="2_xrha5"]
 [ext_resource type="PackedScene" uid="uid://cke6x55tsq2m2" path="res://Scenes/ground_map.tscn" id="3_qwi6b"]
+[ext_resource type="Texture2D" uid="uid://crgl62wdsjp28" path="res://Assets/EntitySprite/slime_one.png" id="8_6b7bv"]
 [ext_resource type="PackedScene" uid="uid://hlpd5bjmqiwk" path="res://Scenes/player_character.tscn" id="8_g6a5b"]
 [ext_resource type="Texture2D" uid="uid://cri1d7p5sm35b" path="res://Assets/Icons/Pixel Blender_fFl9NovcT0yKkzMpsNOOaQ_a highly detailed badge icon for a fantasy role playing game, game ui icon_inference-txt2img_1710000721.png" id="9_o6l7g"]
 [ext_resource type="Theme" uid="uid://lk60rpu5lxfr" path="res://core_theme.tres" id="9_wmyj5"]
@@ -81,12 +82,44 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "100"
 
+[node name="ChooseUnit" type="CanvasLayer" parent="."]
+
+[node name="CurrencyContainer" type="PanelContainer" parent="ChooseUnit"]
+offset_left = 38.0
+offset_top = 517.0
+offset_right = 150.0
+offset_bottom = 625.0
+theme = ExtResource("9_wmyj5")
+
+[node name="MarginContainer" type="MarginContainer" parent="ChooseUnit/CurrencyContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChooseUnit/CurrencyContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="SlimeButton" type="VBoxContainer" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer/SlimeButton"]
+layout_mode = 2
+texture_normal = ExtResource("8_6b7bv")
+
+[node name="Label" type="Label" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer/SlimeButton"]
+layout_mode = 2
+text = "Slime"
+
 [node name="PauseMenulayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="pausem" parent="PauseMenulayer" instance=ExtResource("12_h72wx")]
 process_mode = 2
 
 [node name="Shop" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Shop" parent="Shop" instance=ExtResource("14_81jhi")]
 process_mode = 2
@@ -98,6 +131,7 @@ offset_right = 448.811
 offset_bottom = 276.622
 
 [node name="Umri" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Ticho" parent="Umri" instance=ExtResource("16_y4tgt")]
 process_mode = 2

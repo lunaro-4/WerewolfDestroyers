@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://elsmlwqrq2vi"
-path="res://.godot/imported/ГОБЛИН.png-ef945b6540c8813dd92b101a78122580.ctex"
+uid="uid://crgl62wdsjp28"
+path="res://.godot/imported/slime_one.png-f1b42d937dc1dc88d49d754cca183113.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/EntitySprite/ГОБЛИН.png"
-dest_files=["res://.godot/imported/ГОБЛИН.png-ef945b6540c8813dd92b101a78122580.ctex"]
+source_file="res://Assets/EntitySprite/slime_one.png"
+dest_files=["res://.godot/imported/slime_one.png-f1b42d937dc1dc88d49d754cca183113.ctex"]
 
 [params]
 
