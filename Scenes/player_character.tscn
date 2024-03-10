@@ -97,7 +97,6 @@ script = ExtResource("9_ic7l6")
 regen_amount = 7.0
 health_component = NodePath("../HealthComponent")
 
-<<<<<<< HEAD
 [node name="Label" type="Label" parent="."]
 offset_left = -48.0
 offset_top = -48.0
@@ -105,7 +104,6 @@ offset_right = 48.0
 offset_bottom = -24.0
 text = "Player 2012"
 
-=======
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
@@ -129,7 +127,6 @@ text = "1
 "
 
 [connection signal="hp_changed" from="HealthComponent" to="HealthComponent" method="_on_hp_changed"]
->>>>>>> c92697b1a793cfc9830509c1f8a6523d6ddeb143
 [connection signal="hp_changed" from="HealthComponent" to="HPbar" method="_on_health_component_hp_changed"]
 [connection signal="on_death" from="HealthComponent" to="." method="_on_death"]
 [connection signal="on_health_decrease" from="HealthComponent" to="." method="_on_health_component_on_health_decrease"]
