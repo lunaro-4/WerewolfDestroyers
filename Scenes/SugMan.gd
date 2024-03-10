@@ -6,7 +6,7 @@ extends Node
 @onready var suget = $"../Eror/Control"
 @onready var st = $"../ST"
 @onready var Che = $"../Eror/Error2/Erche"
-
+@onready var ErorWind = $"../WindError"
 @onready var pause_menu = $"../Eror/pausem"
 
 var game_paused: bool = false
@@ -67,6 +67,7 @@ func _process(delta):
 		
 func _on_player_start_scene_on_on_boss_death():
 	sug = 3
+	ErorWind.play()
 	game_paused = !game_paused
 	
 
