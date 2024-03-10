@@ -6,6 +6,7 @@ extends Node
 @onready var suget = $"../Eror/Control"
 @onready var st = $"../ST"
 
+
 @onready var pause_menu = $"../Eror/pausem"
 
 var game_paused: bool = false
@@ -83,3 +84,8 @@ func _on_button_2_pressed():
 
 func _on_button_3_pressed():
 	get_tree().quit()
+
+
+func _on_but_ok_pressed():
+	sug = 1
+	st.play()
