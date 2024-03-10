@@ -11,8 +11,40 @@ signal player_got_hit(value)
 
 
 
+const speed = 300
+
+func player_movement(_delta):
+	velocity.x = 0
+	velocity.y = 0
+	if Input.is_action_pressed("right"):
+		velocity.x +=speed
+	if Input.is_action_pressed("left"):
+		velocity.x -=speed
+	if Input.is_action_pressed("up"):
+		velocity.y -=speed
+	if Input.is_action_pressed("down"):
+		velocity.y +=speed
+	
+	
+	
+	
+	"""
+	if abs(velocity.x) + abs(velocity.y) == 0:
+		_animated_sprite.stop()
+	else:
+		_animated_sprite.play("PlayerAnimUp")
+	"""
+	
+	
+	move_and_slide()
+
+
+func _physics_process(delta):
+	player_movement(delta)
+
+
 func _ready():
-	attack_component.attack()
+	#attack_component.attack()
 	#$RegenerationComponent.regen_start()
 	pass 
 
