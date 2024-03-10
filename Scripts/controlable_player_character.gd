@@ -5,6 +5,8 @@ class_name ControlablePlayer extends CharacterBody2D
 
 @onready var level: float = 1.0
 
+
+
 var attack_1_can_attack : bool = true
 
 signal player_got_hit(value)
