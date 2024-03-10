@@ -1,4 +1,4 @@
-class_name Slime extends CharacterBody2D
+class_name Goblin  extends CharacterBody2D
 
 
 
@@ -27,7 +27,7 @@ const SPEED = 300.0
 
 
 
-signal on_slime_death
+
 
 
 func _ready():
@@ -69,7 +69,6 @@ func _on_health_component_on_health_decrease(_value):
 
 
 func _on_health_component_on_death():
-	on_slime_death.emit()
 	queue_free()
 
 
