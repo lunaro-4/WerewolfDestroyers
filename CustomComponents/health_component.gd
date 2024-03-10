@@ -14,6 +14,7 @@ class_name HealthComponent extends Node
 var current_health : float = start_health
 
 
+
 signal on_death
 signal on_health_decrease(value : float)
 signal hp_changed(value: float)
@@ -55,6 +56,6 @@ func multiply_health(value):
 
 
 
-func _on_hp_changed(value):
+func _on_hp_changed(_value):
 	#print(max_health, "  ", current_health)
 	pass # Replace with function body.

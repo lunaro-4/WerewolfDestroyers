@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvyo57sxna7be"]
+[gd_scene load_steps=10 format=3 uid="uid://bvyo57sxna7be"]
 
 [ext_resource type="Script" path="res://Scripts/base_enemy.gd" id="1_j7k37"]
 [ext_resource type="PackedScene" uid="uid://cj6bda8y1k831" path="res://CustomComponents/health_component.tscn" id="1_ov811"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://laivrmt2olyg" path="res://CustomComponents/hit_box_component.tscn" id="4_tolpl"]
 [ext_resource type="PackedScene" uid="uid://bselw8ieny17t" path="res://CustomComponents/pathfinding_logic.tscn" id="6_5mq0u"]
 [ext_resource type="PackedScene" uid="uid://dawwlkm5gyaru" path="res://CustomComponents/attack_area.tscn" id="7_0yc2e"]
+[ext_resource type="PackedScene" uid="uid://h12e48p4ng5d" path="res://CustomComponents/knock_back_component.tscn" id="8_6bbbw"]
+[ext_resource type="Script" path="res://CustomComponents/knock_back_component.gd" id="9_n3oe2"]
 
 [node name="BaseEnemy" type="CharacterBody2D"]
 motion_mode = 1
@@ -41,3 +43,6 @@ scale = Vector2(0.4, 0.4)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.384314, 0.313726, 1)
 scale = Vector2(0.4, 0.4)
+
+[node name="KnockBackComponent" parent="." instance=ExtResource("8_6bbbw")]
+script = ExtResource("9_n3oe2")

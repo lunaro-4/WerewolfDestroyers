@@ -7,6 +7,21 @@ class_name HitBoxComponent extends Area2D
 ## Указатель компонента анимации данной атаки
 @export var hit_animation_object : Node
 
+@export var knockback : float
+
+## Перемещать Хитбокс под курсор?
+@export var follow_coursor : bool = false
+
+## Направлять хитбокс в сторону курсора?
+@export var ray_coursor : bool = false
+
+## Дополнительный угол к направлению на курсор
+@export var add_rotation: float = 0
+
+## Опциональная цель атаки [br]
+## !!использование с ray_coursor опасно!!
+@export var ray_target : Node2D
+
 @onready var base_damage = damage
 
 ## Проверяем, что компонент атаки подключен. 
@@ -23,7 +38,15 @@ func animate(delay_wait, hit_wait):
 		hit_animation_object.animate(delay_wait, hit_wait)
 
 
-
+func _process(_delta):
+	if follow_coursor:
+		position = get_global_mouse_position()
+	if ray_coursor:
+		look_at(get_global_mouse_position())
+		rotation_degrees += add_rotation
+	if ray_target:
+		look_at(ray_target.global_position)
+		rotation_degrees += add_rotation
 
 
 
