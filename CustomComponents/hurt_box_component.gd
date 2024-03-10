@@ -12,7 +12,7 @@ func hurt(damage: float):
 	health_component.decrease(damage)
 
 func knockback(value : float, area_owner: Node2D):
-	print(value )
+	#print(value )
 	if knockback_component:
 		knockback_component.knockback(value, area_owner.global_position)
 	pass

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwim87x2n21w1"]
+[gd_scene load_steps=11 format=3 uid="uid://bwim87x2n21w1"]
 
 [ext_resource type="PackedScene" uid="uid://bvyo57sxna7be" path="res://Scenes/base_enemy.tscn" id="1_7lleq"]
 [ext_resource type="Script" path="res://Scripts/enemy_1.gd" id="2_akjvr"]
 [ext_resource type="Texture2D" uid="uid://cudjykfkea80j" path="res://icon.svg" id="2_qjwl3"]
 [ext_resource type="Script" path="res://Scripts/Polygon2D.gd" id="3_sm40s"]
+[ext_resource type="PackedScene" uid="uid://cb6lbhk8j2sy0" path="res://CustomComponents/detection_area.tscn" id="5_rqoiy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cavlj"]
 size = Vector2(132, 136)
@@ -17,8 +18,12 @@ size = Vector2(112, 112)
 [sub_resource type="CircleShape2D" id="CircleShape2D_xvf0a"]
 radius = 382.774
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3i77q"]
+radius = 289.389
+
 [node name="Enemy1" instance=ExtResource("1_7lleq")]
 script = ExtResource("2_akjvr")
+is_static = false
 
 [node name="HealthComponent" parent="." index="0"]
 max_health = 20
@@ -37,7 +42,7 @@ hitbox = NodePath("../HitBoxComponent")
 [node name="HitBoxComponent" parent="Attacks" index="1" node_paths=PackedStringArray("hit_animation_object")]
 damage = 3.0
 hit_animation_object = NodePath("Polygon2D")
-add_rotation = 90.0
+add_rotation = 180.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attacks/HitBoxComponent" index="0"]
 position = Vector2(-45, -2.5)
@@ -60,5 +65,11 @@ shape = SubResource("CircleShape2D_xvf0a")
 [node name="Sprite2D" parent="." index="6"]
 texture = ExtResource("2_qjwl3")
 
+[node name="DetectionArea" parent="." index="8" instance=ExtResource("5_rqoiy")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
+shape = SubResource("CircleShape2D_3i77q")
+
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
 [connection signal="attack_finished" from="Attacks/AttackComponent" to="AttackArea" method="_on_attack_component_attack_finished"]
+[connection signal="target_detected" from="DetectionArea" to="." method="_on_detection_area_target_detected"]

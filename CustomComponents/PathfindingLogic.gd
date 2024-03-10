@@ -42,6 +42,7 @@ func _physics_process(_delta : float):
 
 	
 func makepath():
+	#print("[]")
 	if target == null:
 		target_path_vector = Vector2(0,0)
 	else:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://fw88l4xk2wtv"]
+[gd_scene load_steps=10 format=3 uid="uid://fw88l4xk2wtv"]
 
 [ext_resource type="Texture2D" uid="uid://s3c7fuducd2" path="res://Assets/Texture/TX Tileset Grass.png" id="1_mqk1x"]
 [ext_resource type="Script" path="res://Scripts/player_start_scene.gd" id="1_ogbpn"]
 [ext_resource type="Texture2D" uid="uid://d07sk3rgrldee" path="res://Assets/Texture/eart.png" id="3_c21wt"]
 [ext_resource type="PackedScene" uid="uid://dpvqt7nfeb7ek" path="res://Scenes/controlable_player_character.tscn" id="3_n2nw5"]
+[ext_resource type="PackedScene" uid="uid://bwim87x2n21w1" path="res://Scenes/enemy_1.tscn" id="5_0nt0r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5fhag"]
 texture = ExtResource("1_mqk1x")
@@ -283,6 +284,12 @@ use_texture_padding = false
 sources/0 = SubResource("TileSetAtlasSource_5fhag")
 sources/1 = SubResource("TileSetAtlasSource_s7rgy")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_8xlpx"]
+vertices = PackedVector2Array(1389, 388, 1051, 817, 50, 807, 17, 19, 1085, -43)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(7, 10, 41, 817, 1056, 828, 1402, 389, 1090, -54)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [node name="PlayerStartScene" type="Node2D"]
 script = ExtResource("1_ogbpn")
 
@@ -296,3 +303,11 @@ format = 2
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_n2nw5")]
 position = Vector2(182, 349)
+
+[node name="Enemy1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_0nt0r")]
+position = Vector2(860, 362)
+is_static = true
+player = NodePath("../PlayerCharacter")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_8xlpx")
