@@ -373,6 +373,9 @@ stream = ExtResource("12_ypvcc")
 [connection signal="on_slime_death" from="Slime" to="." method="_on_slime_death"]
 [connection signal="pressed" from="Eror/Error/Er/Panel/Eror" to="SugMan" method="_on_eror_pressed"]
 [connection signal="pressed" from="Eror/Control/Panel/dalshe" to="SugMan" method="_on_dalshe_pressed"]
+[connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Button" to="SugMan" method="_on_button_pressed"]
+[connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Button2" to="SugMan" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Button3" to="SugMan" method="_on_button_3_pressed"]
 
 [editable path="Eror/Error"]
 [editable path="Eror/Control"]

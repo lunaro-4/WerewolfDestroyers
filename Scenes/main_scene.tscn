@@ -88,7 +88,6 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "100"
 
-<<<<<<< HEAD
 [node name="Control" type="Control" parent="CurrencyTable"]
 layout_mode = 3
 anchors_preset = 0
@@ -111,7 +110,7 @@ offset_right = 116.0
 offset_bottom = 23.0
 text = "[TAB] 
 Магазин"
-=======
+
 [node name="ChooseUnit" type="CanvasLayer" parent="."]
 
 [node name="UnitContainer" type="PanelContainer" parent="ChooseUnit"]
@@ -191,7 +190,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 theme = SubResource("Theme_iigil")
 text = "Goblin"
->>>>>>> 4fb5ae627af096206b3263af5ce0d75373c4d184
 
 [node name="PauseMenulayer" type="CanvasLayer" parent="."]
 
