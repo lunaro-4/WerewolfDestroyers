@@ -11,6 +11,7 @@ extends Node2D
 @onready var FMT = $"AudioStreamPlayer"
 @onready var count_boss = $Counter/Panel/VBoxContainer/Label
 @onready var max_count = $Counter/Panel/VBoxContainer/HBoxContainer/MaxSlimeKill
+@onready var erorwind = $WindError
 
 var game_paused: bool = false
 var count_kill = 0
@@ -53,6 +54,7 @@ func _on_slime_death():
 	pass 
 
 func _on_boss_death():
+	erorwind.play()
 	on_on_boss_death.emit()
 	pass
 
