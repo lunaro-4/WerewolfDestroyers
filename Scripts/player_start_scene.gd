@@ -6,11 +6,16 @@ extends Node2D
 @onready var player = $PlayerCharacter as ControlablePlayer
 
 @onready var boss_spawn_pos = $BossSpawn as Marker2D
-
+@onready var count_slime = %CountSlimeKill
 @onready var boss = $"BF"
 @onready var FMT = $"AudioStreamPlayer"
+@onready var count_boss = $Counter/Panel/VBoxContainer/Label
+@onready var max_count = $Counter/Panel/VBoxContainer/HBoxContainer/MaxSlimeKill
 
 var game_paused: bool = false
+var count_kill = 0
+var max_count_boss = 1
+var count_boss_label = "Убей его!"
 
 signal on_on_boss_death
 
@@ -22,6 +27,10 @@ func _process(delta):
 	
 
 func spawn_boss():
+	count_boss.text = count_boss_label
+	count_kill = 0
+	count_slime.text = str(count_kill)
+	max_count.text = str(max_count_boss)
 	var boss_instance = enemy_one.instantiate() as EnemyOne
 	if player != null:
 		boss_instance.player = player
@@ -34,6 +43,8 @@ func spawn_boss():
 
 
 func _on_slime_death():
+	count_kill += 1
+	count_slime.text = str(count_kill)
 	if get_children().filter(func(entity): 
 		return entity.has_signal("on_slime_death")).size() < 2 :
 		boss.play()
