@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tmsga"]
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="2_xrha5"]
-[ext_resource type="PackedScene" path="res://Scenes/ground_map.tscn" id="3_qwi6b"]
+[ext_resource type="PackedScene" uid="uid://cke6x55tsq2m2" path="res://Scenes/ground_map.tscn" id="3_qwi6b"]
 [ext_resource type="PackedScene" uid="uid://hlpd5bjmqiwk" path="res://Scenes/player_character.tscn" id="8_g6a5b"]
 [ext_resource type="Texture2D" uid="uid://cri1d7p5sm35b" path="res://Assets/Icons/Pixel Blender_fFl9NovcT0yKkzMpsNOOaQ_a highly detailed badge icon for a fantasy role playing game, game ui icon_inference-txt2img_1710000721.png" id="9_o6l7g"]
 [ext_resource type="Theme" uid="uid://lk60rpu5lxfr" path="res://core_theme.tres" id="9_wmyj5"]
