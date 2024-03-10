@@ -1,6 +1,10 @@
 extends Polygon2D
 
 
+@export var main_sprite : AnimatedSprite2D
+
+
+
 func _ready():
 	pass
 
