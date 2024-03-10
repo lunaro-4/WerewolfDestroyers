@@ -53,4 +53,4 @@ func _on_boss_death():
 
 
 func _on_slime_on_slime_death():
-	pass # Replace with function body.
+	pass
