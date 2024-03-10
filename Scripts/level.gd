@@ -20,7 +20,7 @@ func refresh_gold_lable():
 	set_gold_lable_text(current_gold)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("SpawnEntity"):
+	if Input.is_action_just_pressed("LMBclick"):
 		if current_gold >= 0:
 			var enemy_instance = enemy_1.instantiate() as EnemyOne
 			enemy_instance.player = $PlayerCharacter

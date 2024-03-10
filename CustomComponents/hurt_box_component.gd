@@ -3,12 +3,19 @@ class_name HurtBoxComponent extends Area2D
 
 @export var health_component : HealthComponent
 
+@export var knockback_component : KnockBackComponent
+
 @onready var got_hit_by_list : Array
 
 ## 
 func hurt(damage: float):
 	health_component.decrease(damage)
 
+func knockback(value : float, area_owner: Node2D):
+	print(value )
+	if knockback_component:
+		knockback_component.knockback(value, area_owner.global_position)
+	pass
 
 
 ## Проверяем, что компонент здоровья подключен. 
@@ -43,6 +50,7 @@ func _on_area_entered(area):
 			#print("Array is : ", got_hit_by_list)
 			
 			hurt(area.damage)
+			knockback(area.knockback, area)
 
 ## удаляем объект из массива перед тем, как атака повторится
 func _on_attack_finished(finished_attack):
