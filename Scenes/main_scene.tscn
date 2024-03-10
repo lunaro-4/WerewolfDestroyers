@@ -2,18 +2,14 @@
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tmsga"]
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="2_xrha5"]
-[ext_resource type="PackedScene" uid="uid://cke6x55tsq2m2" path="res://Scenes/ground_map.tscn" id="3_qwi6b"]
+[ext_resource type="PackedScene" path="res://Scenes/ground_map.tscn" id="3_qwi6b"]
 [ext_resource type="PackedScene" uid="uid://hlpd5bjmqiwk" path="res://Scenes/player_character.tscn" id="8_g6a5b"]
 [ext_resource type="Texture2D" uid="uid://cri1d7p5sm35b" path="res://Assets/Icons/Pixel Blender_fFl9NovcT0yKkzMpsNOOaQ_a highly detailed badge icon for a fantasy role playing game, game ui icon_inference-txt2img_1710000721.png" id="9_o6l7g"]
 [ext_resource type="Theme" uid="uid://lk60rpu5lxfr" path="res://core_theme.tres" id="9_wmyj5"]
 [ext_resource type="Texture2D" uid="uid://diuykx4dqar12" path="res://Assets/Icons/Pixel Blender_cD0MffqsRMO6574gw0akIg_a highly detailed badge icon for a fantasy role playing game, game ui icon_inference-img2img_1710000670.png" id="10_2fxyr"]
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://dchas3vmr1e1d" path="res://Scenes/pausem.tscn" id="12_h72wx"]
+[ext_resource type="PackedScene" uid="uid://cdx88upr5nv6n" path="res://Scenes/pausem.tscn" id="12_h72wx"]
 [ext_resource type="PackedScene" uid="uid://rpwivuwk7pj" path="res://Scenes/shop.tscn" id="14_81jhi"]
 [ext_resource type="PackedScene" uid="uid://8ny0uwtybld3" path="res://Scenes/ticho.tscn" id="16_y4tgt"]
-=======
-[ext_resource type="PackedScene" uid="uid://cdx88upr5nv6n" path="res://Scenes/pausem.tscn" id="12_h72wx"]
->>>>>>> c92697b1a793cfc9830509c1f8a6523d6ddeb143
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ui8kn"]
 vertices = PackedVector2Array(1171, 62, 1165, 693, 23, 691, 20, 47)
@@ -43,11 +39,7 @@ layer_4/tile_data = PackedInt32Array(720912, 262149, 5)
 layer_5/tile_data = PackedInt32Array()
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("8_g6a5b")]
-<<<<<<< HEAD
-position = Vector2(140.971, 314.596)
-=======
 position = Vector2(144, 368)
->>>>>>> c92697b1a793cfc9830509c1f8a6523d6ddeb143
 
 [node name="CurrencyTable" type="CanvasLayer" parent="."]
 
