@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bppxfgu0s0hi4"]
+[gd_scene load_steps=19 format=3 uid="uid://bppxfgu0s0hi4"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tmsga"]
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="2_xrha5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://8eckh1e7trtr" path="res://Assets/EntitySprite/goblin_one.png" id="9_yumlc"]
 [ext_resource type="Texture2D" uid="uid://diuykx4dqar12" path="res://Assets/Icons/Pixel Blender_cD0MffqsRMO6574gw0akIg_a highly detailed badge icon for a fantasy role playing game, game ui icon_inference-img2img_1710000670.png" id="10_2fxyr"]
 [ext_resource type="AudioStream" uid="uid://cs74adnfxlurn" path="res://Music/SujetTeme.mp3" id="11_gojlf"]
+[ext_resource type="PackedScene" uid="uid://cg3ph24q0cm1b" path="res://Scenes/settings.tscn" id="11_ocvj2"]
 [ext_resource type="PackedScene" uid="uid://cdx88upr5nv6n" path="res://Scenes/pausem.tscn" id="12_h72wx"]
 [ext_resource type="AudioStream" uid="uid://bhnrvx2a2hwa5" path="res://Music/FMT.mp3" id="12_vh4hr"]
 [ext_resource type="PackedScene" uid="uid://rpwivuwk7pj" path="res://Scenes/shop.tscn" id="14_81jhi"]
@@ -209,7 +210,6 @@ theme = SubResource("Theme_iigil")
 text = "Goblin"
 
 [node name="PauseMenulayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="pausem" parent="PauseMenulayer" instance=ExtResource("12_h72wx")]
 process_mode = 2
@@ -217,8 +217,10 @@ process_mode = 2
 [node name="Sprite2D" parent="PauseMenulayer/pausem" index="0"]
 position = Vector2(614, 359)
 
+[node name="settings" parent="PauseMenulayer" instance=ExtResource("11_ocvj2")]
+process_mode = 2
+
 [node name="Shop" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Shop" parent="Shop" instance=ExtResource("14_81jhi")]
 process_mode = 2
@@ -230,7 +232,6 @@ offset_right = 448.811
 offset_bottom = 276.622
 
 [node name="Umri" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Ticho" parent="Umri" instance=ExtResource("16_y4tgt")]
 process_mode = 2
@@ -248,10 +249,13 @@ autoplay = true
 [connection signal="toggled" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2/PanelContainer/GoblinButton" to="." method="_on_goblin_button_toggled"]
 [connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Button" to="Manager" method="_on_button_pressed"]
 [connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Button2" to="Manager" method="_on_button_2_pressed"]
+[connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Settings" to="Manager" method="_on_settings_pressed"]
 [connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Button3" to="Manager" method="_on_button_3_pressed"]
+[connection signal="pressed" from="PauseMenulayer/settings/Panel/nazad" to="Manager" method="_on_nazad_pressed"]
 [connection signal="pressed" from="Shop/Shop/Panel/Exit" to="Manager" method="_on_exit_pressed"]
 [connection signal="pressed" from="Umri/Ticho/Panel/A" to="Manager" method="_on_a_pressed"]
 
 [editable path="PauseMenulayer/pausem"]
+[editable path="PauseMenulayer/settings"]
 [editable path="Shop/Shop"]
 [editable path="Umri/Ticho"]

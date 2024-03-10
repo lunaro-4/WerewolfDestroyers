@@ -8,6 +8,7 @@ extends Node
 @onready var Che = $"../Eror/Error2/Erche"
 @onready var ErorWind = $"../WindError"
 @onready var pause_menu = $"../Eror/pausem"
+@onready var settings = $"../Eror/settings"
 
 var game_paused: bool = false
 var sug = 0
@@ -18,6 +19,7 @@ func _ready():
 	suget.hide()
 	pause_menu.hide()
 	Che.hide()
+	settings.hide()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,6 +51,7 @@ func _process(delta):
 			suget.hide()
 			
 	if sug == 2:
+		settings.hide()
 		if game_paused == true:
 			get_tree().paused = true
 			pause_menu.show()
@@ -64,6 +67,15 @@ func _process(delta):
 		else:
 			get_tree().paused = false
 			Che.hide()
+			
+	if sug == 5:
+		pause_menu.hide()
+		if game_paused == true:
+			get_tree().paused = true
+			settings.show()
+		else:
+			get_tree().paused = false
+			settings.hide()
 		
 func _on_player_start_scene_on_on_boss_death():
 	sug = 3
@@ -102,3 +114,11 @@ func _on_but_krest_pressed():
 func _on_but_ok_2_pressed():
 	sug = 1
 	st.play()
+
+
+func _on_settings_pressed():
+	sug = 5
+
+
+func _on_nazad_pressed():
+	sug = 2
