@@ -16,6 +16,7 @@ func _ready():
 	if menuuu == 0:
 		if game_paused == true:
 			get_tree().paused = true
+		st.play()
 		pause_menu.hide()
 		shop_menu.hide()
 	
