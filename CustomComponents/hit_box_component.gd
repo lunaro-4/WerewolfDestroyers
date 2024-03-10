@@ -34,6 +34,7 @@ func _ready():
 
 ## Если компонент анимации подключен, посылаем сигнал анимации
 func animate(delay_wait, hit_wait):
+	print("animate")
 	if hit_animation_object != null and hit_animation_object.has_method("animate"):
 		hit_animation_object.animate(delay_wait, hit_wait)
 

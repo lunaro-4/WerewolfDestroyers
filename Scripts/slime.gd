@@ -22,8 +22,11 @@ const SPEED = 300.0
 @onready var direction = pathfinder.target_path_vector
 
 
-@onready var boss = $"../BF"
-@onready var FMT = $"../AudioStreamPlayer"
+
+
+
+signal on_slime_death
+
 
 func _ready():
 	pathfinder.target = player
@@ -62,8 +65,7 @@ func _on_health_component_on_health_decrease(_value):
 
 
 func _on_health_component_on_death():
-	boss.play()
-	FMT.stop()
+	on_slime_death.emit()
 	queue_free()
 
 
