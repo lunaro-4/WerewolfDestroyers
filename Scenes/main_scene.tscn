@@ -148,7 +148,8 @@ layout_mode = 2
 [node name="PanelContainer" type="PanelContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton"]
 layout_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton/PanelContainer"]
+[node name="SlimeButton" type="TextureButton" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton/PanelContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_vertical = 0
@@ -176,7 +177,8 @@ layout_mode = 2
 [node name="PanelContainer" type="PanelContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2"]
 layout_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2/PanelContainer"]
+[node name="GoblinButton" type="TextureButton" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2/PanelContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_vertical = 0
@@ -192,6 +194,7 @@ theme = SubResource("Theme_iigil")
 text = "Goblin"
 
 [node name="PauseMenulayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="pausem" parent="PauseMenulayer" instance=ExtResource("12_h72wx")]
 process_mode = 2
@@ -200,6 +203,7 @@ process_mode = 2
 position = Vector2(614, 359)
 
 [node name="Shop" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Shop" parent="Shop" instance=ExtResource("14_81jhi")]
 process_mode = 2
@@ -211,6 +215,7 @@ offset_right = 448.811
 offset_bottom = 276.622
 
 [node name="Umri" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Ticho" parent="Umri" instance=ExtResource("16_y4tgt")]
 process_mode = 2
@@ -224,6 +229,8 @@ stream = ExtResource("12_vh4hr")
 autoplay = true
 
 [connection signal="player_got_hit" from="PlayerCharacter" to="." method="_on_player_got_hit"]
+[connection signal="toggled" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton/PanelContainer/SlimeButton" to="." method="_on_slime_button_toggled"]
+[connection signal="toggled" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2/PanelContainer/GoblinButton" to="." method="_on_goblin_button_toggled"]
 [connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Button" to="Manager" method="_on_button_pressed"]
 [connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Button2" to="Manager" method="_on_button_2_pressed"]
 [connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Button3" to="Manager" method="_on_button_3_pressed"]

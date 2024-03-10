@@ -7,11 +7,18 @@ var slime = preload("res://Scenes/slime.tscn")
 @onready var gold_label = %GoldLabel as Label
 @onready var current_gold :=50
 @onready var player = $PlayerCharacter as Player
+@onready var creatures : Array[String] = ["None", "Slime", "Goblin"]
+@onready var chosen_creature = creatures[0]
 
+@onready var slime_button = %SlimeButton as TextureButton
+@onready var goblin_button = %GoblinButton as TextureButton
 
 
 func _ready():
 	refresh_gold_lable()
+	$PauseMenulayer.visible = true
+	$Shop.visible = true
+	$Umri.visible = true
 	pass 
 
 func set_gold_lable_text(text):
@@ -39,3 +46,32 @@ func _process(_delta):
 func _on_player_got_hit(value):
 	current_gold += value
 	refresh_gold_lable()
+	
+func buttons_refresh():
+	slime_button.toggled_on = false
+	goblin_button.toggled_on = false
+	if chosen_creature == creatures[0]:
+		pass
+	elif chosen_creature == creatures[1]:
+		slime_button.toggled_on = true
+	elif chosen_creature == creatures[2]:
+		goblin_button.toggled_on = true
+	else:
+		chosen_creature == creatures[0]
+	print(chosen_creature)
+
+func _on_goblin_button_toggled(toggled_on):
+	if toggled_on:
+		chosen_creature = creatures[2]
+		buttons_refresh()
+	elif chosen_creature == creatures[2]:
+		chosen_creature = creatures[0]
+
+
+
+func _on_slime_button_toggled(toggled_on):
+	if toggled_on:
+		chosen_creature = creatures[1]
+		buttons_refresh()
+	elif chosen_creature == creatures[1]:
+		chosen_creature = creatures[0]
