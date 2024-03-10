@@ -12,9 +12,10 @@ var slime = preload("res://Scenes/slime.tscn")
 
 @onready var slime_button = %SlimeButton as TextureButton
 @onready var goblin_button = %GoblinButton as TextureButton
-
+@onready var active_refresh: bool = false 
 
 func _ready():
+	print(chosen_creature)
 	refresh_gold_lable()
 	$PauseMenulayer.visible = true
 	$Shop.visible = true
@@ -48,30 +49,36 @@ func _on_player_got_hit(value):
 	refresh_gold_lable()
 	
 func buttons_refresh():
-	slime_button.toggled_on = false
-	goblin_button.toggled_on = false
+	active_refresh = true
+	slime_button.button_pressed = false
+	goblin_button.button_pressed = false
 	if chosen_creature == creatures[0]:
 		pass
 	elif chosen_creature == creatures[1]:
-		slime_button.toggled_on = true
+		slime_button.button_pressed = true
 	elif chosen_creature == creatures[2]:
-		goblin_button.toggled_on = true
+		goblin_button.button_pressed = true
 	else:
 		chosen_creature == creatures[0]
-	print(chosen_creature)
+	print("Final choice:  ",chosen_creature)
+	active_refresh = false
 
 func _on_goblin_button_toggled(toggled_on):
-	if toggled_on:
+	print("Goblin ", chosen_creature)
+	if toggled_on and !active_refresh:
 		chosen_creature = creatures[2]
-		buttons_refresh()
-	elif chosen_creature == creatures[2]:
+		print("Goblin chosen ", chosen_creature)
+	elif chosen_creature == creatures[2] and !active_refresh:
 		chosen_creature = creatures[0]
+		buttons_refresh()
 
 
 
 func _on_slime_button_toggled(toggled_on):
-	if toggled_on:
+	print("Slime " , chosen_creature)
+	if toggled_on and !active_refresh:
 		chosen_creature = creatures[1]
+		print("Slime chnosen ", chosen_creature)
 		buttons_refresh()
-	elif chosen_creature == creatures[1]:
+	elif chosen_creature == creatures[1] and !active_refresh:
 		chosen_creature = creatures[0]
