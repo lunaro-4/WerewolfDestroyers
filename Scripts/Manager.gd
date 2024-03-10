@@ -37,6 +37,7 @@ func _process(_delta):
 			MMT.play()	
 		
 		ticho.hide()
+		shop_menu.hide()
 		game_paused = !game_paused
 		menuuu = 1
 	

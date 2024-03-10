@@ -7,16 +7,12 @@ extends Node2D
 
 @onready var boss_spawn_pos = $BossSpawn as Marker2D
 
-
-
 @onready var boss = $"BF"
 @onready var FMT = $"AudioStreamPlayer"
 
 var game_paused: bool = false
 
 signal on_on_boss_death
-
-
 
 func _process(delta):
 	if camera.global_position.y - 100 < player.global_position.y:
