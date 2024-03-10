@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0rf1d2ea36ms"]
+[gd_scene load_steps=3 format=3 uid="uid://d0rf1d2ea36ms"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_epbaf"]
+[ext_resource type="AudioStream" uid="uid://d0es213s4yh1" path="res://Music/MainMenuTheme.mp3" id="2_qqc3q"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_epbaf")
@@ -39,6 +40,11 @@ offset_right = 728.0
 offset_bottom = 360.0
 text = "ВЫХОД
 "
+
+[node name="FSTheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_qqc3q")
+autoplay = true
+attenuation = 2.14355
 
 [connection signal="pressed" from="CanvasLayer/Control/Panel/New" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Panel/Exit" to="." method="_on_exit_pressed"]

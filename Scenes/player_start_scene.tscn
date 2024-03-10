@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://fw88l4xk2wtv"]
+[gd_scene load_steps=15 format=3 uid="uid://fw88l4xk2wtv"]
 
 [ext_resource type="Texture2D" uid="uid://s3c7fuducd2" path="res://Assets/Texture/TX Tileset Grass.png" id="1_mqk1x"]
 [ext_resource type="Script" path="res://Scripts/player_start_scene.gd" id="1_ogbpn"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dpvqt7nfeb7ek" path="res://Scenes/controlable_player_character.tscn" id="3_n2nw5"]
 [ext_resource type="Texture2D" uid="uid://k8akcdx6vk50" path="res://Assets/Texture/Sprite-0001.png" id="4_fj2we"]
 [ext_resource type="PackedScene" path="res://Scenes/slime.tscn" id="6_2v2up"]
-[ext_resource type="AudioStream" uid="uid://cqsexmk1hrjag" path="res://Music/Boss.mp3" id="7_jcdqu"]
+[ext_resource type="AudioStream" uid="uid://l67khcvun2du" path="res://Music/FirstSceneTheme.mp3" id="7_h7y5d"]
+[ext_resource type="AudioStream" uid="uid://cqsexmk1hrjag" path="res://Music/Boss.mp3" id="8_kn1cf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5fhag"]
 texture = ExtResource("1_mqk1x")
@@ -332,5 +333,10 @@ player = NodePath("../PlayerCharacter")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 
-[node name="Boss" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_jcdqu")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_h7y5d")
+volume_db = -20.613
+autoplay = true
+
+[node name="BF" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_kn1cf")
