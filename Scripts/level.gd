@@ -3,6 +3,7 @@ extends Node2D
 
 
 var slime = preload("res://Scenes/slime.tscn") 
+var goblin = preload("res://Scenes/goblin.tscn")
 
 @onready var gold_label = %GoldLabel as Label
 @onready var current_gold :=50
@@ -41,12 +42,14 @@ func _process(_delta):
 				return
 			elif chosen_creature == creatures[1]:
 				spawn_enemy(slime, 5)
-			
+			elif chosen_creature == creatures[2]:
+				spawn_enemy(goblin, 10)
 		else:
 			print("not enough gold!")
 	pass
 
 func spawn_enemy(type, cost):
+	print("spawn ", goblin, " for ", cost)
 	var enemy_instance = type.instantiate()
 	if player != null:
 		enemy_instance.player = player
@@ -67,11 +70,11 @@ func button_toggle(button : TextureButton,panel : Panel , state: bool):
 	button.button_pressed = state
 	var color : int
 	if state:
-		color = 255
+		color = 1
 	else:
 		color = 0
 	panel.modulate.a = color
-	print(panel.self_modulate.a)
+	#print(panel.self_modulate.a)
 	
 	pass
 	
@@ -88,7 +91,7 @@ func buttons_refresh():
 		button_toggle(goblin_button, goblin_panel, true)
 	else:
 		chosen_creature == creatures[0]
-	print("Choice:  ",chosen_creature)
+	#print("Choice:  ",chosen_creature)
 	active_refresh = false
 
 func _on_goblin_button_toggled(toggled_on):

@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://1hfko7mx2quv"]
+[gd_scene load_steps=23 format=3 uid="uid://1hfko7mx2quv"]
 
 [ext_resource type="PackedScene" uid="uid://bvyo57sxna7be" path="res://Scenes/base_enemy.tscn" id="1_pomn3"]
 [ext_resource type="Script" path="res://Scripts/goblin.gd" id="2_j4ywj"]
 [ext_resource type="Texture2D" uid="uid://elsmlwqrq2vi" path="res://Assets/EntitySprite/goblin.png" id="2_ttq2k"]
 [ext_resource type="Script" path="res://Scripts/slime_attack_1.gd" id="3_khu4d"]
+[ext_resource type="Script" path="res://CustomComponents/detection_area.gd" id="5_kn1yv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enj3w"]
 size = Vector2(110, 142.5)
@@ -106,6 +107,9 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_283ls"]
+radius = 342.374
+
 [node name="Goblin" instance=ExtResource("1_pomn3")]
 script = ExtResource("2_j4ywj")
 is_static = false
@@ -152,3 +156,10 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ewpdl")
 frame = 9
 frame_progress = 0.449849
+
+[node name="DetectionArea" type="Area2D" parent="." index="10"]
+script = ExtResource("5_kn1yv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
+shape = SubResource("CircleShape2D_283ls")
+disabled = true

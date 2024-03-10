@@ -1,4 +1,4 @@
-extends Polygon2D
+extends Node2D
 
 
 @export var main_sprite : AnimatedSprite2D

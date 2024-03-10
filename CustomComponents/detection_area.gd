@@ -2,7 +2,7 @@ class_name DetectionArea extends Area2D
 
 
 
-@export var target : Node
+@export var target : Node2D
 
 signal target_detected
 
