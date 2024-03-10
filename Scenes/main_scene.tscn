@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bppxfgu0s0hi4"]
+[gd_scene load_steps=14 format=3 uid="uid://bppxfgu0s0hi4"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tmsga"]
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="2_xrha5"]
@@ -17,6 +17,9 @@ vertices = PackedVector2Array(1171, 62, 1165, 693, 23, 691, 20, 47)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(14, 701, 10, 37, 1182, 53, 1175, 704)])
 source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="Theme" id="Theme_iigil"]
+default_font_size = 19
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_tmsga")
@@ -85,10 +88,15 @@ text = "100"
 [node name="ChooseUnit" type="CanvasLayer" parent="."]
 
 [node name="CurrencyContainer" type="PanelContainer" parent="ChooseUnit"]
-offset_left = 38.0
-offset_top = 517.0
-offset_right = 150.0
-offset_bottom = 625.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 79.0
+offset_top = -169.0
+offset_right = 191.0
+offset_bottom = -61.0
+grow_vertical = 0
+size_flags_horizontal = 0
 theme = ExtResource("9_wmyj5")
 
 [node name="MarginContainer" type="MarginContainer" parent="ChooseUnit/CurrencyContainer"]
@@ -101,16 +109,47 @@ theme_override_constants/margin_bottom = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="ChooseUnit/CurrencyContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="SlimeButton" type="VBoxContainer" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer/SlimeButton"]
+[node name="SlimeButton" type="VBoxContainer" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer/MarginContainer/SlimeButton"]
+custom_minimum_size = Vector2(30, 50)
+layout_mode = 2
+size_flags_vertical = 0
+toggle_mode = true
 texture_normal = ExtResource("8_6b7bv")
+stretch_mode = 0
 
-[node name="Label" type="Label" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer/SlimeButton"]
+[node name="SlimeText" type="Label" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer/MarginContainer/SlimeButton"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme = SubResource("Theme_iigil")
 text = "Slime"
+
+[node name="SlimeButton2" type="VBoxContainer" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer/SlimeButton2"]
+custom_minimum_size = Vector2(30, 50)
+layout_mode = 2
+size_flags_vertical = 0
+toggle_mode = true
+texture_normal = ExtResource("8_6b7bv")
+stretch_mode = 0
+
+[node name="SlimeText" type="Label" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer/SlimeButton2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme = SubResource("Theme_iigil")
+text = "Slime"
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
 
 [node name="PauseMenulayer" type="CanvasLayer" parent="."]
 visible = false
