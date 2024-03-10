@@ -48,7 +48,6 @@ func _on_slime_death():
 
 func _on_boss_death():
 	on_on_boss_death.emit()
-	
 	pass
 
 

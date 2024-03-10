@@ -2,6 +2,7 @@ extends Node
 
 @onready var eror = $"../Suget/Error/Er"
 @onready var suj = $"../Suget/Control"
+@onready var st = $ST
 
 var sujet = 0
 var ent = 0
