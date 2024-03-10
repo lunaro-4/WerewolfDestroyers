@@ -3,7 +3,7 @@ extends Node
 @onready var pause_menu = $"../PauseMenulayer/pausem"
 @onready var shop_menu = $"../Shop/Shop"
 @onready var ticho = $"../Umri/Ticho"
-
+@onready var st = $"../ST"
 
 var game_paused: bool = true
 var menuuu = 0
@@ -24,6 +24,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_just_pressed("Pause"):
+		st.play()
 		game_paused = !game_paused
 		menuuu = 1
 	

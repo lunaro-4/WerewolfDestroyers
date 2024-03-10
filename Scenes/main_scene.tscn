@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bppxfgu0s0hi4"]
+[gd_scene load_steps=13 format=3 uid="uid://bppxfgu0s0hi4"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tmsga"]
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="2_xrha5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cri1d7p5sm35b" path="res://Assets/Icons/Pixel Blender_fFl9NovcT0yKkzMpsNOOaQ_a highly detailed badge icon for a fantasy role playing game, game ui icon_inference-txt2img_1710000721.png" id="9_o6l7g"]
 [ext_resource type="Theme" uid="uid://lk60rpu5lxfr" path="res://core_theme.tres" id="9_wmyj5"]
 [ext_resource type="Texture2D" uid="uid://diuykx4dqar12" path="res://Assets/Icons/Pixel Blender_cD0MffqsRMO6574gw0akIg_a highly detailed badge icon for a fantasy role playing game, game ui icon_inference-img2img_1710000670.png" id="10_2fxyr"]
+[ext_resource type="AudioStream" uid="uid://cs74adnfxlurn" path="res://Music/SujetTeme.mp3" id="11_gojlf"]
 [ext_resource type="PackedScene" uid="uid://cdx88upr5nv6n" path="res://Scenes/pausem.tscn" id="12_h72wx"]
 [ext_resource type="PackedScene" uid="uid://rpwivuwk7pj" path="res://Scenes/shop.tscn" id="14_81jhi"]
 [ext_resource type="PackedScene" uid="uid://8ny0uwtybld3" path="res://Scenes/ticho.tscn" id="16_y4tgt"]
@@ -101,6 +102,10 @@ offset_bottom = 276.622
 
 [node name="Ticho" parent="Umri" instance=ExtResource("16_y4tgt")]
 process_mode = 2
+
+[node name="ST" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("11_gojlf")
 
 [connection signal="player_got_hit" from="PlayerCharacter" to="." method="_on_player_got_hit"]
 [connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Button" to="Manager" method="_on_button_pressed"]
