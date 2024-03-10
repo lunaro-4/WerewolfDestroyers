@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://fw88l4xk2wtv"]
+[gd_scene load_steps=26 format=3 uid="uid://fw88l4xk2wtv"]
 
 [ext_resource type="Texture2D" uid="uid://s3c7fuducd2" path="res://Assets/Texture/TX Tileset Grass.png" id="1_mqk1x"]
 [ext_resource type="Script" path="res://Scripts/player_start_scene.gd" id="1_ogbpn"]
@@ -15,7 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://b2kmgews1lfht" path="res://Scenes/Suget.tscn" id="10_cjs06"]
 [ext_resource type="PackedScene" uid="uid://cdx88upr5nv6n" path="res://Scenes/pausem.tscn" id="12_fqc4m"]
 [ext_resource type="AudioStream" uid="uid://cs74adnfxlurn" path="res://Music/SujetTeme.mp3" id="12_ypvcc"]
-[ext_resource type="PackedScene" path="res://Scenes/errorche.tscn" id="13_w3auk"]
+[ext_resource type="PackedScene" uid="uid://dmg6fwg7oxvxm" path="res://Scenes/errorche.tscn" id="13_w3auk"]
+[ext_resource type="AudioStream" uid="uid://mrv347qykt8r" path="res://Music/ZvukWind.mp3" id="17_sijob"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5fhag"]
 texture = ExtResource("1_mqk1x")
@@ -600,6 +601,10 @@ text = "/"
 [node name="MaxSlimeKill" type="Label" parent="Counter/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "5"
+
+[node name="WindError" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("17_sijob")
 
 [connection signal="on_on_boss_death" from="." to="SugMan" method="_on_player_start_scene_on_on_boss_death"]
 [connection signal="on_slime_death" from="Slime" to="." method="_on_slime_death"]
