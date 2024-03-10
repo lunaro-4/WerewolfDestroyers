@@ -11,6 +11,7 @@ extends Node
 
 var game_paused: bool = false
 var sug = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	eror.hide()
@@ -18,7 +19,6 @@ func _ready():
 	pause_menu.hide()
 	Che.hide()
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -65,34 +65,27 @@ func _process(delta):
 			get_tree().paused = false
 			Che.hide()
 		
-
-
 func _on_player_start_scene_on_on_boss_death():
 	sug = 3
 	game_paused = !game_paused
 	
-
 
 func _on_eror_pressed():
 	sug = 1
 	st.play()
 	pass # Replace with function body.
 
-
 func _on_dalshe_pressed():
 	get_tree().paused = true
 	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
-
 
 func _on_button_pressed():
 	st.stop()
 	game_paused = !game_paused
 
-
 func _on_button_2_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
-
 
 func _on_button_3_pressed():
 	get_tree().quit()
@@ -102,13 +95,8 @@ func _on_but_ok_pressed():
 	sug = 1
 	st.play()
 
-
 func _on_but_krest_pressed():
 	sug = 4
-
-
-
-
 
 func _on_but_ok_2_pressed():
 	sug = 1
