@@ -1,4 +1,4 @@
-class_name Slime  extends CharacterBody2D
+class_name Slime extends CharacterBody2D
 
 
 

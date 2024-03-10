@@ -2,7 +2,7 @@ extends Node2D
 
 
 
-var slime = preload("res://Scenes/slime.tscn")
+var slime = preload("res://Scenes/slime.tscn") 
 
 @onready var gold_label = %GoldLabel as Label
 @onready var current_gold :=50
