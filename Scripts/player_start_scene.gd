@@ -38,7 +38,6 @@ func spawn_boss():
 
 
 func _on_slime_death():
-	
 	if get_children().filter(func(entity): 
 		return entity.has_signal("on_slime_death")).size() < 2 :
 		boss.play()
@@ -51,3 +50,7 @@ func _on_boss_death():
 	pass
 
 
+
+
+func _on_slime_on_slime_death():
+	pass # Replace with function body.
