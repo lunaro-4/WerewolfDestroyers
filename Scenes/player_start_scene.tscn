@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://d07sk3rgrldee" path="res://Assets/Texture/eart.png" id="3_c21wt"]
 [ext_resource type="PackedScene" uid="uid://dpvqt7nfeb7ek" path="res://Scenes/controlable_player_character.tscn" id="3_n2nw5"]
 [ext_resource type="Texture2D" uid="uid://k8akcdx6vk50" path="res://Assets/Texture/Sprite-0001.png" id="4_fj2we"]
-[ext_resource type="PackedScene" path="res://Scenes/slime.tscn" id="6_2v2up"]
-[ext_resource type="AudioStream" uid="uid://l67khcvun2du" path="res://Music/FirstSceneTheme.mp3" id="7_h7y5d"]
+[ext_resource type="PackedScene" uid="uid://wu5uidudhb3c" path="res://Scenes/slime.tscn" id="6_2v2up"]
+[ext_resource type="AudioStream" uid="uid://bhnrvx2a2hwa5" path="res://Music/FMT.mp3" id="7_dmpe4"]
 [ext_resource type="AudioStream" uid="uid://cqsexmk1hrjag" path="res://Music/Boss.mp3" id="8_kn1cf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5fhag"]
@@ -334,7 +334,7 @@ player = NodePath("../PlayerCharacter")
 position = Vector2(576, 324)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_h7y5d")
+stream = ExtResource("7_dmpe4")
 volume_db = -20.613
 autoplay = true
 
