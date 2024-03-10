@@ -340,3 +340,8 @@ autoplay = true
 
 [node name="BF" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_kn1cf")
+
+[node name="BossSpawn" type="Marker2D" parent="."]
+position = Vector2(576, -1519)
+
+[connection signal="on_slime_death" from="Slime" to="." method="_on_slime_death"]

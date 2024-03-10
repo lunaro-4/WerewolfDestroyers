@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://wu5uidudhb3c"]
+[gd_scene load_steps=26 format=3 uid="uid://wu5uidudhb3c"]
 
 [ext_resource type="PackedScene" uid="uid://bvyo57sxna7be" path="res://Scenes/base_enemy.tscn" id="1_bf6qc"]
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="2_0rxs1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cudjykfkea80j" path="res://icon.svg" id="4_m66bx"]
 [ext_resource type="PackedScene" uid="uid://cb6lbhk8j2sy0" path="res://CustomComponents/detection_area.tscn" id="5_ae3xp"]
 [ext_resource type="Texture2D" uid="uid://bfrjlwsjyxydv" path="res://Assets/EntitySprite/slime_front.png" id="6_jn5be"]
+[ext_resource type="Texture2D" uid="uid://djriaxclkwcoc" path="res://Assets/EntitySprite/slime_side.png" id="7_8msut"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cavlj"]
 size = Vector2(132, 136)
@@ -61,6 +62,63 @@ animations = [{
 "speed": 13.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3j75"]
+atlas = ExtResource("7_8msut")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_og6wk"]
+atlas = ExtResource("7_8msut")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1byxq"]
+atlas = ExtResource("7_8msut")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x0pf"]
+atlas = ExtResource("7_8msut")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltvy4"]
+atlas = ExtResource("7_8msut")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p48xp"]
+atlas = ExtResource("7_8msut")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy5e7"]
+atlas = ExtResource("7_8msut")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h8g2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3j75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_og6wk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1byxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x0pf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltvy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p48xp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy5e7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
 [node name="Slime" instance=ExtResource("1_bf6qc")]
 script = ExtResource("2_0rxs1")
 is_static = false
@@ -77,6 +135,7 @@ visible = false
 shape = SubResource("RectangleShape2D_cavlj")
 
 [node name="AttackComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hitbox")]
+delay = 2.0
 hitbox = NodePath("../HitBoxComponent")
 
 [node name="HitBoxComponent" parent="Attacks" index="1" node_paths=PackedStringArray("hit_animation_object")]
@@ -89,12 +148,14 @@ position = Vector2(-45, -2.5)
 shape = SubResource("CircleShape2D_6f4rn")
 disabled = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Attacks/HitBoxComponent" index="1" node_paths=PackedStringArray("main_sprite")]
+[node name="Polygon2D" type="Polygon2D" parent="Attacks/HitBoxComponent" index="1" node_paths=PackedStringArray("main_sprite", "attack_sprite")]
+position = Vector2(0, -2.5)
 scale = Vector2(0.4, 0.4)
 color = Color(1, 0.454902, 0.47451, 0)
 polygon = PackedVector2Array(-350, 150, -318.75, 225, -256.25, 287.5, -150, 350, -62.5, 337.5, 0, 243.75, 0, 6.25, 6.25, -218.75, -87.5, -362.5, -187.5, -343.75, -337.5, -175, -360, -24, -375, 75)
 script = ExtResource("3_xk2ka")
 main_sprite = NodePath("../../../MainSprite")
+attack_sprite = NodePath("../../../AttackSprite")
 
 [node name="EntityCollision" parent="." index="3"]
 position = Vector2(-1, -7)
@@ -123,7 +184,13 @@ sprite_frames = SubResource("SpriteFrames_o825d")
 frame_progress = 0.986362
 
 [node name="AttackSprite" type="AnimatedSprite2D" parent="." index="10"]
+visible = false
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_h8g2y")
+frame = 1
+frame_progress = 0.640462
 
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
 [connection signal="attack_finished" from="Attacks/AttackComponent" to="AttackArea" method="_on_attack_component_attack_finished"]
 [connection signal="target_detected" from="DetectionArea" to="." method="_on_detection_area_target_detected"]
+[connection signal="animation_finished" from="AttackSprite" to="Attacks/HitBoxComponent/Polygon2D" method="_on_attack_sprite_animation_finished"]
