@@ -5,7 +5,7 @@ extends Node
 @onready var eror = $"../Eror/Error/Er"
 @onready var suget = $"../Eror/Control"
 @onready var st = $"../ST"
-
+@onready var Che = $"../Eror/Error2/Erche"
 
 @onready var pause_menu = $"../Eror/pausem"
 
@@ -16,6 +16,7 @@ func _ready():
 	eror.hide()
 	suget.hide()
 	pause_menu.hide()
+	Che.hide()
 	pass # Replace with function body.
 
 
@@ -39,6 +40,7 @@ func _process(delta):
 		
 	if sug == 1:
 		eror.hide()
+		Che.hide()
 		if game_paused == true:
 			get_tree().paused = true
 			suget.show()
@@ -53,6 +55,16 @@ func _process(delta):
 		else:
 			get_tree().paused = false
 			pause_menu.hide()
+			
+	if sug == 4:
+		eror.hide()
+		if game_paused == true:
+			get_tree().paused = true
+			Che.show()
+		else:
+			get_tree().paused = false
+			Che.hide()
+		
 
 
 func _on_player_start_scene_on_on_boss_death():
@@ -87,5 +99,17 @@ func _on_button_3_pressed():
 
 
 func _on_but_ok_pressed():
+	sug = 1
+	st.play()
+
+
+func _on_but_krest_pressed():
+	sug = 4
+
+
+
+
+
+func _on_but_ok_2_pressed():
 	sug = 1
 	st.play()
