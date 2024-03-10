@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bppxfgu0s0hi4"]
+[gd_scene load_steps=17 format=3 uid="uid://bppxfgu0s0hi4"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tmsga"]
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="2_xrha5"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://hlpd5bjmqiwk" path="res://Scenes/player_character.tscn" id="8_g6a5b"]
 [ext_resource type="Texture2D" uid="uid://cri1d7p5sm35b" path="res://Assets/Icons/Pixel Blender_fFl9NovcT0yKkzMpsNOOaQ_a highly detailed badge icon for a fantasy role playing game, game ui icon_inference-txt2img_1710000721.png" id="9_o6l7g"]
 [ext_resource type="Theme" uid="uid://lk60rpu5lxfr" path="res://core_theme.tres" id="9_wmyj5"]
+[ext_resource type="Texture2D" uid="uid://8eckh1e7trtr" path="res://Assets/EntitySprite/goblin_one.png" id="9_yumlc"]
 [ext_resource type="Texture2D" uid="uid://diuykx4dqar12" path="res://Assets/Icons/Pixel Blender_cD0MffqsRMO6574gw0akIg_a highly detailed badge icon for a fantasy role playing game, game ui icon_inference-img2img_1710000670.png" id="10_2fxyr"]
 [ext_resource type="AudioStream" uid="uid://cs74adnfxlurn" path="res://Music/SujetTeme.mp3" id="11_gojlf"]
 [ext_resource type="PackedScene" uid="uid://cdx88upr5nv6n" path="res://Scenes/pausem.tscn" id="12_h72wx"]
@@ -89,7 +90,7 @@ text = "100"
 
 [node name="ChooseUnit" type="CanvasLayer" parent="."]
 
-[node name="CurrencyContainer" type="PanelContainer" parent="ChooseUnit"]
+[node name="UnitContainer" type="PanelContainer" parent="ChooseUnit"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -101,66 +102,78 @@ grow_vertical = 0
 size_flags_horizontal = 0
 theme = ExtResource("9_wmyj5")
 
-[node name="MarginContainer" type="MarginContainer" parent="ChooseUnit/CurrencyContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ChooseUnit/UnitContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ChooseUnit/CurrencyContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ChooseUnit/UnitContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer"]
+[node name="SlimeContainer" type="MarginContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer"]
 layout_mode = 2
 
-[node name="SlimeButton" type="VBoxContainer" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer/MarginContainer"]
+[node name="SlimeButton" type="VBoxContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer/MarginContainer/SlimeButton"]
-custom_minimum_size = Vector2(30, 50)
+[node name="PanelContainer" type="PanelContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton/PanelContainer"]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_vertical = 0
 toggle_mode = true
 texture_normal = ExtResource("8_6b7bv")
 stretch_mode = 0
 
-[node name="SlimeText" type="Label" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer/MarginContainer/SlimeButton"]
+[node name="SlimeText" type="Label" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 10
 theme = SubResource("Theme_iigil")
 text = "Slime"
 
-[node name="SlimeButton2" type="VBoxContainer" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer"]
+[node name="GoblinContainer" type="MarginContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer"]
 layout_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer/SlimeButton2"]
-custom_minimum_size = Vector2(30, 50)
+[node name="GoblinButton2" type="VBoxContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2/PanelContainer"]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_vertical = 0
 toggle_mode = true
-texture_normal = ExtResource("8_6b7bv")
+texture_normal = ExtResource("9_yumlc")
 stretch_mode = 0
 
-[node name="SlimeText" type="Label" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer/SlimeButton2"]
+[node name="GoblinText" type="Label" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 10
 theme = SubResource("Theme_iigil")
-text = "Slime"
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="ChooseUnit/CurrencyContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
+text = "Goblin"
 
 [node name="PauseMenulayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="pausem" parent="PauseMenulayer" instance=ExtResource("12_h72wx")]
 process_mode = 2
 
 [node name="Shop" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Shop" parent="Shop" instance=ExtResource("14_81jhi")]
 process_mode = 2
@@ -172,7 +185,6 @@ offset_right = 448.811
 offset_bottom = 276.622
 
 [node name="Umri" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Ticho" parent="Umri" instance=ExtResource("16_y4tgt")]
 process_mode = 2
