@@ -120,6 +120,7 @@ animations = [{
 }]
 
 [node name="Slime" instance=ExtResource("1_bf6qc")]
+collision_mask = 7
 script = ExtResource("2_0rxs1")
 is_static = false
 
@@ -140,7 +141,7 @@ hitbox = NodePath("../HitBoxComponent")
 
 [node name="HitBoxComponent" parent="Attacks" index="1" node_paths=PackedStringArray("hit_animation_object")]
 damage = 3.0
-hit_animation_object = NodePath("Polygon2D")
+hit_animation_object = NodePath("Animation")
 add_rotation = 180.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attacks/HitBoxComponent" index="0"]
@@ -148,7 +149,7 @@ position = Vector2(-45, -2.5)
 shape = SubResource("CircleShape2D_6f4rn")
 disabled = true
 
-[node name="Polygon2D" type="Node2D" parent="Attacks/HitBoxComponent" index="1" node_paths=PackedStringArray("main_sprite", "attack_sprite")]
+[node name="Animation" type="Node2D" parent="Attacks/HitBoxComponent" index="1" node_paths=PackedStringArray("main_sprite", "attack_sprite")]
 position = Vector2(0, -2.5)
 scale = Vector2(0.4, 0.4)
 script = ExtResource("3_xk2ka")
@@ -191,5 +192,5 @@ frame_progress = 0.640462
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
 [connection signal="attack_finished" from="Attacks/AttackComponent" to="AttackArea" method="_on_attack_component_attack_finished"]
 [connection signal="target_detected" from="DetectionArea" to="." method="_on_detection_area_target_detected"]
-[connection signal="animation_finished" from="AttackSprite" to="Attacks/HitBoxComponent/Polygon2D" method="_on_attack_sprite_animation_finished"]
-[connection signal="animation_looped" from="AttackSprite" to="Attacks/HitBoxComponent/Polygon2D" method="_on_attack_sprite_animation_finished"]
+[connection signal="animation_finished" from="AttackSprite" to="Attacks/HitBoxComponent/Animation" method="_on_attack_sprite_animation_finished"]
+[connection signal="animation_looped" from="AttackSprite" to="Attacks/HitBoxComponent/Animation" method="_on_attack_sprite_animation_finished"]

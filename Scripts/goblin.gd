@@ -47,11 +47,11 @@ func _physics_process(_delta):
 		animate_sprite(true)
 		direction = pathfinder.target_path_vector
 		if direction.x< 0:
-			main_sprite.flip_h = false
-			attack_sprite.flip_h = false
-		else:
 			main_sprite.flip_h = true
 			attack_sprite.flip_h = true
+		else:
+			main_sprite.flip_h = false
+			attack_sprite.flip_h = false
 		velocity = direction * SPEED
 		
 		
