@@ -14,6 +14,8 @@ const SPEED = 300.0
 @onready var detection_area = $DetectionArea as DetectionArea
 
 @onready var main_sprite = $MainSprite as AnimatedSprite2D
+@onready var attack_sprite = $AttackSprite as AnimatedSprite2D
+
 @export var is_static := false
 
 @export var player : CharacterBody2D
@@ -45,9 +47,11 @@ func _physics_process(_delta):
 		animate_sprite(true)
 		direction = pathfinder.target_path_vector
 		if direction.x< 0:
-			main_sprite.flip_h = true
-		else:
 			main_sprite.flip_h = false
+			attack_sprite.flip_h = false
+		else:
+			main_sprite.flip_h = true
+			attack_sprite.flip_h = true
 		velocity = direction * SPEED
 		
 		

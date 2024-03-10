@@ -194,3 +194,4 @@ frame_progress = 0.640462
 [connection signal="attack_finished" from="Attacks/AttackComponent" to="AttackArea" method="_on_attack_component_attack_finished"]
 [connection signal="target_detected" from="DetectionArea" to="." method="_on_detection_area_target_detected"]
 [connection signal="animation_finished" from="AttackSprite" to="Attacks/HitBoxComponent/Polygon2D" method="_on_attack_sprite_animation_finished"]
+[connection signal="animation_looped" from="AttackSprite" to="Attacks/HitBoxComponent/Polygon2D" method="_on_attack_sprite_animation_finished"]

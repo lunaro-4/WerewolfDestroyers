@@ -42,7 +42,7 @@ shape = SubResource("RectangleShape2D_inrhm")
 [node name="Attacks" type="Node2D" parent="."]
 
 [node name="Attack1Component" parent="Attacks" node_paths=PackedStringArray("hitbox") instance=ExtResource("3_hm7q6")]
-delay = 2.0
+delay = 5.0
 hit_window = 0.2
 hitbox = NodePath("../HitBox1Component")
 
