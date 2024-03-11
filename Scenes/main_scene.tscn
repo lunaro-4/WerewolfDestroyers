@@ -339,16 +339,19 @@ offset_left = 46.0
 offset_top = 41.0
 offset_right = 158.0
 offset_bottom = 178.0
+size_flags_vertical = 0
 theme = ExtResource("9_wmyj5")
 
 [node name="MarginContainer" type="MarginContainer" parent="CurrencyTable/CurrencyContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
 [node name="GridContainer" type="GridContainer" parent="CurrencyTable/CurrencyContainer/MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 columns = 3
 
 [node name="SilverIcon" type="TextureRect" parent="CurrencyTable/CurrencyContainer/MarginContainer/GridContainer"]
@@ -385,10 +388,10 @@ text = "Текущее золото"
 [node name="Control" type="Control" parent="CurrencyTable"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 47.0
-offset_top = 180.0
-offset_right = 158.0
-offset_bottom = 231.0
+offset_left = 57.0
+offset_top = 193.0
+offset_right = 168.0
+offset_bottom = 244.0
 
 [node name="Panel" type="PanelContainer" parent="CurrencyTable/Control"]
 layout_mode = 1
@@ -412,8 +415,9 @@ text = "[TAB]
 
 [node name="Label2" type="Label" parent="CurrencyTable/Control/Panel/VBoxContainer"]
 layout_mode = 2
-text = "[TAB] 
-Магазин"
+text = "[ЛКМ]
+Выбери монстра
+и призови его !"
 
 [node name="ChooseUnit" type="CanvasLayer" parent="."]
 
@@ -607,6 +611,8 @@ autoplay = true
 [connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/TextureButton" to="Manager" method="_on_texture_button_pressed"]
 [connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Exit_button" to="Manager" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="PauseMenulayer/settings/Panel/nazad" to="Manager" method="_on_nazad_pressed"]
+[connection signal="pressed" from="Shop/Shop/Panel/VBoxContainer/Goblin" to="." method="_on_goblin_pressed"]
+[connection signal="pressed" from="Shop/Shop/Panel/VBoxContainer/Demon Eye" to="." method="_on_demon_eye_pressed"]
 [connection signal="pressed" from="Shop/Shop/Panel/Exit" to="Manager" method="_on_exit_pressed"]
 [connection signal="pressed" from="Umri/Ticho/Panel/A" to="Manager" method="_on_a_pressed"]
 [connection signal="finished" from="Umri/Ticho/Panel/RichTextLabel" to="Manager" method="_on_rich_text_label_finished"]
