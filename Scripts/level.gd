@@ -41,7 +41,7 @@ func _ready():
 
 
 @onready var total_spent = 0
-@onready var current_gold :=500
+@onready var current_gold :=5
 
 
 func set_gold_lable_text(text):
