@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5o1aikkxdflg"]
+
+[ext_resource type="Script" path="res://testing.gd" id="1_bk4om"]
+[ext_resource type="Script" path="res://Label.gd" id="2_tqym2"]
+[ext_resource type="Script" path="res://RichTextLabel.gd" id="3_htwel"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_bk4om")
+
+[node name="Textbox contanier" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -579.0
+offset_top = -288.0
+offset_right = 579.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="Textbox contanier"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Textbox contanier/Panel"]
+layout_mode = 0
+offset_right = 780.0
+offset_bottom = 262.0
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("2_tqym2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Textbox contanier/Panel"]
+layout_mode = 0
+offset_right = 665.0
+offset_bottom = 235.0
+theme_override_font_sizes/normal_font_size = 50
+script = ExtResource("3_htwel")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
