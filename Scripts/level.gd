@@ -15,6 +15,9 @@ var goblin = preload("res://Scenes/goblin.tscn")
 
 @onready var goblin_unlocked : bool = true
 
+@onready var slime_container = %SlimeContainer as MarginContainer
+@onready var goblin_container = %GoblinContainer as MarginContainer
+
 @onready var slime_button = %SlimeButton as TextureButton
 @onready var goblin_button = %GoblinButton as TextureButton
 
@@ -29,6 +32,7 @@ func _ready():
 	$PauseMenulayer.visible = true
 	$Shop.visible = true
 	$Umri.visible = true
+	update_choose_unit_frame()
 	pass 
 
 func set_gold_lable_text(text):
@@ -36,6 +40,14 @@ func set_gold_lable_text(text):
 
 func refresh_gold_lable():
 	set_gold_lable_text(current_gold)
+
+func update_choose_unit_frame():
+	goblin_container.visible = false
+	
+	slime_container.visible = true
+	if goblin_unlocked:
+		goblin_container.visible = true
+	
 
 func _process(_delta):
 	if Input.is_action_just_pressed("LMBclick")and !mouse_over_button:

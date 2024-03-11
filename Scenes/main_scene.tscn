@@ -140,6 +140,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 
 [node name="SlimeContainer" type="MarginContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 5
 
@@ -175,6 +176,7 @@ theme = SubResource("Theme_iigil")
 text = "Slime"
 
 [node name="GoblinContainer" type="MarginContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 5
 
@@ -210,6 +212,7 @@ theme = SubResource("Theme_iigil")
 text = "Goblin"
 
 [node name="PauseMenulayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="pausem" parent="PauseMenulayer" instance=ExtResource("12_h72wx")]
 process_mode = 2
@@ -221,6 +224,7 @@ position = Vector2(614, 359)
 process_mode = 2
 
 [node name="Shop" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Shop" parent="Shop" instance=ExtResource("14_81jhi")]
 process_mode = 2
@@ -232,6 +236,7 @@ offset_right = 448.811
 offset_bottom = 276.622
 
 [node name="Umri" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Ticho" parent="Umri" instance=ExtResource("16_y4tgt")]
 process_mode = 2

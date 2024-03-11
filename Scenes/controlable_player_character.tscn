@@ -1,12 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://dpvqt7nfeb7ek"]
+[gd_scene load_steps=16 format=3 uid="uid://dpvqt7nfeb7ek"]
 
 [ext_resource type="Script" path="res://Scripts/controlable_player_character.gd" id="1_tye0m"]
 [ext_resource type="PackedScene" uid="uid://cj6bda8y1k831" path="res://CustomComponents/health_component.tscn" id="2_enhey"]
 [ext_resource type="PackedScene" uid="uid://cuad5o64p42de" path="res://CustomComponents/hurt_box_component.tscn" id="3_1kge4"]
 [ext_resource type="PackedScene" uid="uid://d0u057ptfmdxl" path="res://CustomComponents/attack_component.tscn" id="4_dj6m5"]
 [ext_resource type="PackedScene" uid="uid://laivrmt2olyg" path="res://CustomComponents/hit_box_component.tscn" id="5_pae3j"]
-[ext_resource type="Script" path="res://Scripts/player_attack_animation.gd" id="6_43k2b"]
-[ext_resource type="Script" path="res://CustomComponents/hit_box_component.gd" id="7_0q078"]
+[ext_resource type="Script" path="res://Scripts/player_attack_polygon_animation.gd" id="6_43k2b"]
+[ext_resource type="Script" path="res://Scripts/player_attack_1_animation.gd" id="7_fujc5"]
 [ext_resource type="Texture2D" uid="uid://cudjykfkea80j" path="res://icon.svg" id="8_1f2xd"]
 [ext_resource type="PackedScene" uid="uid://cg5holg485hji" path="res://CustomComponents/regeneration_component.tscn" id="11_o6uf2"]
 
@@ -26,6 +26,8 @@ height = 118.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aueyh"]
 size = Vector2(112, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7bgio"]
 
 [node name="ControlablePlayerCharacter" type="CharacterBody2D"]
 collision_layer = 5
@@ -55,7 +57,7 @@ collision_layer = 2
 collision_mask = 0
 damage = 200.0
 attack_component = NodePath("../Attack1Component")
-hit_animation_object = NodePath("Attack1Animation")
+hit_animation_object = NodePath("Attack1Polygon")
 knockback = 10.0
 ray_coursor = true
 
@@ -75,23 +77,20 @@ position = Vector2(47, 0)
 shape = SubResource("CapsuleShape2D_nibrw")
 disabled = true
 
-[node name="Attack1Animation" type="Polygon2D" parent="Attacks/HitBox1Component"]
+[node name="Attack1Polygon" type="Polygon2D" parent="Attacks/HitBox1Component"]
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-2, 0, 43, -58, 57, -55, 65, -49, 69, -41, 77, -33, 82, -25, 85, -17, 86, -9, 89, -2, 88, 9, 85, 17, 80, 26, 74, 35, 68, 43, 62, 52, 48, 59)
 script = ExtResource("6_43k2b")
 
-[node name="Attack2Component" parent="Attacks" instance=ExtResource("4_dj6m5")]
-
-[node name="HitBox2Component" type="Area2D" parent="Attacks" node_paths=PackedStringArray("attack_component")]
-script = ExtResource("7_0q078")
-damage = 5.0
-attack_component = NodePath("../Attack2Component")
+[node name="Attack1Animation" type="Node2D" parent="Attacks/HitBox1Component"]
+script = ExtResource("7_fujc5")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_aueyh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("8_1f2xd")
 
@@ -100,6 +99,9 @@ autostart = true
 
 [node name="RegenerationComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("11_o6uf2")]
 health_component = NodePath("../HealthComponent")
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7bgio")
 
 [connection signal="hp_changed" from="HealthComponent" to="HealthComponent" method="_on_hp_changed"]
 [connection signal="on_death" from="HealthComponent" to="." method="_on_death"]
