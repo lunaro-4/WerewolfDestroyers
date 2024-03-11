@@ -12,6 +12,7 @@ const MOVE_RADIUS = 500
 
 @onready var active_refresh: bool = false 
 
+@onready var camera = $PlayerCharacter/Camera2D as Camera2D
 
 
 func _ready():
@@ -21,6 +22,10 @@ func _ready():
 	$Shop.visible = true
 	$Umri.visible = true
 	update_choose_unit_frame()
+	camera.limit_right = 1630
+	camera.limit_left = -535
+	camera.limit_bottom = 1150
+	camera.limit_top = -220
 	pass 
 
 
@@ -222,8 +227,8 @@ func generate_hero_path(length) -> Vector2:
 	return path_point
 	
 func move_marker():
-	var point_new_pos = generate_hero_path(randf()*MOVE_RADIUS)
-	travel_point.global_position = player.global_position + point_new_pos
+	#var point_new_pos = generate_hero_path(randf()*MOVE_RADIUS)
+	#travel_point.global_position = player.global_position + point_new_pos
 	#print(travel_point.global_position)
 	pass
 	
