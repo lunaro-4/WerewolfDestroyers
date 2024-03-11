@@ -23,7 +23,7 @@ func _ready():
 	if menuuu == 0:
 		if game_paused == true:
 			get_tree().paused = true
-		st.play()
+		#st.play()
 		pause_menu.hide()
 		shop_menu.hide()
 		settings.hide()
@@ -36,16 +36,24 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if Input.is_action_just_pressed("Pause"):
-		if st.playing == false:
-			st.play()
-		else:
-			st.stop()
-		
-		if MMT.playing == true:
+	if get_tree().paused:
+		if !st.playing:
 			MMT.stop()
-		else:
-			MMT.play()	
+			st.play()
+	else:
+		if !MMT.playing:
+			MMT.play()
+			st.stop()
+	if Input.is_action_just_pressed("Pause"):
+		#if st.playing == false:
+			#st.play()
+		#else:
+			#st.stop()
+		#
+		#if MMT.playing == true:
+			#MMT.stop()
+		#else:
+			#MMT.play()	
 		
 		ticho.hide()
 		shop_menu.hide()
@@ -54,14 +62,14 @@ func _process(_delta):
 		menuuu = 1
 	
 	if Input.is_action_just_pressed("Shop"):
-		if st.playing == false:
-			st.play()
-		else:
-			st.stop()
-		if MMT.playing == true:
-			MMT.stop()
-		else:
-			MMT.play()	
+		#if st.playing == false:
+			#st.play()
+		#else:
+			#st.stop()
+		#if MMT.playing == true:
+			#MMT.stop()
+		#else:
+			#MMT.play()	
 		menuuu = 2
 		game_paused = !game_paused
 		
@@ -118,8 +126,8 @@ func _on_exit_pressed():
 	game_paused = !game_paused
 
 func _on_a_pressed():
-	st.stop()
-	MMT.play()
+	#st.stop()
+	#MMT.play()
 	game_paused = !game_paused
 	menuuu = 3
 	
@@ -139,7 +147,7 @@ func suget_procces(input_text:String):
 		tichol.visible_characters += 1
 		await get_tree().create_timer(0.04).timeout
 func _on_return_bitton_pressed():
-	st.stop()
+	#st.stop()
 	game_paused = !game_paused
 
 
