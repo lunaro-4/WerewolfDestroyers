@@ -49,13 +49,16 @@ layer_3/tile_data = PackedInt32Array(655375, 983044, 2, 655374, 851972, 2, 65537
 layer_4/tile_data = PackedInt32Array(720912, 262149, 5)
 layer_5/tile_data = PackedInt32Array()
 
-[node name="PlayerCharacter" parent="." instance=ExtResource("8_g6a5b")]
+[node name="PlayerCharacter" parent="." node_paths=PackedStringArray("target_location") instance=ExtResource("8_g6a5b")]
 position = Vector2(376, 337)
+target_location = NodePath("../HeroTravelPoint")
 
 [node name="HeroTravelPoint" type="Marker2D" parent="."]
 position = Vector2(344, 254)
 
 [node name="MoveHeroTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 
 [node name="CurrencyTable" type="CanvasLayer" parent="."]
 

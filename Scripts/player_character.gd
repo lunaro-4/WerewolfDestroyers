@@ -9,6 +9,7 @@ class_name Player extends CharacterBody2D
 
 @onready var not_second_level : bool = true
 
+
 @export var target_location : Node2D
 
 const DIFFICULTY_RAMP := 0.01
@@ -20,6 +21,7 @@ signal player_got_hit(value)
 func _ready():
 	attack_component.attack()
 	$RegenerationComponent.regen_start()
+
 	pass 
 
 
