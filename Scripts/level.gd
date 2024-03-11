@@ -85,8 +85,8 @@ var eye = preload("res://Scenes/big_boss.tscn")
 @onready var eye_panel = %EyePanel as Panel
 
 
-@onready var goblin_unlocked : bool = true
-@onready var eye_unlocked : bool = true
+@onready var goblin_unlocked : bool = false
+@onready var eye_unlocked : bool = false
 
 @onready var mouse_over_button := false
 
