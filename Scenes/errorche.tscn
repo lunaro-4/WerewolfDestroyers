@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmg6fwg7oxvxm"]
+[gd_scene load_steps=6 format=3 uid="uid://dmg6fwg7oxvxm"]
 
 [ext_resource type="Texture2D" uid="uid://chohpeh5icflg" path="res://Assets/EntitySprite/ErorWindFon.png" id="1_fqpgi"]
-[ext_resource type="Texture2D" uid="uid://dftbsclsoarxs" path="res://Assets/EntitySprite/ErwindChe.png" id="1_y6e3t"]
 [ext_resource type="Texture2D" uid="uid://cws00ybwu0jm3" path="res://Assets/EntitySprite/But1.png" id="2_3ib2h"]
+[ext_resource type="Texture2D" uid="uid://bnj0a41hengf0" path="res://Assets/EntitySprite/обка виндовс .png" id="2_aosoe"]
+[ext_resource type="FontFile" uid="uid://dq5oocry2ah8x" path="res://Scenes/Segoe UI.ttf" id="4_t5axe"]
+[ext_resource type="Script" path="res://Scenes/Chesamii.gd" id="5_ih2wh"]
 
 [node name="Error" type="Node"]
 
@@ -31,7 +33,7 @@ texture = ExtResource("1_fqpgi")
 [node name="Sprite2D" type="Sprite2D" parent="Erche/Panel"]
 position = Vector2(575, 315)
 scale = Vector2(3.34375, 3.75)
-texture = ExtResource("1_y6e3t")
+texture = ExtResource("2_aosoe")
 
 [node name="ButOk2" type="Button" parent="Erche/Panel"]
 layout_mode = 1
@@ -48,3 +50,18 @@ icon = ExtResource("2_3ib2h")
 flat = true
 icon_alignment = 1
 expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Erche/Panel"]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 275.0
+offset_right = 740.0
+offset_bottom = 327.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 0
+theme_override_fonts/normal_font = ExtResource("4_t5axe")
+theme_override_font_sizes/normal_font_size = 24
+text = "Ты что? Самый умный?"
+script = ExtResource("5_ih2wh")

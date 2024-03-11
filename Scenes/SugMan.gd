@@ -9,7 +9,13 @@ extends Node
 @onready var ErorWind = $"../WindError"
 @onready var pause_menu = $"../Eror/pausem"
 @onready var settings = $"../Eror/settings"
+@onready var richtl = $"../Eror/Error2/Erche/Panel/RichTextLabel"
+@onready var sugetl = $"../Eror/Control/Panel/RichTextLabel"
 
+var sugetl_text = "Ну здравствуй! Я твой пк. И знаешь что? Я, пожалуй перейду сразу к делу.
+Мне надоело, что ты постоянно убиваешь моих созданий. Нам пожалуй стоит
+поменяться местами!"
+var exapmple_text = "Ты что! Самый умный?"
 var game_paused: bool = false
 var sug = 0
 
@@ -43,6 +49,7 @@ func _process(delta):
 	if sug == 1:
 		eror.hide()
 		Che.hide()
+		suget_procces(sugetl_text)
 		if game_paused == true:
 			get_tree().paused = true
 			suget.show()
@@ -61,6 +68,7 @@ func _process(delta):
 			
 	if sug == 4:
 		eror.hide()
+		scroll_procces(exapmple_text)
 		if game_paused == true:
 			get_tree().paused = true
 			Che.show()
@@ -122,3 +130,23 @@ func _on_settings_pressed():
 
 func _on_nazad_pressed():
 	sug = 2
+
+func scroll_procces(input_text:String):
+	richtl.visible_characters = 0
+	richtl.text = input_text
+	
+	for i in input_text:
+		richtl.visible_characters += 1
+		
+		await get_tree().create_timer(0.05).timeout
+
+func suget_procces(input_text_2:String):
+	sugetl.visible_characters = 0
+	sugetl.text = input_text_2
+	for i in input_text_2:
+		sugetl.visible_characters += 1
+		
+		await get_tree().create_timer(0.04).timeout
+
+	
+	
