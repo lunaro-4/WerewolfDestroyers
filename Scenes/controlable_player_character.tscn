@@ -271,6 +271,7 @@ texture = ExtResource("8_1f2xd")
 autostart = true
 
 [node name="RegenerationComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("11_o6uf2")]
+regen_amount = 30.0
 health_component = NodePath("../HealthComponent")
 
 [node name="MainSprite" type="AnimatedSprite2D" parent="."]
