@@ -1,0 +1,123 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg3ph24q0cm1b"]
+
+[ext_resource type="Texture2D" uid="uid://bckotsjc3wyhj" path="res://Fon.png" id="1_ommk4"]
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(563.5, 328)
+scale = Vector2(1.57625, 1.17667)
+texture = ExtResource("1_ommk4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -258.0
+offset_right = 171.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -244.5
+offset_right = 149.0
+offset_bottom = 243.5
+grow_vertical = 2
+
+[node name="GoVgered" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Идти вперед"
+horizontal_alignment = 1
+
+[node name="Go Nazad" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Идти назад"
+horizontal_alignment = 1
+
+[node name="Go left" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Идти влево"
+horizontal_alignment = 1
+
+[node name="Go right" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Идти вправо"
+horizontal_alignment = 1
+
+[node name="pausa" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Пауза"
+horizontal_alignment = 1
+
+[node name="Shop" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Открыть магазин"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -244.5
+offset_right = -19.0
+offset_bottom = 243.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="W" type="Label" parent="Panel/VBoxContainer2"]
+layout_mode = 2
+text = "W"
+horizontal_alignment = 1
+
+[node name="S" type="Label" parent="Panel/VBoxContainer2"]
+layout_mode = 2
+text = "S"
+horizontal_alignment = 1
+
+[node name="D" type="Label" parent="Panel/VBoxContainer2"]
+layout_mode = 2
+text = "D"
+horizontal_alignment = 1
+
+[node name="A" type="Label" parent="Panel/VBoxContainer2"]
+layout_mode = 2
+text = "A"
+horizontal_alignment = 1
+
+[node name="Esc" type="Label" parent="Panel/VBoxContainer2"]
+layout_mode = 2
+text = "Esc"
+horizontal_alignment = 1
+
+[node name="Tab" type="Label" parent="Panel/VBoxContainer2"]
+layout_mode = 2
+text = "Tab"
+horizontal_alignment = 1
+
+[node name="nazad" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 446.0
+offset_right = 230.0
+offset_bottom = 478.0
+text = "Назад"

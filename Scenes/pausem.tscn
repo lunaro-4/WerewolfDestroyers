@@ -54,6 +54,12 @@ text = "Продолжить
 layout_mode = 2
 text = "Главное меню"
 
+[node name="Settings" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Управление
+
+"
+
 [node name="Button3" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Выход
