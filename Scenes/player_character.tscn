@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://hlpd5bjmqiwk"]
+[gd_scene load_steps=16 format=3 uid="uid://hlpd5bjmqiwk"]
 
 [ext_resource type="PackedScene" uid="uid://cj6bda8y1k831" path="res://CustomComponents/health_component.tscn" id="1_1jvnx"]
 [ext_resource type="Script" path="res://Scripts/player_character.gd" id="1_64xnh"]
@@ -11,6 +11,7 @@
 [ext_resource type="Theme" uid="uid://lk60rpu5lxfr" path="res://core_theme.tres" id="8_g5nkn"]
 [ext_resource type="Script" path="res://Scripts/HSlider.gd" id="9_ic7l6"]
 [ext_resource type="PackedScene" uid="uid://cg5holg485hji" path="res://CustomComponents/regeneration_component.tscn" id="10_kwqux"]
+[ext_resource type="PackedScene" uid="uid://bselw8ieny17t" path="res://CustomComponents/pathfinding_logic.tscn" id="12_khadm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_inrhm"]
 size = Vector2(128, 130)
@@ -128,6 +129,9 @@ text = "Уровень:"
 layout_mode = 2
 text = "1
 "
+
+[node name="PathfindingLogic" parent="." instance=ExtResource("12_khadm")]
+position = Vector2(310.059, -322.774)
 
 [connection signal="hp_changed" from="HealthComponent" to="HealthComponent" method="_on_hp_changed"]
 [connection signal="hp_changed" from="HealthComponent" to="HPbar" method="_on_health_component_hp_changed"]

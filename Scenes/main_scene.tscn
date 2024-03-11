@@ -50,7 +50,12 @@ layer_4/tile_data = PackedInt32Array(720912, 262149, 5)
 layer_5/tile_data = PackedInt32Array()
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("8_g6a5b")]
-position = Vector2(144, 368)
+position = Vector2(376, 337)
+
+[node name="HeroTravelPoint" type="Marker2D" parent="."]
+position = Vector2(344, 254)
+
+[node name="MoveHeroTimer" type="Timer" parent="."]
 
 [node name="CurrencyTable" type="CanvasLayer" parent="."]
 
@@ -254,6 +259,7 @@ stream = ExtResource("12_vh4hr")
 autoplay = true
 
 [connection signal="player_got_hit" from="PlayerCharacter" to="." method="_on_player_got_hit"]
+[connection signal="timeout" from="MoveHeroTimer" to="." method="move_marker"]
 [connection signal="mouse_entered" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton/PanelContainer/SlimeButton" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton/PanelContainer/SlimeButton" to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton/PanelContainer/SlimeButton" to="." method="_on_slime_button_toggled"]

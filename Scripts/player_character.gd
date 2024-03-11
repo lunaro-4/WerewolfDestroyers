@@ -9,6 +9,8 @@ class_name Player extends CharacterBody2D
 
 @onready var not_second_level : bool = true
 
+@export var target_location : Node2D
+
 const DIFFICULTY_RAMP := 0.01
 
 signal player_got_hit(value)
@@ -23,11 +25,8 @@ func _ready():
 
 func _on_death():
 	queue_free()
-	pass 
 
 
-func _on_timer_timeout():
-	attack_component.attack()
 
 
 func _on_health_component_on_health_decrease(value):
@@ -49,3 +48,4 @@ func _process(delta):
 		$HealthComponent.multiply_health(2)
 		not_second_level = false
 		pass
+
