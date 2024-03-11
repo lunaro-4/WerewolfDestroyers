@@ -12,13 +12,19 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(731.692, 1193.5)
+position = Vector2(735, 1223)
 scale = Vector2(0.714706, 2.37453)
 texture = ExtResource("1_wxdfa")
 script = ExtResource("2_vcw5f")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(732, -1296)
+scale = Vector2(0.714706, 2.37453)
+texture = ExtResource("1_wxdfa")
+script = ExtResource("2_vcw5f")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(732, 3000)
 scale = Vector2(0.714706, 2.37453)
 texture = ExtResource("1_wxdfa")
 script = ExtResource("2_vcw5f")
@@ -97,4 +103,5 @@ script = ExtResource("1_g7pod")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_pdbx7")
+volume_db = -7.62
 autoplay = true

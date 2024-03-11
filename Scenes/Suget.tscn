@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b2kmgews1lfht"]
 
-[ext_resource type="Texture2D" uid="uid://cudjykfkea80j" path="res://icon.svg" id="1_3su2d"]
+[ext_resource type="Texture2D" uid="uid://crgl62wdsjp28" path="res://Assets/EntitySprite/slime_one.png" id="1_0ftpo"]
 
 [node name="Control" type="Control"]
 process_mode = 2
@@ -13,9 +13,10 @@ grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(956.008, 282.843)
-scale = Vector2(3.07713, 2.59099)
-texture = ExtResource("1_3su2d")
+position = Vector2(888, 288)
+rotation = -0.342085
+scale = Vector2(25.228, 15.0949)
+texture = ExtResource("1_0ftpo")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

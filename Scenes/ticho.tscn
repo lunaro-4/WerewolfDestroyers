@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://8ny0uwtybld3"]
 
-[ext_resource type="Texture2D" uid="uid://cudjykfkea80j" path="res://icon.svg" id="1_hd4qm"]
+[ext_resource type="Texture2D" uid="uid://8eckh1e7trtr" path="res://Assets/EntitySprite/goblin_one.png" id="1_tb8vk"]
 
 [node name="Ticho" type="Control"]
 layout_mode = 3
@@ -11,10 +11,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(936, 280)
-scale = Vector2(2.61354, 2.63108)
-texture = ExtResource("1_hd4qm")
+position = Vector2(746.908, 318.476)
+scale = Vector2(8.34088, 9.79764)
+texture = ExtResource("1_tb8vk")
+flip_h = true
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
