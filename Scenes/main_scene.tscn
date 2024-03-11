@@ -54,7 +54,7 @@ position = Vector2(376, 337)
 target_location = NodePath("../HeroTravelPoint")
 
 [node name="HeroTravelPoint" type="Marker2D" parent="."]
-position = Vector2(344, 254)
+position = Vector2(591, 64)
 
 [node name="MoveHeroTimer" type="Timer" parent="."]
 wait_time = 2.0
