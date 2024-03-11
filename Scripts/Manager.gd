@@ -99,24 +99,17 @@ func _process(_delta):
 			settings.hide()
 			
 
-
-func _on_button_pressed():
-	st.stop()
-	game_paused = !game_paused
-	
 func _on_button_2_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
-
-func _on_button_3_pressed():
-	get_tree().quit()
 
 func _on_exit_pressed():
 	game_paused = !game_paused
 
 func _on_a_pressed():
 	st.stop()
+	MMT.play()
 	game_paused = !game_paused
 	menuuu = 3
 	
@@ -136,3 +129,12 @@ func suget_procces(input_text:String):
 		tichol.visible_characters += 1
 		
 		await get_tree().create_timer(0.04).timeout
+
+
+func _on_return_bitton_pressed():
+	st.stop()
+	game_paused = !game_paused
+
+
+func _on_exit_button_pressed():
+	get_tree().quit()

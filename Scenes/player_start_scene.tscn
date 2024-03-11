@@ -624,10 +624,10 @@ stream = ExtResource("17_sijob")
 [connection signal="pressed" from="Eror/Error/Er/Panel/ButOk" to="SugMan" method="_on_but_ok_pressed"]
 [connection signal="pressed" from="Eror/Error/Er/Panel/ButKrest" to="SugMan" method="_on_but_krest_pressed"]
 [connection signal="pressed" from="Eror/Control/Panel/dalshe" to="SugMan" method="_on_dalshe_pressed"]
-[connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Button" to="SugMan" method="_on_button_pressed"]
+[connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Return_bitton" to="SugMan" method="_on_return_bitton_pressed"]
 [connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Button2" to="SugMan" method="_on_button_2_pressed"]
 [connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Settings" to="SugMan" method="_on_settings_pressed"]
-[connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Button3" to="SugMan" method="_on_button_3_pressed"]
+[connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Exit_button" to="SugMan" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="Eror/Error2/Erche/Panel/ButOk2" to="SugMan" method="_on_but_ok_2_pressed"]
 [connection signal="pressed" from="Eror/settings/Panel/nazad" to="SugMan" method="_on_nazad_pressed"]
 
