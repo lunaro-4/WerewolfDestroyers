@@ -21,7 +21,7 @@ var count_boss_label = "Убей его!"
 signal on_on_boss_death
 
 func _process(delta):
-	if camera.globl_position.y - 100 < player.global_position.y:
+	if camera.global_position.y - 100 < player.global_position.y:
 		camera.global_position.y += 5
 	if camera.global_position.y + 100 > player.global_position.y:
 		camera.global_position.y -= 5
