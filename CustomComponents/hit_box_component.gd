@@ -24,6 +24,9 @@ class_name HitBoxComponent extends Area2D
 
 @onready var base_damage = damage
 
+const DEFAULT_POSITION = Vector2(0,0)
+@onready var mouse_position := DEFAULT_POSITION
+
 ## Проверяем, что компонент атаки подключен. 
 ## иначе урон проходить не будет!
 func _ready():
@@ -33,15 +36,24 @@ func _ready():
 	pass 
 
 ## Если компонент анимации подключен, посылаем сигнал анимации
-func animate(delay_wait, hit_wait):
+func animate(hit_wait):
 	#print("animate")
 	if hit_animation_object != null and hit_animation_object.has_method("animate"):
-		hit_animation_object.animate(delay_wait, hit_wait)
+		hit_animation_object.animate(hit_wait)
+
+func animate_delay(delay_wait, hit_wait):
+	if hit_animation_object != null and hit_animation_object.has_method("animate_delay"):
+		hit_animation_object.animate_delay(delay_wait, hit_wait)
+
+
 
 
 func _process(_delta):
+	#if mouse_position != DEFAULT_POSITION:
+		#position = mouse_position
 	if follow_coursor:
-		position = get_global_mouse_position()
+		position =  get_global_mouse_position() - get_parent().global_position
+		#mouse_position =
 	if ray_coursor:
 		look_at(get_global_mouse_position())
 		rotation_degrees += add_rotation
@@ -53,3 +65,7 @@ func _process(_delta):
 
 
 
+
+
+func _on_attack_1_component_attack_finished():
+	pass

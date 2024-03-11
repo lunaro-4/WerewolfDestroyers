@@ -5,6 +5,8 @@ class_name ControlablePlayer extends CharacterBody2D
 
 @onready var level: float = 1.0
 
+@onready var main_sprite = $MainSprite
+@onready var attack_sprite = $AttackSprite
 
 
 var attack_1_can_attack : bool = true
@@ -30,6 +32,7 @@ func player_movement(_delta):
 	
 	
 	
+	
 	"""
 	if abs(velocity.x) + abs(velocity.y) == 0:
 		_animated_sprite.stop()
@@ -43,6 +46,16 @@ func player_movement(_delta):
 
 func _physics_process(delta):
 	player_movement(delta)
+	if velocity.abs().x + velocity.abs().x > 0:
+		main_sprite.play()
+	else:
+		main_sprite.stop()
+	if rotation_degrees < 90 or rotation_degrees > 270:
+		main_sprite.flip_h = false
+		attack_sprite.flip_h = false
+	else:
+		main_sprite.flip_h = true
+		attack_sprite.flip_h = true
 
 
 func _ready():

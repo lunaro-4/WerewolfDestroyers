@@ -8,7 +8,7 @@ extends Polygon2D
 func _ready():
 	pass
 
-func animate(_delay_wait, _hit_wait):
+func animate(_hit_wait):
 	
 	
 	color.a = 0.8

@@ -12,8 +12,9 @@ signal attack_finished
 func attack():
 	var delay_wait = delay * speed_modifyer
 	var hit_wait = hit_window * speed_modifyer
+	animate_delay(delay_wait, hit_wait)
 	await wait(delay_wait)
-	animate_attack(delay_wait, hit_wait)
+	animate_attack(hit_wait)
 	var hitbox_collisions_array := hitbox.get_children().filter(func(shape):
 		return shape.get_class() == "CollisionShape2D")
 	swich_hitbox_state(hitbox_collisions_array, false)
@@ -26,9 +27,15 @@ func wait(time) -> void:
 	await get_tree().create_timer(time).timeout
 	
 
-func animate_attack(delay_wait, hit_wait):
+func animate_attack(hit_wait):
 	if hitbox != null:
-		hitbox.animate(delay_wait, hit_wait)
+		hitbox.animate(hit_wait)
+	else:
+		print("Hitbox not set!", get_parent().get_parent())
+
+func animate_delay(delay_wait, hit_wait):
+	if hitbox != null:
+		hitbox.animate_delay(delay_wait, hit_wait)
 	else:
 		print("Hitbox not set!", get_parent().get_parent())
 

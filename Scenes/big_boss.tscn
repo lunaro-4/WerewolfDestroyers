@@ -1,0 +1,140 @@
+[gd_scene load_steps=18 format=3 uid="uid://d2gesb1pix1h3"]
+
+[ext_resource type="PackedScene" uid="uid://bvyo57sxna7be" path="res://Scenes/base_enemy.tscn" id="1_wa67f"]
+[ext_resource type="Script" path="res://Scripts/big_boss.gd" id="2_6utu1"]
+[ext_resource type="Script" path="res://Scripts/boss_attack_animation.gd" id="3_far2h"]
+[ext_resource type="Texture2D" uid="uid://c7rqebxia6e4s" path="res://Assets/EntitySprite/Boss1.png" id="4_uydfa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nc0bg"]
+radius = 35.0892
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkqfc"]
+size = Vector2(400, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yadk"]
+atlas = ExtResource("4_uydfa")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8utn"]
+atlas = ExtResource("4_uydfa")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qntpj"]
+atlas = ExtResource("4_uydfa")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg07b"]
+atlas = ExtResource("4_uydfa")
+region = Rect2(384, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0x73k"]
+atlas = ExtResource("4_uydfa")
+region = Rect2(512, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_680dc"]
+atlas = ExtResource("4_uydfa")
+region = Rect2(640, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jgt6"]
+atlas = ExtResource("4_uydfa")
+region = Rect2(768, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wks61"]
+atlas = ExtResource("4_uydfa")
+region = Rect2(896, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t60wu"]
+atlas = ExtResource("4_uydfa")
+region = Rect2(1024, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5w8t"]
+atlas = ExtResource("4_uydfa")
+region = Rect2(1152, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_130ur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yadk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8utn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qntpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg07b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0x73k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_680dc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jgt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wks61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t60wu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5w8t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="BossEnemy" instance=ExtResource("1_wa67f")]
+script = ExtResource("2_6utu1")
+is_static = false
+
+[node name="HealthComponent" parent="." index="0"]
+max_health = 10
+
+[node name="HurtBoxComponent" parent="." index="1" node_paths=PackedStringArray("knockback_component")]
+knockback_component = NodePath("../KnockBackComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent" index="0"]
+position = Vector2(-37.5, 2.5)
+shape = SubResource("CircleShape2D_nc0bg")
+
+[node name="AttackComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hitbox")]
+hit_window = 5.0
+hitbox = NodePath("../HitBoxComponent")
+
+[node name="HitBoxComponent" parent="Attacks" index="1" node_paths=PackedStringArray("hit_animation_object")]
+damage = 10.0
+hit_animation_object = NodePath("Animation")
+
+[node name="HitBox1Collision" type="CollisionShape2D" parent="Attacks/HitBoxComponent" index="0"]
+position = Vector2(487.5, 0)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("RectangleShape2D_bkqfc")
+
+[node name="Animation" type="Node2D" parent="Attacks/HitBoxComponent" index="1" node_paths=PackedStringArray("animation_polygon", "main_sprite", "attack_sprite")]
+script = ExtResource("3_far2h")
+animation_polygon = NodePath("../Line2D")
+main_sprite = NodePath("../../../MainSprite")
+attack_sprite = NodePath("../../../AttackSprite")
+
+[node name="Line2D" type="Line2D" parent="Attacks/HitBoxComponent" index="2"]
+points = PackedVector2Array(987.5, 0, -7.5, 0)
+width = 29.425
+default_color = Color(1, 0, 0.196078, 0)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="." index="8"]
+sprite_frames = SubResource("SpriteFrames_130ur")
+frame = 2
+frame_progress = 0.597826
+flip_h = true
+
+[node name="AttackSprite" type="AnimatedSprite2D" parent="." index="9"]
+visible = false
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="10"]

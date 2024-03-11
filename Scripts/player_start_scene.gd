@@ -26,6 +26,7 @@ func _process(delta):
 	if camera.global_position.y + 100 > player.global_position.y:
 		camera.global_position.y -= 5
 	
+	
 
 func spawn_boss():
 	count_boss.text = count_boss_label
@@ -40,6 +41,7 @@ func spawn_boss():
 	boss_instance.on_boss_death.connect(_on_boss_death)
 	
 	add_child(boss_instance)
+
 
 
 

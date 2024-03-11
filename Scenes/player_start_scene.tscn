@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://fw88l4xk2wtv"]
+[gd_scene load_steps=28 format=3 uid="uid://fw88l4xk2wtv"]
 
 [ext_resource type="Texture2D" uid="uid://s3c7fuducd2" path="res://Assets/Texture/TX Tileset Grass.png" id="1_mqk1x"]
 [ext_resource type="Script" path="res://Scripts/player_start_scene.gd" id="1_ogbpn"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dmg6fwg7oxvxm" path="res://Scenes/errorche.tscn" id="13_w3auk"]
 [ext_resource type="PackedScene" uid="uid://cg3ph24q0cm1b" path="res://Scenes/settings.tscn" id="16_cwp0n"]
 [ext_resource type="AudioStream" uid="uid://mrv347qykt8r" path="res://Music/ZvukWind.mp3" id="17_sijob"]
+[ext_resource type="PackedScene" uid="uid://d2gesb1pix1h3" path="res://Scenes/big_boss.tscn" id="19_evlfk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5fhag"]
 texture = ExtResource("1_mqk1x")
@@ -614,6 +615,10 @@ text = "5"
 [node name="WindError" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("17_sijob")
+
+[node name="BossEnemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_evlfk")]
+position = Vector2(286, -341)
+player = NodePath("../PlayerCharacter")
 
 [connection signal="on_on_boss_death" from="." to="SugMan" method="_on_player_start_scene_on_on_boss_death"]
 [connection signal="on_slime_death" from="Slime" to="." method="_on_slime_death"]
