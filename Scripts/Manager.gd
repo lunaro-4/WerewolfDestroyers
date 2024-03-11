@@ -7,9 +7,11 @@ extends Node
 @onready var MMT = $"../MMTHEme"
 @onready var settings = $"../PauseMenulayer/settings"
 @onready var tichol = $"../Umri/Ticho/Panel/RichTextLabel"
-
+@onready var ending = $"../CanvasLayer/Control/Panel/RichTextLabel"
+@onready var ending_hud = $"../CanvasLayer/Control"
 
 var tichol_text = "Подумай над своим поведением"
+var ending_text = "Посмотри! ТЫ СЛАБ. Ты ничтожество. Но я решил вернуть все обратно. Надоело"
 var game_paused: bool = true
 var menuuu = 0
 var ent = 0
@@ -97,13 +99,15 @@ func _process(_delta):
 		else:
 			get_tree().paused = false
 			settings.hide()
+			
 	if menuuu == 7:
+		ending_procces(ending_text)
 		if game_paused == true:
 			get_tree().paused = true
-			#ending.show()
+			ending_hud.show()
 		else:
 			get_tree().paused = false
-			#ending.hide()
+			ending_hud.hide()
 			
 func _on_button_2_pressed():
 	get_tree().paused = false
@@ -154,3 +158,14 @@ func _on_mm_button_pressed():
 
 func _on_player_character_on_player_death():
 	menuuu = 7
+
+
+func _on_button_pressed():
+	pass # Replace with function body.
+	
+func ending_procces(input_text:String):
+	ending.visible_characters = 0
+	ending.text = input_text
+	for i in input_text:
+		ending.visible_characters += 1
+		await get_tree().create_timer(0.04).timeout

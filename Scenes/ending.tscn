@@ -28,3 +28,16 @@ offset_top = -285.0
 offset_right = 575.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_right = 1111.0
+offset_bottom = 143.0
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 158.0
+offset_right = 288.0
+offset_bottom = 240.0
+text = "А?"
