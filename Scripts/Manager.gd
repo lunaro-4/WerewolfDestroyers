@@ -97,13 +97,13 @@ func _process(_delta):
 		else:
 			get_tree().paused = false
 			settings.hide()
-	if menuuu = 7:
+	if menuuu == 7:
 		if game_paused == true:
 			get_tree().paused = true
-			ending.show()
+			#ending.show()
 		else:
 			get_tree().paused = false
-			ending.hide()
+			#ending.hide()
 			
 func _on_button_2_pressed():
 	get_tree().paused = false
