@@ -11,9 +11,10 @@ func _process(delta):
 	pass
 
 
-func _on_new_pressed():
+
+func _on_texture_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/player_start_scene.tscn")
 
 
-func _on_exit_pressed():
+func _on_texture_button_2_pressed():
 	get_tree().quit()

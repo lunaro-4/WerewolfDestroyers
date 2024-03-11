@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0rf1d2ea36ms"]
+[gd_scene load_steps=10 format=3 uid="uid://d0rf1d2ea36ms"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_epbaf"]
+[ext_resource type="Texture2D" uid="uid://5vrhjeeprdmo" path="res://Assets/EntitySprite/men.png" id="2_5ibjt"]
+[ext_resource type="Texture2D" uid="uid://dxk7n0eoyuug8" path="res://Assets/EntitySprite/play.png" id="2_m7eyo"]
 [ext_resource type="AudioStream" uid="uid://dm44atv8todhe" path="res://Music/MMT.mp3" id="2_t6rvp"]
+[ext_resource type="Texture2D" uid="uid://04jwsaellvtp" path="res://Assets/EntitySprite/playpressed.png" id="3_88gat"]
+[ext_resource type="Texture2D" uid="uid://snu0p2bfkajx" path="res://Assets/EntitySprite/playmouse.png" id="3_b08b2"]
+[ext_resource type="Texture2D" uid="uid://b6a6oxtqrdx6w" path="res://Assets/EntitySprite/exit.png" id="5_c03ov"]
+[ext_resource type="Texture2D" uid="uid://bk4vrvuslxib3" path="res://Assets/EntitySprite/exitpressed.png" id="6_f7gsi"]
+[ext_resource type="Texture2D" uid="uid://cpgm3bnt3qhaj" path="res://Assets/EntitySprite/exitmouse.png" id="7_3t0es"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_epbaf")
@@ -16,6 +23,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_5ibjt")
+
 [node name="Panel" type="Panel" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 15
@@ -24,27 +37,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="New" type="Button" parent="CanvasLayer/Control/Panel"]
-layout_mode = 0
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
 offset_left = 408.0
-offset_top = 200.0
+offset_top = 232.0
 offset_right = 728.0
-offset_bottom = 296.0
-text = "Новая игра"
+offset_bottom = 303.0
+texture_normal = ExtResource("2_m7eyo")
+texture_pressed = ExtResource("3_88gat")
+texture_hover = ExtResource("3_b08b2")
+stretch_mode = 0
 
-[node name="Exit" type="Button" parent="CanvasLayer/Control/Panel"]
+[node name="TextureButton2" type="TextureButton" parent="CanvasLayer/Control/Panel"]
 layout_mode = 0
 offset_left = 408.0
 offset_top = 312.0
 offset_right = 728.0
-offset_bottom = 360.0
-text = "ВЫХОД
-"
+offset_bottom = 376.0
+texture_normal = ExtResource("5_c03ov")
+texture_pressed = ExtResource("6_f7gsi")
+texture_hover = ExtResource("7_3t0es")
+stretch_mode = 0
 
 [node name="FSTheme" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_t6rvp")
 autoplay = true
 attenuation = 2.14355
 
-[connection signal="pressed" from="CanvasLayer/Control/Panel/New" to="." method="_on_new_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Panel/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/TextureButton2" to="." method="_on_texture_button_2_pressed"]
