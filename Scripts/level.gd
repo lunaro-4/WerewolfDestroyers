@@ -12,7 +12,7 @@ const MOVE_RADIUS = 500
 
 @onready var active_refresh: bool = false 
 
-@onready var camera = $PlayerCharacter/Camera2D as Camera2D
+@onready var camera = $Camera2D as Camera2D
 
 
 func _ready():
@@ -54,6 +54,16 @@ func _on_player_got_hit(value):
 func _process(_delta):
 	summon_logic()
 	update_container_state()
+	var x = camera.get_local_mouse_position()
+	if x[0] < -400:
+		camera.position.x -= 8
+	if x[0] > 500:
+		camera.position.x += 8
+	if x[1] < -220:
+		camera.position.y -= 8
+	if x[1] > 250:
+		camera.position.y += 8
+	
 	pass
 
 ################################
@@ -234,4 +244,5 @@ func move_marker():
 	
 	
 
+	
 

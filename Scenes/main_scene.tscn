@@ -1043,6 +1043,10 @@ default_font_size = 19
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_tmsga")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(376, 337)
+zoom = Vector2(0.795, 0.795)
+
 [node name="Manager" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("2_xrha5")
@@ -1071,9 +1075,6 @@ layer_0/tile_data = PackedInt32Array(4390882, 1441792, 11, 4390887, 1441792, 11,
 [node name="PlayerCharacter" parent="." node_paths=PackedStringArray("target_location") instance=ExtResource("8_g6a5b")]
 position = Vector2(376, 337)
 target_location = NodePath("../HeroTravelPoint")
-
-[node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
-zoom = Vector2(0.795, 0.795)
 
 [node name="HeroTravelPoint" type="Node2D" parent="."]
 position = Vector2(519, 336)
