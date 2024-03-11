@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdx88upr5nv6n"]
+[gd_scene load_steps=10 format=3 uid="uid://cdx88upr5nv6n"]
 
 [ext_resource type="Script" path="res://Scripts/pausem.gd" id="1_utk3g"]
 [ext_resource type="Texture2D" uid="uid://bckotsjc3wyhj" path="res://Fon.png" id="2_riy60"]
 [ext_resource type="Texture2D" uid="uid://5vrhjeeprdmo" path="res://Assets/EntitySprite/men.png" id="3_1ciat"]
+[ext_resource type="Texture2D" uid="uid://dxk7n0eoyuug8" path="res://Assets/EntitySprite/play.png" id="4_gbat2"]
+[ext_resource type="Texture2D" uid="uid://b6a6oxtqrdx6w" path="res://Assets/EntitySprite/exit.png" id="4_qfbws"]
+[ext_resource type="Texture2D" uid="uid://04jwsaellvtp" path="res://Assets/EntitySprite/playpressed.png" id="5_4q8vw"]
+[ext_resource type="Texture2D" uid="uid://bk4vrvuslxib3" path="res://Assets/EntitySprite/exitpressed.png" id="5_j8bw8"]
+[ext_resource type="Texture2D" uid="uid://snu0p2bfkajx" path="res://Assets/EntitySprite/playmouse.png" id="6_d0b3p"]
+[ext_resource type="Texture2D" uid="uid://cpgm3bnt3qhaj" path="res://Assets/EntitySprite/exitmouse.png" id="6_d6gxf"]
 
 [node name="pausem" type="Control"]
 layout_mode = 3
@@ -25,16 +31,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -143.0
+offset_left = -120.0
 offset_top = -132.0
-offset_right = 144.0
-offset_bottom = 133.0
+offset_right = 120.0
+offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel"]
-position = Vector2(146, 115)
-scale = Vector2(0.466667, 0.745)
+position = Vector2(119.5, 100)
+scale = Vector2(0.401667, 0.54)
 texture = ExtResource("3_1ciat")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
@@ -44,17 +50,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -91.5
-offset_top = -98.5
-offset_right = 92.5
-offset_bottom = 98.5
+offset_left = -61.0
+offset_top = -57.0
+offset_right = 64.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+[node name="Return_bitton" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Продолжить
-"
+texture_normal = ExtResource("4_gbat2")
+texture_pressed = ExtResource("5_4q8vw")
+texture_hover = ExtResource("6_d0b3p")
+stretch_mode = 0
 
 [node name="Button2" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
@@ -66,7 +74,9 @@ text = "Управление
 
 "
 
-[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+[node name="Exit_button" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Выход
-"
+texture_normal = ExtResource("4_qfbws")
+texture_pressed = ExtResource("5_j8bw8")
+texture_hover = ExtResource("6_d6gxf")
+stretch_mode = 0
