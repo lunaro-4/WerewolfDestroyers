@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdx88upr5nv6n"]
+[gd_scene load_steps=16 format=3 uid="uid://cdx88upr5nv6n"]
 
 [ext_resource type="Script" path="res://Scripts/pausem.gd" id="1_utk3g"]
 [ext_resource type="Texture2D" uid="uid://bckotsjc3wyhj" path="res://Fon.png" id="2_riy60"]
@@ -9,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://bk4vrvuslxib3" path="res://Assets/EntitySprite/exitpressed.png" id="5_j8bw8"]
 [ext_resource type="Texture2D" uid="uid://snu0p2bfkajx" path="res://Assets/EntitySprite/playmouse.png" id="6_d0b3p"]
 [ext_resource type="Texture2D" uid="uid://cpgm3bnt3qhaj" path="res://Assets/EntitySprite/exitmouse.png" id="6_d6gxf"]
+[ext_resource type="Texture2D" uid="uid://chjis3o78kh1r" path="res://Assets/EntitySprite/MAIN MENU.png" id="7_yuiim"]
+[ext_resource type="Texture2D" uid="uid://i3dme8xx2hgw" path="res://Assets/EntitySprite/MAIN MENU pressed.png" id="8_77645"]
+[ext_resource type="Texture2D" uid="uid://bfcstf2tbv78y" path="res://Assets/EntitySprite/MAIN MENU mouse.png" id="9_4wfws"]
+[ext_resource type="Texture2D" uid="uid://ccyyhtflnpcm" path="res://Assets/EntitySprite/Control.png" id="10_6ay17"]
+[ext_resource type="Texture2D" uid="uid://dgox60c26xq3" path="res://Assets/EntitySprite/Controlpressed.png" id="11_h5vvj"]
+[ext_resource type="Texture2D" uid="uid://clmwptu1kr6v0" path="res://Assets/EntitySprite/Controlmouse.png" id="12_4b2c5"]
 
 [node name="pausem" type="Control"]
 layout_mode = 3
@@ -64,15 +70,19 @@ texture_pressed = ExtResource("5_4q8vw")
 texture_hover = ExtResource("6_d0b3p")
 stretch_mode = 0
 
-[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+[node name="MMButton" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Главное меню"
+texture_normal = ExtResource("7_yuiim")
+texture_pressed = ExtResource("8_77645")
+texture_hover = ExtResource("9_4wfws")
+stretch_mode = 0
 
-[node name="Settings" type="Button" parent="Panel/VBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Управление
-
-"
+texture_normal = ExtResource("10_6ay17")
+texture_pressed = ExtResource("11_h5vvj")
+texture_hover = ExtResource("12_4b2c5")
+stretch_mode = 0
 
 [node name="Exit_button" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
