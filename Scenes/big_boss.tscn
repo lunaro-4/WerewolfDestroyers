@@ -154,3 +154,6 @@ flip_h = true
 [node name="AttackSprite" type="AnimatedSprite2D" parent="." index="9"]
 visible = false
 flip_h = true
+
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
+[connection signal="on_health_decrease" from="HealthComponent" to="." method="_on_health_component_on_health_decrease"]
