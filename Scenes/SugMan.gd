@@ -154,3 +154,12 @@ func _on_return_bitton_pressed():
 
 func _on_exit_button_pressed():
 	get_tree().quit()
+
+
+func _on_texture_button_pressed():
+	sug = 5
+
+
+func _on_mm_button_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
