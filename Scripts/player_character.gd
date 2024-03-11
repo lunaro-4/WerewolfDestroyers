@@ -3,7 +3,7 @@ class_name Player extends CharacterBody2D
 
 @onready var attack_component = $Attacks/Attack1Component as AttackComponent
 
-@onready var level: float = 1.0
+@onready var level: float = 1.9
 
 @onready var difficulty_scale : float = 1
 
@@ -73,10 +73,16 @@ func _process(delta):
 	if floor(level) >= 2 and not_second_level:
 		$HealthComponent.multiply_health(2)
 		not_second_level = false
+		_on_attack_2_component_attack_finished()
 		pass
 
 
 
 func _on_move_timer_timeout():
 	direction = target_location.global_position - global_position
+	pass # Replace with function body.
+
+
+func _on_attack_2_component_attack_finished():
+	$Attacks/Attack2Component.attack()
 	pass # Replace with function body.

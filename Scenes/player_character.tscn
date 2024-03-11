@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://hlpd5bjmqiwk"]
+[gd_scene load_steps=30 format=3 uid="uid://hlpd5bjmqiwk"]
 
 [ext_resource type="PackedScene" uid="uid://cj6bda8y1k831" path="res://CustomComponents/health_component.tscn" id="1_1jvnx"]
 [ext_resource type="Script" path="res://Scripts/player_character.gd" id="1_64xnh"]
@@ -9,7 +9,9 @@
 [ext_resource type="Script" path="res://Scripts/hero_attack_animation.gd" id="6_kkaox"]
 [ext_resource type="Script" path="res://CustomComponents/hit_box_component.gd" id="7_ctyau"]
 [ext_resource type="Theme" uid="uid://lk60rpu5lxfr" path="res://core_theme.tres" id="8_g5nkn"]
+[ext_resource type="Script" path="res://Scripts/hero_2_skill_animation_main.gd" id="8_msvj6"]
 [ext_resource type="Script" path="res://Scripts/HSlider.gd" id="9_ic7l6"]
+[ext_resource type="Script" path="res://Scripts/attack_2_polygon.gd" id="9_l2kwb"]
 [ext_resource type="PackedScene" uid="uid://cg5holg485hji" path="res://CustomComponents/regeneration_component.tscn" id="10_kwqux"]
 [ext_resource type="PackedScene" uid="uid://bselw8ieny17t" path="res://CustomComponents/pathfinding_logic.tscn" id="12_khadm"]
 [ext_resource type="Texture2D" uid="uid://c7umwl5ntmus" path="res://Assets/EntitySprite/hero.png" id="13_hc4di"]
@@ -19,6 +21,9 @@ size = Vector2(128, 130)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrykn"]
 radius = 277.545
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hl1oo"]
+radius = 25.1794
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aueyh"]
 size = Vector2(112, 112)
@@ -139,12 +144,68 @@ color = Color(0.211765, 0.611765, 1, 0)
 polygon = PackedVector2Array(-5, 119, -16, 32, -75, 89, -37, 15, -120, -3, -39, -26, -84, -81, -22, -38, -1, -119, 12, -40, 74, -90, 32, -15, 121, 2, 36, 24, 84, 76, 23, 38)
 script = ExtResource("6_kkaox")
 
-[node name="Attack2Component" parent="Attacks" instance=ExtResource("3_hm7q6")]
+[node name="Attack2Component" parent="Attacks" node_paths=PackedStringArray("hitbox") instance=ExtResource("3_hm7q6")]
+delay = 0.5
+hit_window = 1.0
+hitbox = NodePath("../HitBox2Component")
 
-[node name="HitBox2Component" type="Area2D" parent="Attacks" node_paths=PackedStringArray("attack_component")]
+[node name="HitBox2Component" type="Area2D" parent="Attacks" node_paths=PackedStringArray("attack_component", "hit_animation_object")]
 script = ExtResource("7_ctyau")
 damage = 5.0
 attack_component = NodePath("../Attack2Component")
+hit_animation_object = NodePath("Animation")
+
+[node name="HitBox1Shape" type="CollisionShape2D" parent="Attacks/HitBox2Component"]
+position = Vector2(150, 0)
+shape = SubResource("CircleShape2D_hl1oo")
+
+[node name="HitBox1Shape2" type="CollisionShape2D" parent="Attacks/HitBox2Component"]
+position = Vector2(-150, 0)
+shape = SubResource("CircleShape2D_hl1oo")
+
+[node name="HitBox1Shape3" type="CollisionShape2D" parent="Attacks/HitBox2Component"]
+position = Vector2(0, -150)
+shape = SubResource("CircleShape2D_hl1oo")
+
+[node name="HitBox1Shape4" type="CollisionShape2D" parent="Attacks/HitBox2Component"]
+position = Vector2(0, 150)
+shape = SubResource("CircleShape2D_hl1oo")
+
+[node name="Animation" type="Node2D" parent="Attacks/HitBox2Component"]
+script = ExtResource("8_msvj6")
+
+[node name="Shapes" type="Node2D" parent="Attacks/HitBox2Component"]
+
+[node name="Attack2Polygon" type="Polygon2D" parent="Attacks/HitBox2Component/Shapes"]
+position = Vector2(125, 0)
+scale = Vector2(0.56, 0.56)
+color = Color(1, 1, 0.443137, 0)
+polygon = PackedVector2Array(4, -4, 8, -17, 16, -27, 28, -37, 45, -41, 57, -36, 69, -31, 77, -21, 82, -9, 84, 2, 78, 17, 71, 28, 59, 36, 44, 41, 27, 36, 15, 26, 7, 10)
+script = ExtResource("9_l2kwb")
+
+[node name="Attack2Polygon2" type="Polygon2D" parent="Attacks/HitBox2Component/Shapes"]
+position = Vector2(0, 125)
+rotation = 1.5708
+scale = Vector2(0.56, 0.56)
+color = Color(1, 1, 0.443137, 0)
+polygon = PackedVector2Array(4, -4, 8, -17, 16, -27, 28, -37, 45, -41, 57, -36, 69, -31, 77, -21, 82, -9, 84, 2, 78, 17, 71, 28, 59, 36, 44, 41, 27, 36, 15, 26, 7, 10)
+script = ExtResource("9_l2kwb")
+
+[node name="Attack2Polygon3" type="Polygon2D" parent="Attacks/HitBox2Component/Shapes"]
+position = Vector2(-125, 0)
+rotation = 3.14159
+scale = Vector2(0.56, 0.56)
+color = Color(1, 1, 0.443137, 0)
+polygon = PackedVector2Array(4, -4, 8, -17, 16, -27, 28, -37, 45, -41, 57, -36, 69, -31, 77, -21, 82, -9, 84, 2, 78, 17, 71, 28, 59, 36, 44, 41, 27, 36, 15, 26, 7, 10)
+script = ExtResource("9_l2kwb")
+
+[node name="Attack2Polygon4" type="Polygon2D" parent="Attacks/HitBox2Component/Shapes"]
+position = Vector2(0, -125)
+rotation = 4.71239
+scale = Vector2(0.56, 0.56)
+color = Color(1, 1, 0.443137, 0)
+polygon = PackedVector2Array(4, -4, 8, -17, 16, -27, 28, -37, 45, -41, 57, -36, 69, -31, 77, -21, 82, -9, 84, 2, 78, 17, 71, 28, 59, 36, 44, 41, 27, 36, 15, 26, 7, 10)
+script = ExtResource("9_l2kwb")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 scale = Vector2(0.4, 0.4)
@@ -221,4 +282,5 @@ frame_progress = 0.285195
 [connection signal="on_death" from="HealthComponent" to="." method="_on_death"]
 [connection signal="on_health_decrease" from="HealthComponent" to="." method="_on_health_component_on_health_decrease"]
 [connection signal="attack_finished" from="Attacks/Attack1Component" to="." method="_on_attack_1_component_attack_finished"]
+[connection signal="attack_finished" from="Attacks/Attack2Component" to="." method="_on_attack_2_component_attack_finished"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
