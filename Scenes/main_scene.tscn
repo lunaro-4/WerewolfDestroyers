@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bppxfgu0s0hi4"]
+[gd_scene load_steps=31 format=3 uid="uid://bppxfgu0s0hi4"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tmsga"]
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="2_xrha5"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cdx88upr5nv6n" path="res://Scenes/pausem.tscn" id="12_h72wx"]
 [ext_resource type="AudioStream" uid="uid://bhnrvx2a2hwa5" path="res://Music/FMT.mp3" id="12_vh4hr"]
 [ext_resource type="PackedScene" uid="uid://rpwivuwk7pj" path="res://Scenes/shop.tscn" id="14_81jhi"]
+[ext_resource type="PackedScene" uid="uid://c4v5ns4btgfjn" path="res://Scenes/ending.tscn" id="15_wqs6q"]
 [ext_resource type="Texture2D" uid="uid://bau2lkjmolg06" path="res://Assets/Texture/arena_sand.png" id="16_qqplc"]
 [ext_resource type="PackedScene" uid="uid://8ny0uwtybld3" path="res://Scenes/ticho.tscn" id="16_y4tgt"]
 [ext_resource type="Texture2D" uid="uid://dlkrokj5qqrm6" path="res://Assets/Texture/arena_misc.png" id="17_1i4wl"]
@@ -583,6 +584,11 @@ process_mode = 2
 process_mode = 3
 theme_override_font_sizes/normal_font_size = 25
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("15_wqs6q")]
+process_mode = 2
+
 [node name="ST" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("11_gojlf")
@@ -591,6 +597,7 @@ stream = ExtResource("11_gojlf")
 stream = ExtResource("12_vh4hr")
 autoplay = true
 
+[connection signal="on_player_death" from="PlayerCharacter" to="Manager" method="_on_player_character_on_player_death"]
 [connection signal="player_got_hit" from="PlayerCharacter" to="." method="_on_player_got_hit"]
 [connection signal="timeout" from="MoveHeroTimer" to="." method="move_marker"]
 [connection signal="mouse_entered" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton/PanelContainer/SlimeButton" to="." method="_on_mouse_entered"]
@@ -610,8 +617,10 @@ autoplay = true
 [connection signal="pressed" from="Shop/Shop/Panel/Exit" to="Manager" method="_on_exit_pressed"]
 [connection signal="pressed" from="Umri/Ticho/Panel/A" to="Manager" method="_on_a_pressed"]
 [connection signal="finished" from="Umri/Ticho/Panel/RichTextLabel" to="Manager" method="_on_rich_text_label_finished"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/Button" to="Manager" method="_on_button_pressed"]
 
 [editable path="PauseMenulayer/pausem"]
 [editable path="PauseMenulayer/settings"]
 [editable path="Shop/Shop"]
 [editable path="Umri/Ticho"]
+[editable path="CanvasLayer/Control"]
