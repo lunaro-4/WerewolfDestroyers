@@ -11,6 +11,7 @@ extends Node
 @onready var settings = $"../Eror/settings"
 @onready var richtl = $"../Eror/Error2/Erche/Panel/RichTextLabel"
 @onready var sugetl = $"../Eror/Control/Panel/RichTextLabel"
+@onready var klava = $"../AudioStreamPlayer2"
 
 var sugetl_text = "Ну здравствуй! Я твой пк. И знаешь что? Я, пожалуй перейду сразу к делу.
 Мне надоело, что ты постоянно убиваешь моих созданий. Нам пожалуй стоит
@@ -91,10 +92,6 @@ func _on_player_start_scene_on_on_boss_death():
 	game_paused = !game_paused
 	
 
-func _on_eror_pressed():
-	sug = 1
-	st.play()
-	pass # Replace with function body.
 
 func _on_dalshe_pressed():
 	get_tree().paused = true
@@ -114,10 +111,13 @@ func _on_but_ok_pressed():
 
 func _on_but_krest_pressed():
 	sug = 4
+	klava.play()
+
 
 func _on_but_ok_2_pressed():
 	sug = 1
 	st.play()
+
 
 
 func _on_settings_pressed():
@@ -141,7 +141,6 @@ func suget_procces(input_text_2:String):
 	sugetl.text = input_text_2
 	for i in input_text_2:
 		sugetl.visible_characters += 1
-		
 		await get_tree().create_timer(0.04).timeout
 
 	
