@@ -225,6 +225,9 @@ collision_mask = 7
 script = ExtResource("2_j4ywj")
 is_static = false
 
+[node name="HealthComponent" parent="." index="0"]
+max_health = 20
+
 [node name="HurtBoxComponent" parent="." index="1" node_paths=PackedStringArray("knockback_component")]
 knockback_component = NodePath("../KnockBackComponent")
 
@@ -234,12 +237,12 @@ scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_enj3w")
 
 [node name="AttackComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hitbox")]
-delay = 0.2
-hit_window = 0.5
+delay = 0.5
+hit_window = 0.2
 hitbox = NodePath("../HitBoxComponent")
 
 [node name="HitBoxComponent" parent="Attacks" index="1" node_paths=PackedStringArray("hit_animation_object")]
-damage = 7.0
+damage = 2.0
 hit_animation_object = NodePath("Animation")
 
 [node name="Animation" type="Node2D" parent="Attacks/HitBoxComponent" index="0" node_paths=PackedStringArray("main_sprite", "attack_sprite")]

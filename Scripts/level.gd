@@ -26,6 +26,7 @@ func _ready():
 	camera.limit_left = -535
 	camera.limit_bottom = 1150
 	camera.limit_top = -220
+	refresh_total_lable()
 	pass 
 
 
@@ -34,15 +35,26 @@ func _ready():
 ###########################################################
 
 @onready var gold_label = %GoldLabel as Label
-@onready var current_gold :=50
+@onready var total_label = %SilverLabel as Label
+
+
+
+
+@onready var total_spent = 0
+@onready var current_gold :=5
 
 
 func set_gold_lable_text(text):
 	gold_label.set_text(str(text))
 
+func  set_total_lable_text(text):
+	total_label.set_text(str(text))
+
 func refresh_gold_lable():
 	set_gold_lable_text(current_gold)
 
+func refresh_total_lable():
+	set_total_lable_text(total_spent)
 
 func _on_player_got_hit(value):
 	current_gold += value
@@ -80,10 +92,13 @@ var eye = preload("res://Scenes/big_boss.tscn")
 @onready var creatures : Array[String] = ["None", "Slime", "Goblin", "Eye"]
 @onready var chosen_creature = creatures[0]
 
+@onready var buy_goblin_button = $Shop/Shop/Panel/VBoxContainer/Goblin as Button
+@onready var buy_eye_button = $"Shop/Shop/Panel/VBoxContainer/Demon Eye" as Button
+
+
 @onready var slime_container = %SlimeContainer as MarginContainer
 @onready var goblin_container = %GoblinContainer as MarginContainer
 @onready var eye_container = %EyeContainer as MarginContainer
-
 
 @onready var slime_button = %SlimeButton as TextureButton
 @onready var goblin_button = %GoblinButton as TextureButton
@@ -125,6 +140,7 @@ func summon_logic():
 				spawn_enemy(eye, 20)
 		else:
 			print("not enough gold!")
+		refresh_total_lable()
 
 func update_container_state():
 	#print("checking:  ", goblin_unlocked, "  ", eye_unlocked )
@@ -212,7 +228,9 @@ func spawn_enemy(type, cost):
 	enemy_instance.position = get_global_mouse_position()
 	enemy_instance.is_static = false
 	current_gold -= cost
+	total_spent += cost
 	refresh_gold_lable()
+	refresh_total_lable()
 	add_child(enemy_instance)
 	pass
 
@@ -245,4 +263,17 @@ func move_marker():
 	
 
 	
+
+
+
+func _on_demon_eye_pressed():
+	if current_gold >= 150:
+		eye_unlocked = true
+		buy_eye_button.self_modulate.a = 0.3
+
+
+func _on_goblin_pressed():
+	if current_gold >= 75:
+		goblin_unlocked = true
+		buy_goblin_button.self_modulate.a = 0.3
 
