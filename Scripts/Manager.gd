@@ -26,6 +26,7 @@ func _ready():
 		pause_menu.hide()
 		shop_menu.hide()
 		settings.hide()
+		ending_hud.hide()
 		
 		suget_procces(tichol_text)
 	
@@ -102,12 +103,10 @@ func _process(_delta):
 			
 	if menuuu == 7:
 		ending_procces(ending_text)
-		if game_paused == true:
-			get_tree().paused = true
-			ending_hud.show()
-		else:
-			get_tree().paused = false
-			ending_hud.hide()
+		
+		get_tree().paused = true
+		ending_hud.show()
+		
 			
 func _on_button_2_pressed():
 	get_tree().paused = false
@@ -161,7 +160,8 @@ func _on_player_character_on_player_death():
 
 
 func _on_button_pressed():
-	pass # Replace with function body.
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/titers.tscn")
 	
 func ending_procces(input_text:String):
 	ending.visible_characters = 0
