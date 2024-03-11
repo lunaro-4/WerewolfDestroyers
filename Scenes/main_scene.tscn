@@ -276,6 +276,7 @@ autoplay = true
 [connection signal="pressed" from="PauseMenulayer/settings/Panel/nazad" to="Manager" method="_on_nazad_pressed"]
 [connection signal="pressed" from="Shop/Shop/Panel/Exit" to="Manager" method="_on_exit_pressed"]
 [connection signal="pressed" from="Umri/Ticho/Panel/A" to="Manager" method="_on_a_pressed"]
+[connection signal="finished" from="Umri/Ticho/Panel/RichTextLabel" to="Manager" method="_on_rich_text_label_finished"]
 
 [editable path="PauseMenulayer/pausem"]
 [editable path="PauseMenulayer/settings"]
