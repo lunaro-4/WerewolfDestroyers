@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2gesb1pix1h3"]
+[gd_scene load_steps=21 format=3 uid="uid://d2gesb1pix1h3"]
 
 [ext_resource type="PackedScene" uid="uid://bvyo57sxna7be" path="res://Scenes/base_enemy.tscn" id="1_wa67f"]
 [ext_resource type="Script" path="res://Scripts/big_boss.gd" id="2_6utu1"]
 [ext_resource type="Script" path="res://Scripts/boss_attack_animation.gd" id="3_far2h"]
+[ext_resource type="Script" path="res://Scripts/boss_lazer.gd" id="4_2y82m"]
 [ext_resource type="Texture2D" uid="uid://c7rqebxia6e4s" path="res://Assets/EntitySprite/Boss1.png" id="4_uydfa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nc0bg"]
@@ -10,6 +11,12 @@ radius = 35.0892
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bkqfc"]
 size = Vector2(400, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yhbgb"]
+radius = 35.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nlgtl"]
+radius = 992.701
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7yadk"]
 atlas = ExtResource("4_uydfa")
@@ -126,6 +133,14 @@ attack_sprite = NodePath("../../../AttackSprite")
 points = PackedVector2Array(987.5, 0, -7.5, 0)
 width = 29.425
 default_color = Color(1, 0, 0.196078, 0)
+script = ExtResource("4_2y82m")
+
+[node name="EntityCollision" parent="." index="3"]
+position = Vector2(-15, 0)
+shape = SubResource("CircleShape2D_yhbgb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
+shape = SubResource("CircleShape2D_nlgtl")
 
 [node name="MainSprite" type="AnimatedSprite2D" parent="." index="8"]
 sprite_frames = SubResource("SpriteFrames_130ur")
