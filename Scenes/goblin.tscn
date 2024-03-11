@@ -8,13 +8,13 @@
 [ext_resource type="Script" path="res://CustomComponents/detection_area.gd" id="5_kn1yv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enj3w"]
-size = Vector2(110, 142.5)
+size = Vector2(92.5, 113.75)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gfiux"]
 radius = 120.234
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bg21n"]
-radius = 50.0156
+radius = 30.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_64rnj"]
 radius = 242.552
@@ -226,19 +226,19 @@ script = ExtResource("2_j4ywj")
 is_static = false
 
 [node name="HealthComponent" parent="." index="0"]
-max_health = 20
+max_health = 10
 
 [node name="HurtBoxComponent" parent="." index="1" node_paths=PackedStringArray("knockback_component")]
 knockback_component = NodePath("../KnockBackComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent" index="0"]
-position = Vector2(-15, -22.5)
+position = Vector2(-6.25003, -8.12504)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_enj3w")
 
 [node name="AttackComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hitbox")]
-delay = 0.5
-hit_window = 0.2
+delay = 0.8
+hit_window = 0.3
 hitbox = NodePath("../HitBoxComponent")
 
 [node name="HitBoxComponent" parent="Attacks" index="1" node_paths=PackedStringArray("hit_animation_object")]
@@ -255,7 +255,7 @@ position = Vector2(45, -2.5)
 shape = SubResource("CircleShape2D_gfiux")
 
 [node name="EntityCollision" parent="." index="3"]
-position = Vector2(-5, 2)
+position = Vector2(-2, 5)
 shape = SubResource("CircleShape2D_bg21n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
@@ -265,14 +265,14 @@ shape = SubResource("CircleShape2D_64rnj")
 visible = false
 
 [node name="MainSprite" type="AnimatedSprite2D" parent="." index="8"]
-scale = Vector2(2, 2)
+scale = Vector2(1.19, 1.19)
 sprite_frames = SubResource("SpriteFrames_ewpdl")
 frame = 9
 frame_progress = 0.449849
 
 [node name="AttackSprite" type="AnimatedSprite2D" parent="." index="9"]
 visible = false
-scale = Vector2(2, 2)
+scale = Vector2(1.19, 1.19)
 sprite_frames = SubResource("SpriteFrames_de0ie")
 
 [node name="DetectionArea" type="Area2D" parent="." index="10"]

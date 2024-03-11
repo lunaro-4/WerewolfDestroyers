@@ -125,7 +125,7 @@ script = ExtResource("2_0rxs1")
 is_static = false
 
 [node name="HealthComponent" parent="." index="0"]
-max_health = 10
+max_health = 9
 
 [node name="HurtBoxComponent" parent="." index="1" node_paths=PackedStringArray("knockback_component")]
 collision_layer = 2
@@ -141,7 +141,7 @@ hit_window = 0.2
 hitbox = NodePath("../HitBoxComponent")
 
 [node name="HitBoxComponent" parent="Attacks" index="1" node_paths=PackedStringArray("hit_animation_object")]
-damage = 2.0
+damage = 3.0
 hit_animation_object = NodePath("Animation")
 add_rotation = 180.0
 

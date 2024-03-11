@@ -21,11 +21,12 @@ func _ready():
 	$PauseMenulayer.visible = true
 	$Shop.visible = true
 	$Umri.visible = true
+	$FinalLayer.visible = true
 	update_choose_unit_frame()
-	camera.limit_right = 1630
-	camera.limit_left = -535
-	camera.limit_bottom = 1150
-	camera.limit_top = -220
+	camera.limit_right = 1600
+	camera.limit_left = -555
+	camera.limit_bottom = 1155
+	camera.limit_top = -240
 	refresh_total_lable()
 	pass 
 
@@ -102,7 +103,7 @@ var eye = preload("res://Scenes/big_boss.tscn")
 
 @onready var slime_button = %SlimeButton as TextureButton
 @onready var goblin_button = %GoblinButton as TextureButton
-@onready var eye_button = %EyeButton as TextureButton
+@onready var eye_button =  %EyeButton as TextureButton
 
 
 @onready var slime_panel = %SlimePanel as Panel
@@ -255,8 +256,8 @@ func generate_hero_path(length) -> Vector2:
 	return path_point
 	
 func move_marker():
-	#var point_new_pos = generate_hero_path(randf()*MOVE_RADIUS)
-	#travel_point.global_position = player.global_position + point_new_pos
+	var point_new_pos = generate_hero_path(randf()*MOVE_RADIUS)
+	travel_point.global_position = player.global_position + point_new_pos
 	#print(travel_point.global_position)
 	pass
 	
@@ -267,13 +268,17 @@ func move_marker():
 
 
 func _on_demon_eye_pressed():
-	if current_gold >= 150:
+	if current_gold >= 500:
+		current_gold -= 500
+		refresh_gold_lable()
 		eye_unlocked = true
 		buy_eye_button.self_modulate.a = 0.3
 
 
 func _on_goblin_pressed():
-	if current_gold >= 75:
+	if current_gold >= 100:
+		current_gold -= 100
+		refresh_gold_lable()
 		goblin_unlocked = true
 		buy_goblin_button.self_modulate.a = 0.3
 
