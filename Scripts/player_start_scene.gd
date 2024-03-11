@@ -13,6 +13,7 @@ extends Node2D
 @onready var max_count = $Counter/Panel/VBoxContainer/HBoxContainer/MaxSlimeKill
 @onready var erorwind = $WindError
 
+
 var game_paused: bool = false
 var count_kill = 0
 var max_count_boss = 1

@@ -23,6 +23,7 @@ func _ready():
 		pause_menu.hide()
 		shop_menu.hide()
 		settings.hide()
+		
 		suget_procces(tichol_text)
 	
 
@@ -59,8 +60,6 @@ func _process(_delta):
 		menuuu = 2
 		game_paused = !game_paused
 		
-	if Input.is_action_just_pressed("Suget"):
-		ent += 1
 
 	
 	if menuuu == 1:
@@ -98,7 +97,6 @@ func _process(_delta):
 			get_tree().paused = false
 			settings.hide()
 			
-
 func _on_button_2_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
@@ -127,10 +125,7 @@ func suget_procces(input_text:String):
 	tichol.text = input_text
 	for i in input_text:
 		tichol.visible_characters += 1
-		
 		await get_tree().create_timer(0.04).timeout
-
-
 func _on_return_bitton_pressed():
 	st.stop()
 	game_paused = !game_paused
@@ -138,3 +133,4 @@ func _on_return_bitton_pressed():
 
 func _on_exit_button_pressed():
 	get_tree().quit()
+
