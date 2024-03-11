@@ -24,7 +24,7 @@ const SPEED = 150
 @onready var direction = pathfinder.target_path_vector
 
 
-
+signal on_boss_death
 
 
 
@@ -60,11 +60,12 @@ func animate_sprite(swith : bool):
 		main_sprite.stop()
 
 func _on_health_component_on_health_decrease(_value):
-	#print(self, " got hit for ", value)
+	#print(self, " got hit for ", _value, " of ", $HealthComponent.current_health)
 	pass # Replace with function body.
 
 
 func _on_health_component_on_death():
+	on_boss_death.emit()
 	queue_free()
 
 

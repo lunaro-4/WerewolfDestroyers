@@ -57,5 +57,10 @@ func multiply_health(value):
 
 
 func _on_hp_changed(_value):
+	if current_health > max_health:
+		current_health = max_health
+	if current_health <= 0:
+		alive = false
+		on_death.emit()
 	#print(max_health, "  ", current_health)
 	pass # Replace with function body.
