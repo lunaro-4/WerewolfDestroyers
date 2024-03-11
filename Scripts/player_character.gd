@@ -3,7 +3,7 @@ class_name Player extends CharacterBody2D
 
 @onready var attack_component = $Attacks/Attack1Component as AttackComponent
 
-@onready var level: float = 1.9
+@onready var level: float = 1.0
 
 @onready var difficulty_scale : float = 1
 

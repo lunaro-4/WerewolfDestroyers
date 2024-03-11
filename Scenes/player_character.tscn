@@ -105,7 +105,7 @@ collision_mask = 4
 script = ExtResource("1_64xnh")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("hp_bar") instance=ExtResource("1_1jvnx")]
-max_health = 1
+max_health = 100
 hp_bar = NodePath("../HPbar")
 
 [node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_ywnae")]
@@ -233,7 +233,7 @@ tick_count = 1
 script = ExtResource("9_ic7l6")
 
 [node name="RegenerationComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("10_kwqux")]
-regen_amount = 7.0
+regen_amount = 20.0
 health_component = NodePath("../HealthComponent")
 
 [node name="Label" type="Label" parent="."]
