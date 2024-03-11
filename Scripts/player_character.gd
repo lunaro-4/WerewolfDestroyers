@@ -5,7 +5,7 @@ class_name Player extends CharacterBody2D
 
 @onready var level: float = 1.0
 
-@onready var difficulty_scale : float = 1.2
+@onready var difficulty_scale : float = 1.4
 
 @onready var not_second_level : bool = true
 
