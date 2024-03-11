@@ -41,14 +41,15 @@ grow_vertical = 2
 [node name="Goblin" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Гоблин
-50гр"
+75гр"
 
-[node name="Ork" type="Button" parent="Panel/VBoxContainer"]
+[node name="Demon Eye" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Орк
-100гр"
+text = "Глаз демона
+150гр"
 
 [node name="Yeti" type="Button" parent="Panel/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Йети
 200гр"

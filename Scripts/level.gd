@@ -2,8 +2,7 @@ extends Node2D
 
 
 
-var slime = preload("res://Scenes/slime.tscn") 
-var goblin = preload("res://Scenes/goblin.tscn")
+
 
 const MOVE_RADIUS = 500
 
@@ -48,16 +47,8 @@ func _on_player_got_hit(value):
 ################################
 
 func _process(_delta):
-	if Input.is_action_just_pressed("LMBclick")and !mouse_over_button:
-		if current_gold >= 0:
-			if chosen_creature == creatures[0]:
-				return
-			elif chosen_creature == creatures[1]:
-				spawn_enemy(slime, 5)
-			elif chosen_creature == creatures[2]:
-				spawn_enemy(goblin, 10)
-		else:
-			print("not enough gold!")
+	summon_logic()
+	update_container_state()
 	pass
 
 ################################
@@ -67,19 +58,30 @@ func _process(_delta):
 # Переключение выбранного юнита
 ###########################################################
 
-@onready var creatures : Array[String] = ["None", "Slime", "Goblin"]
+var slime = preload("res://Scenes/slime.tscn") 
+var goblin = preload("res://Scenes/goblin.tscn")
+var eye = preload("res://Scenes/big_boss.tscn")
+
+@onready var creatures : Array[String] = ["None", "Slime", "Goblin", "Eye"]
 @onready var chosen_creature = creatures[0]
 
 @onready var slime_container = %SlimeContainer as MarginContainer
 @onready var goblin_container = %GoblinContainer as MarginContainer
+@onready var eye_container = %EyeContainer as MarginContainer
+
 
 @onready var slime_button = %SlimeButton as TextureButton
 @onready var goblin_button = %GoblinButton as TextureButton
+@onready var eye_button = %EyeButton as TextureButton
+
 
 @onready var slime_panel = %SlimePanel as Panel
 @onready var goblin_panel = %GoblinPanel as Panel
+@onready var eye_panel = %EyePanel as Panel
+
 
 @onready var goblin_unlocked : bool = true
+@onready var eye_unlocked : bool = true
 
 @onready var mouse_over_button := false
 
@@ -94,18 +96,48 @@ func button_toggle(button : TextureButton,panel : Panel , state: bool):
 	#print(panel.self_modulate.a)
 	
 	pass
-	
-	
+
+func summon_logic():
+	if Input.is_action_just_pressed("LMBclick")and !mouse_over_button:
+		if current_gold >= 0:
+			if chosen_creature == creatures[0]:
+				return
+			elif chosen_creature == creatures[1]:
+				spawn_enemy(slime, 5)
+			elif chosen_creature == creatures[2]:
+				spawn_enemy(goblin, 10)
+			elif chosen_creature == creatures[3]:
+				spawn_enemy(eye, 20)
+		else:
+			print("not enough gold!")
+
+func update_container_state():
+	#print("checking:  ", goblin_unlocked, "  ", eye_unlocked )
+	if goblin_unlocked:
+		#print("Goblin:  ", goblin_unlocked )
+		goblin_container.visible = true
+	else:
+		goblin_container.visible = false
+	if eye_unlocked:
+		#print("Eye ", eye_unlocked )
+		eye_container.visible = true
+	else:
+		eye_container.visible = false
+
+
 func buttons_refresh():
 	active_refresh = true
 	button_toggle(slime_button, slime_panel, false)
 	button_toggle(goblin_button, goblin_panel, false)
+	button_toggle(eye_button, eye_panel, false)
 	if chosen_creature == creatures[0]:
 		pass
 	elif chosen_creature == creatures[1]:
 		button_toggle(slime_button, slime_panel, true)
 	elif chosen_creature == creatures[2]:
 		button_toggle(goblin_button, goblin_panel, true)
+	elif chosen_creature == creatures[3]:
+		button_toggle(eye_button, eye_panel, true)
 	else:
 		chosen_creature == creatures[0]
 	#print("Choice:  ",chosen_creature)
@@ -134,6 +166,17 @@ func _on_slime_button_toggled(toggled_on):
 		chosen_creature = creatures[0]
 		buttons_refresh()
 
+
+func _on_eye_button_toggled(toggled_on):
+	if !eye_unlocked:
+		return
+	if toggled_on and !active_refresh:
+		chosen_creature = creatures[3]
+		buttons_refresh()
+	elif chosen_creature == creatures[3] and !active_refresh:
+		chosen_creature = creatures[0]
+		buttons_refresh()
+	pass
 
 func _on_mouse_entered():
 	#print("enter")
@@ -185,3 +228,5 @@ func move_marker():
 	pass
 	
 	
+
+

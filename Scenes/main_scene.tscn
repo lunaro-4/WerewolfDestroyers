@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bppxfgu0s0hi4"]
+[gd_scene load_steps=20 format=3 uid="uid://bppxfgu0s0hi4"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tmsga"]
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="2_xrha5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Theme" uid="uid://lk60rpu5lxfr" path="res://core_theme.tres" id="9_wmyj5"]
 [ext_resource type="Texture2D" uid="uid://8eckh1e7trtr" path="res://Assets/EntitySprite/goblin_one.png" id="9_yumlc"]
 [ext_resource type="Texture2D" uid="uid://diuykx4dqar12" path="res://Assets/Icons/Pixel Blender_cD0MffqsRMO6574gw0akIg_a highly detailed badge icon for a fantasy role playing game, game ui icon_inference-img2img_1710000670.png" id="10_2fxyr"]
+[ext_resource type="Texture2D" uid="uid://bigitytwrkvmg" path="res://Assets/EntitySprite/boss_one.png" id="10_ubjur"]
 [ext_resource type="AudioStream" uid="uid://cs74adnfxlurn" path="res://Music/SujetTeme.mp3" id="11_gojlf"]
 [ext_resource type="PackedScene" uid="uid://cg3ph24q0cm1b" path="res://Scenes/settings.tscn" id="11_ocvj2"]
 [ext_resource type="PackedScene" uid="uid://cdx88upr5nv6n" path="res://Scenes/pausem.tscn" id="12_h72wx"]
@@ -169,7 +170,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0aqky")
 
 [node name="SlimeButton" type="TextureButton" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/SlimeContainer/PanelContainer/SlimeButton/PanelContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(70, 70)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 0
 toggle_mode = true
@@ -185,6 +186,7 @@ text = "Slime"
 
 [node name="GoblinContainer" type="MarginContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 5
 
@@ -205,7 +207,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0aqky")
 
 [node name="GoblinButton" type="TextureButton" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2/PanelContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(70, 70)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 0
 toggle_mode = true
@@ -218,6 +220,43 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 theme = SubResource("Theme_iigil")
 text = "Goblin"
+
+[node name="EyeContainer" type="MarginContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/EyeContainer"]
+layout_mode = 2
+
+[node name="GoblinButton2" type="VBoxContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/EyeContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/EyeContainer/PanelContainer/GoblinButton2"]
+layout_mode = 2
+
+[node name="EyePanel" type="Panel" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/EyeContainer/PanelContainer/GoblinButton2/PanelContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0aqky")
+
+[node name="EyeButton" type="TextureButton" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/EyeContainer/PanelContainer/GoblinButton2/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 0
+toggle_mode = true
+texture_normal = ExtResource("10_ubjur")
+stretch_mode = 0
+
+[node name="EyeText" type="Label" parent="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/EyeContainer/PanelContainer/GoblinButton2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme = SubResource("Theme_iigil")
+text = "Demon Eye"
 
 [node name="PauseMenulayer" type="CanvasLayer" parent="."]
 visible = false
@@ -269,6 +308,9 @@ autoplay = true
 [connection signal="mouse_entered" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2/PanelContainer/GoblinButton" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2/PanelContainer/GoblinButton" to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/GoblinContainer/PanelContainer/GoblinButton2/PanelContainer/GoblinButton" to="." method="_on_goblin_button_toggled"]
+[connection signal="mouse_entered" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/EyeContainer/PanelContainer/GoblinButton2/PanelContainer/EyeButton" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/EyeContainer/PanelContainer/GoblinButton2/PanelContainer/EyeButton" to="." method="_on_mouse_exited"]
+[connection signal="toggled" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/EyeContainer/PanelContainer/GoblinButton2/PanelContainer/EyeButton" to="." method="_on_eye_button_toggled"]
 [connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Return_bitton" to="Manager" method="_on_return_bitton_pressed"]
 [connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Button2" to="Manager" method="_on_button_2_pressed"]
 [connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Settings" to="Manager" method="_on_settings_pressed"]
