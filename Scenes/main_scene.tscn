@@ -241,6 +241,10 @@ visible = false
 [node name="Ticho" parent="Umri" instance=ExtResource("16_y4tgt")]
 process_mode = 2
 
+[node name="RichTextLabel" parent="Umri/Ticho/Panel" index="1"]
+process_mode = 3
+theme_override_font_sizes/normal_font_size = 25
+
 [node name="ST" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("11_gojlf")

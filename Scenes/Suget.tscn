@@ -40,5 +40,8 @@ text = "Чего?"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
 layout_mode = 0
-offset_right = 751.0
-offset_bottom = 125.0
+offset_left = 17.0
+offset_top = 16.0
+offset_right = 768.0
+offset_bottom = 128.0
+theme_override_font_sizes/normal_font_size = 25
