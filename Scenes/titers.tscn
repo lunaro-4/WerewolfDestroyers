@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq3t6e1y42jpt"]
+
+[ext_resource type="Script" path="res://TiterCamera.gd" id="1_g7pod"]
+[ext_resource type="Texture2D" uid="uid://0ue6irj54vnf" path="res://Assets/EntitySprite/1644802914_4-abrakadabra-fun-p-pikselnoe-zvezdnoe-nebo-7.png" id="1_wxdfa"]
+[ext_resource type="Script" path="res://Scenes/Zvezdnoe.gd" id="2_vcw5f"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(731.692, 1193.5)
+scale = Vector2(0.714706, 2.37453)
+texture = ExtResource("1_wxdfa")
+script = ExtResource("2_vcw5f")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(732, -1296)
+scale = Vector2(0.714706, 2.37453)
+texture = ExtResource("1_wxdfa")
+script = ExtResource("2_vcw5f")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 1309.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 34.0
+offset_right = 916.0
+offset_bottom = 949.0
+theme_override_colors/default_color = Color(1, 0.662745, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "	Давным давно в далеком далеком Питере собрались как то три типа и сделали это. Это было легендарно я бы сказал. 
+	Все было бы у них хорошо, но работа и... и женщины....
+	Но в целом мы получили бессценный опыт! 
+	Всех благ!!
+
+
+
+Над игрой работали:
+lunaro4 - геймплей
+UncleFedor - UI, Гейм дизайн,музыка
+"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("1_g7pod")
