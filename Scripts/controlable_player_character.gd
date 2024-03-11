@@ -46,11 +46,11 @@ func player_movement(_delta):
 
 func _physics_process(delta):
 	player_movement(delta)
-	if velocity.abs().x + velocity.abs().x > 0:
+	if velocity.abs().x + velocity.abs().y > 0:
 		main_sprite.play()
 	else:
 		main_sprite.stop()
-	if rotation_degrees < 90 or rotation_degrees > 270:
+	if velocity.x >0 :
 		main_sprite.flip_h = false
 		attack_sprite.flip_h = false
 	else:

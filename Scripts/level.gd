@@ -5,26 +5,15 @@ extends Node2D
 var slime = preload("res://Scenes/slime.tscn") 
 var goblin = preload("res://Scenes/goblin.tscn")
 
-@onready var mouse_over_button := false
+const MOVE_RADIUS = 50
 
-@onready var gold_label = %GoldLabel as Label
-@onready var current_gold :=50
+
+
 @onready var player = $PlayerCharacter as Player
-@onready var creatures : Array[String] = ["None", "Slime", "Goblin"]
-@onready var chosen_creature = creatures[0]
-
-@onready var goblin_unlocked : bool = true
-
-@onready var slime_container = %SlimeContainer as MarginContainer
-@onready var goblin_container = %GoblinContainer as MarginContainer
-
-@onready var slime_button = %SlimeButton as TextureButton
-@onready var goblin_button = %GoblinButton as TextureButton
-
-@onready var slime_panel = %SlimePanel as Panel
-@onready var goblin_panel = %GoblinPanel as Panel
 
 @onready var active_refresh: bool = false 
+
+
 
 func _ready():
 	print(chosen_creature)
@@ -35,19 +24,28 @@ func _ready():
 	update_choose_unit_frame()
 	pass 
 
+
+###########################################################
+# Экономика
+###########################################################
+
+@onready var gold_label = %GoldLabel as Label
+@onready var current_gold :=50
+
+
 func set_gold_lable_text(text):
 	gold_label.set_text(str(text))
 
 func refresh_gold_lable():
 	set_gold_lable_text(current_gold)
 
-func update_choose_unit_frame():
-	goblin_container.visible = false
+
+func _on_player_got_hit(value):
+	current_gold += value
+	refresh_gold_lable()
 	
-	slime_container.visible = true
-	if goblin_unlocked:
-		goblin_container.visible = true
-	
+
+################################
 
 func _process(_delta):
 	if Input.is_action_just_pressed("LMBclick")and !mouse_over_button:
@@ -62,23 +60,28 @@ func _process(_delta):
 			print("not enough gold!")
 	pass
 
-func spawn_enemy(type, cost):
-	#print("spawn ", goblin, " for ", cost)
-	var enemy_instance = type.instantiate()
-	if player != null:
-		enemy_instance.player = player
-	enemy_instance.position = get_global_mouse_position()
-	enemy_instance.is_static = false
-	current_gold -= cost
-	refresh_gold_lable()
-	add_child(enemy_instance)
-	pass
+################################
 
 
-func _on_player_got_hit(value):
-	current_gold += value
-	refresh_gold_lable()
-	
+###########################################################
+# Переключение выбранного юнита
+###########################################################
+
+@onready var creatures : Array[String] = ["None", "Slime", "Goblin"]
+@onready var chosen_creature = creatures[0]
+
+@onready var slime_container = %SlimeContainer as MarginContainer
+@onready var goblin_container = %GoblinContainer as MarginContainer
+
+@onready var slime_button = %SlimeButton as TextureButton
+@onready var goblin_button = %GoblinButton as TextureButton
+
+@onready var slime_panel = %SlimePanel as Panel
+@onready var goblin_panel = %GoblinPanel as Panel
+
+@onready var goblin_unlocked : bool = true
+
+@onready var mouse_over_button := false
 
 func button_toggle(button : TextureButton,panel : Panel , state: bool):
 	button.button_pressed = state
@@ -121,7 +124,6 @@ func _on_goblin_button_toggled(toggled_on):
 		buttons_refresh()
 
 
-
 func _on_slime_button_toggled(toggled_on):
 	#print("Slime " , chosen_creature)
 	if toggled_on and !active_refresh:
@@ -141,3 +143,44 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	#print("exit")
 	mouse_over_button = false
+
+
+
+func spawn_enemy(type, cost):
+	#print("spawn ", goblin, " for ", cost)
+	var enemy_instance = type.instantiate()
+	if player != null:
+		enemy_instance.player = player
+	enemy_instance.position = get_global_mouse_position()
+	enemy_instance.is_static = false
+	current_gold -= cost
+	refresh_gold_lable()
+	add_child(enemy_instance)
+	pass
+
+func update_choose_unit_frame():
+	goblin_container.visible = false
+	
+	slime_container.visible = true
+	if goblin_unlocked:
+		goblin_container.visible = true
+
+
+###########################################################
+# Перемещение героя
+###########################################################
+
+@onready var travel_point = $HeroTravelPoint as Marker2D
+
+
+func generate_hero_path(length) -> Vector2:
+	var path_point= Vector2(randf(),randf())
+	path_point *= length
+	return path_point
+	
+func move_marker():
+	var point_new_pos = generate_hero_path(randf()*MOVE_RADIUS)
+	travel_point.global_position = player.global_position + point_new_pos
+	pass
+	
+	
