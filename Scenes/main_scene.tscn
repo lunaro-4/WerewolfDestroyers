@@ -592,11 +592,11 @@ process_mode = 2
 [node name="ST" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("11_gojlf")
-volume_db = -8.966
+volume_db = 1.793
 
 [node name="MMTHEme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_vh4hr")
-volume_db = 4.483
+volume_db = -6.276
 autoplay = true
 
 [connection signal="on_player_death" from="PlayerCharacter" to="Manager" method="_on_player_character_on_player_death"]
