@@ -7,8 +7,8 @@ extends Node
 @onready var MMT = $"../MMTHEme"
 @onready var settings = $"../PauseMenulayer/settings"
 @onready var tichol = $"../Umri/Ticho/Panel/RichTextLabel"
-@onready var ending = $"../CanvasLayer/Control/Panel/RichTextLabel"
-@onready var ending_hud = $"../CanvasLayer/Control"
+@onready var ending = $"../FinalLayer/Control/Panel/RichTextLabel"
+@onready var ending_hud = $"../FinalLayer/Control"
 @onready var BBT = $"../BBY"
 
 var tichol_text = "Подумай над своим поведением"
@@ -37,7 +37,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if get_tree().paused:
-		if !st.playing:
+		if !st.playing and menuuu != 7:
 			MMT.stop()
 			st.play()
 	else:

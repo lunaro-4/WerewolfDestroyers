@@ -41,6 +41,8 @@ func _ready():
 func _physics_process(_delta):
 	#print(is_static)
 	direction = pathfinder.target_path_vector as Vector2
+	if !player:
+		is_static = true
 	if is_static == true:
 		animate_sprite(false)
 	elif is_static == false and (player.global_position - global_position).length() > 300:

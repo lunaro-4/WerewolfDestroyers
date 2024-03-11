@@ -111,11 +111,12 @@ position = Vector2(-37.5, 2.5)
 shape = SubResource("CircleShape2D_nc0bg")
 
 [node name="AttackComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hitbox")]
+delay = 1.0
 hit_window = 5.0
 hitbox = NodePath("../HitBoxComponent")
 
 [node name="HitBoxComponent" parent="Attacks" index="1" node_paths=PackedStringArray("hit_animation_object")]
-damage = 10.0
+damage = 30.0
 hit_animation_object = NodePath("Animation")
 
 [node name="HitBox1Collision" type="CollisionShape2D" parent="Attacks/HitBoxComponent" index="0"]

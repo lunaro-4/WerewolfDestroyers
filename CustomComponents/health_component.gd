@@ -45,8 +45,6 @@ func _ready():
 	if start_health == 0:
 		current_health =max_health
 	hp_changed.emit(current_health)
-	if hp_bar :
-		hp_bar.max_value = max_health
 	pass 
 
 func multiply_health(value):
@@ -57,6 +55,9 @@ func multiply_health(value):
 
 
 func _on_hp_changed(_value):
+	if hp_bar :
+		hp_bar.max_value = max_health
+		hp_bar.value = _value
 	if current_health > max_health:
 		current_health = max_health
 	if current_health <= 0:
