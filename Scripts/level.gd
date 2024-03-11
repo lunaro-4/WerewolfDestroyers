@@ -5,7 +5,7 @@ extends Node2D
 var slime = preload("res://Scenes/slime.tscn") 
 var goblin = preload("res://Scenes/goblin.tscn")
 
-const MOVE_RADIUS = 50
+const MOVE_RADIUS = 500
 
 
 
@@ -170,7 +170,7 @@ func update_choose_unit_frame():
 # Перемещение героя
 ###########################################################
 
-@onready var travel_point = $HeroTravelPoint as Marker2D
+@onready var travel_point = $HeroTravelPoint as Node2D
 
 
 func generate_hero_path(length) -> Vector2:
@@ -181,6 +181,7 @@ func generate_hero_path(length) -> Vector2:
 func move_marker():
 	var point_new_pos = generate_hero_path(randf()*MOVE_RADIUS)
 	travel_point.global_position = player.global_position + point_new_pos
+	#print(travel_point.global_position)
 	pass
 	
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://hlpd5bjmqiwk"]
+[gd_scene load_steps=27 format=3 uid="uid://hlpd5bjmqiwk"]
 
 [ext_resource type="PackedScene" uid="uid://cj6bda8y1k831" path="res://CustomComponents/health_component.tscn" id="1_1jvnx"]
 [ext_resource type="Script" path="res://Scripts/player_character.gd" id="1_64xnh"]
@@ -12,15 +12,87 @@
 [ext_resource type="Script" path="res://Scripts/HSlider.gd" id="9_ic7l6"]
 [ext_resource type="PackedScene" uid="uid://cg5holg485hji" path="res://CustomComponents/regeneration_component.tscn" id="10_kwqux"]
 [ext_resource type="PackedScene" uid="uid://bselw8ieny17t" path="res://CustomComponents/pathfinding_logic.tscn" id="12_khadm"]
+[ext_resource type="Texture2D" uid="uid://c7umwl5ntmus" path="res://Assets/EntitySprite/hero.png" id="13_hc4di"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_inrhm"]
 size = Vector2(128, 130)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrykn"]
-radius = 192.0
+radius = 277.545
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aueyh"]
 size = Vector2(112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7nec"]
+atlas = ExtResource("13_hc4di")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjuaq"]
+atlas = ExtResource("13_hc4di")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8fvo"]
+atlas = ExtResource("13_hc4di")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5omk"]
+atlas = ExtResource("13_hc4di")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjd6c"]
+atlas = ExtResource("13_hc4di")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffrjn"]
+atlas = ExtResource("13_hc4di")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1c4t"]
+atlas = ExtResource("13_hc4di")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvpd4"]
+atlas = ExtResource("13_hc4di")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgse0"]
+atlas = ExtResource("13_hc4di")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4efhn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7nec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjuaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8fvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5omk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjd6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffrjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1c4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvpd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgse0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 collision_layer = 5
@@ -61,8 +133,8 @@ shape = SubResource("CircleShape2D_wrykn")
 disabled = true
 
 [node name="HeroAttackAnimation" type="Polygon2D" parent="Attacks/HitBox1Component"]
-position = Vector2(-0.253113, 0)
-scale = Vector2(0.4, 0.413)
+position = Vector2(-0.0562502, 0)
+scale = Vector2(0.888, 0.919)
 color = Color(0.211765, 0.611765, 1, 0)
 polygon = PackedVector2Array(-5, 119, -16, 32, -75, 89, -37, 15, -120, -3, -39, -26, -84, -81, -22, -38, -1, -119, 12, -40, 74, -90, 32, -15, 121, 2, 36, 24, 84, 76, 23, 38)
 script = ExtResource("6_kkaox")
@@ -79,6 +151,7 @@ scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_aueyh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_niawy")
 
@@ -133,8 +206,19 @@ text = "1
 [node name="PathfindingLogic" parent="." instance=ExtResource("12_khadm")]
 position = Vector2(310.059, -322.774)
 
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 1.141
+autostart = true
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.482353, 0, 1)
+sprite_frames = SubResource("SpriteFrames_4efhn")
+frame = 8
+frame_progress = 0.285195
+
 [connection signal="hp_changed" from="HealthComponent" to="HealthComponent" method="_on_hp_changed"]
 [connection signal="hp_changed" from="HealthComponent" to="HPbar" method="_on_health_component_hp_changed"]
 [connection signal="on_death" from="HealthComponent" to="." method="_on_death"]
 [connection signal="on_health_decrease" from="HealthComponent" to="." method="_on_health_component_on_health_decrease"]
 [connection signal="attack_finished" from="Attacks/Attack1Component" to="." method="_on_attack_1_component_attack_finished"]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

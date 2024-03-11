@@ -11,8 +11,10 @@ class_name Player extends CharacterBody2D
 
 @onready var pathfinder = $PathfindingLogic as PathfinderLogic
 
+@onready var main_sprite = $MainSprite as AnimatedSprite2D
 
-@onready var direction = pathfinder.target_path_vector
+
+@onready var direction = Vector2(0,0)
 
 
 @export var target_location : Node2D
@@ -26,11 +28,12 @@ signal player_got_hit(value)
 
 
 func _ready():
+	main_sprite.play()
 	attack_component.attack()
 	$RegenerationComponent.regen_start()
 	if target_location:
 		pathfinder.target = target_location
-		pathfinder.pathfinding_init()
+		#pathfinder.pathfinding_init()
 	
 
 	pass 
@@ -40,23 +43,14 @@ func _on_death():
 	queue_free()
 
 func _physics_process(_delta):
-	#print(is_static)
-	#if is_static == true:
-		#animate_sprite(false)
-	#elif is_static == false:
-		#animate_sprite(true)
-		#direction = pathfinder.target_path_vector
-		#if direction.x< 0:
-			#main_sprite.flip_h = true
-			#attack_sprite.flip_h = true
-		#else:
-			#main_sprite.flip_h = false
-			#attack_sprite.flip_h = false
-		direction = pathfinder.target_path_vector
-		velocity = -direction * SPEED
+	direction = direction.normalized()
+	velocity = direction * SPEED* randf()
+	if direction.x< 0:
+		main_sprite.flip_h = true
+	else:
+		main_sprite.flip_h = false
 		
-		
-		move_and_slide()
+	move_and_slide()
 
 
 
@@ -81,3 +75,8 @@ func _process(delta):
 		not_second_level = false
 		pass
 
+
+
+func _on_move_timer_timeout():
+	direction = target_location.global_position - global_position
+	pass # Replace with function body.
