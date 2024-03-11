@@ -1,7 +1,4 @@
-
-[gd_scene load_steps=34 format=3 uid="uid://bppxfgu0s0hi4"]
-
-
+[gd_scene load_steps=35 format=3 uid="uid://bppxfgu0s0hi4"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tmsga"]
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="2_xrha5"]
@@ -393,8 +390,8 @@ layer_0/tile_data = PackedInt32Array(4390882, 1441792, 11, 4390887, 1441792, 11,
 [connection signal="mouse_exited" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/EyeContainer/PanelContainer/GoblinButton2/PanelContainer/EyeButton" to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="ChooseUnit/UnitContainer/MarginContainer/HBoxContainer/EyeContainer/PanelContainer/GoblinButton2/PanelContainer/EyeButton" to="." method="_on_eye_button_toggled"]
 [connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Return_bitton" to="Manager" method="_on_return_bitton_pressed"]
-[connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Button2" to="Manager" method="_on_button_2_pressed"]
-[connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Settings" to="Manager" method="_on_settings_pressed"]
+[connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/MMButton" to="Manager" method="_on_mm_button_pressed"]
+[connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/TextureButton" to="Manager" method="_on_texture_button_pressed"]
 [connection signal="pressed" from="PauseMenulayer/pausem/Panel/VBoxContainer/Exit_button" to="Manager" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="PauseMenulayer/settings/Panel/nazad" to="Manager" method="_on_nazad_pressed"]
 [connection signal="pressed" from="Shop/Shop/Panel/Exit" to="Manager" method="_on_exit_pressed"]
