@@ -5,6 +5,7 @@ extends Node
 @onready var ticho = $"../Umri/Ticho"
 @onready var st = $"../ST"
 @onready var MMT = $"../MMTHEme"
+@onready var settings = $"../PauseMenulayer/settings"
 
 var game_paused: bool = true
 var menuuu = 0
@@ -19,6 +20,7 @@ func _ready():
 		st.play()
 		pause_menu.hide()
 		shop_menu.hide()
+		settings.hide()
 	
 
 
@@ -38,6 +40,7 @@ func _process(_delta):
 		
 		ticho.hide()
 		shop_menu.hide()
+		settings.hide()
 		game_paused = !game_paused
 		menuuu = 1
 	
@@ -58,6 +61,7 @@ func _process(_delta):
 
 	
 	if menuuu == 1:
+		settings.hide()
 		if game_paused == true:
 			get_tree().paused = true
 			pause_menu.show()
@@ -81,7 +85,14 @@ func _process(_delta):
 			get_tree().paused = false
 			ticho.hide()
 	
-	
+	if menuuu == 6:
+		pause_menu.hide()	
+		if game_paused == true:
+			get_tree().paused = true
+			settings.show()
+		else:
+			get_tree().paused = false
+			settings.hide()
 			
 
 
@@ -105,3 +116,11 @@ func _on_a_pressed():
 	game_paused = !game_paused
 	menuuu = 3
 	
+
+
+func _on_settings_pressed():
+	menuuu = 6
+
+
+func _on_nazad_pressed():
+	menuuu = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://fw88l4xk2wtv"]
+[gd_scene load_steps=27 format=3 uid="uid://fw88l4xk2wtv"]
 
 [ext_resource type="Texture2D" uid="uid://s3c7fuducd2" path="res://Assets/Texture/TX Tileset Grass.png" id="1_mqk1x"]
 [ext_resource type="Script" path="res://Scripts/player_start_scene.gd" id="1_ogbpn"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cdx88upr5nv6n" path="res://Scenes/pausem.tscn" id="12_fqc4m"]
 [ext_resource type="AudioStream" uid="uid://cs74adnfxlurn" path="res://Music/SujetTeme.mp3" id="12_ypvcc"]
 [ext_resource type="PackedScene" uid="uid://dmg6fwg7oxvxm" path="res://Scenes/errorche.tscn" id="13_w3auk"]
+[ext_resource type="PackedScene" uid="uid://cg3ph24q0cm1b" path="res://Scenes/settings.tscn" id="16_cwp0n"]
 [ext_resource type="AudioStream" uid="uid://mrv347qykt8r" path="res://Music/ZvukWind.mp3" id="17_sijob"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5fhag"]
@@ -546,10 +547,8 @@ position = Vector2(576, -1519)
 
 [node name="Er" parent="Eror/Error" index="0"]
 process_mode = 2
-visible = false
 
 [node name="Control" parent="Eror" instance=ExtResource("10_cjs06")]
-visible = false
 
 [node name="pausem" parent="Eror" instance=ExtResource("12_fqc4m")]
 process_mode = 2
@@ -558,7 +557,9 @@ process_mode = 2
 
 [node name="Erche" parent="Eror/Error2" index="0"]
 process_mode = 2
-visible = false
+
+[node name="settings" parent="Eror" instance=ExtResource("16_cwp0n")]
+process_mode = 2
 
 [node name="ST" type="AudioStreamPlayer" parent="."]
 process_mode = 3
@@ -617,10 +618,13 @@ stream = ExtResource("17_sijob")
 [connection signal="pressed" from="Eror/Control/Panel/dalshe" to="SugMan" method="_on_dalshe_pressed"]
 [connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Button" to="SugMan" method="_on_button_pressed"]
 [connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Button2" to="SugMan" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Settings" to="SugMan" method="_on_settings_pressed"]
 [connection signal="pressed" from="Eror/pausem/Panel/VBoxContainer/Button3" to="SugMan" method="_on_button_3_pressed"]
 [connection signal="pressed" from="Eror/Error2/Erche/Panel/ButOk2" to="SugMan" method="_on_but_ok_2_pressed"]
+[connection signal="pressed" from="Eror/settings/Panel/nazad" to="SugMan" method="_on_nazad_pressed"]
 
 [editable path="Eror/Error"]
 [editable path="Eror/Control"]
 [editable path="Eror/pausem"]
 [editable path="Eror/Error2"]
+[editable path="Eror/settings"]
