@@ -116,7 +116,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 6.0
+"speed": 1.0
 }]
 
 [node name="Slime" instance=ExtResource("1_bf6qc")]
@@ -137,6 +137,7 @@ shape = SubResource("RectangleShape2D_cavlj")
 
 [node name="AttackComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hitbox")]
 delay = 1.0
+hit_window = 0.2
 hitbox = NodePath("../HitBoxComponent")
 
 [node name="HitBoxComponent" parent="Attacks" index="1" node_paths=PackedStringArray("hit_animation_object")]

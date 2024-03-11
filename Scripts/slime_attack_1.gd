@@ -9,7 +9,9 @@ extends Node2D
 func _ready():
 	pass
 
-func animate(_delay_wait, _hit_wait):
+func animate(_hit_wait):
+	attack_sprite.sprite_frames.set_animation_speed("default", 1)
+	attack_sprite.set_frame(0)
 	main_sprite.visible = false
 	attack_sprite.visible = true
 	attack_sprite.play("", attack_sprite.sprite_frames.get_frame_count("default")/_hit_wait) 
