@@ -73,12 +73,12 @@ func _process(delta):
 	var difficulty_level = level*(DIFFICULTY_RAMP* difficulty_scale)*delta
 	level = level + difficulty_level
 	$PanelContainer/HBoxContainer/LevelText.set_text(str(snapped(level, 0.001)))
-	attack_component.tweak_damage(level)
+	#attack_component.tweak_damage(level)
 	var upscale_value = ((level-1)/6)+1
-	upscale($Attacks/HitBox1Component, upscale_value )
+	upscale($Attacks/HitBox1Component, upscale_value)
 	upscale($CollisionShape, upscale_value )
-	upscale($Attacks/HitBox1Component, upscale_value )
-	if floor(level) >= 2 and not_second_level:
+	upscale($MainSprite, upscale_value)
+	if floor(level) >= 3 and not_second_level:
 		$HealthComponent.multiply_health(2)
 		not_second_level = false
 		_on_attack_2_component_attack_finished()
