@@ -8,6 +8,7 @@ extends Node
 @onready var settings = $"../PauseMenulayer/settings"
 @onready var tichol = $"../Umri/Ticho/Panel/RichTextLabel"
 
+
 var tichol_text = "Подумай над своим поведением"
 var game_paused: bool = true
 var menuuu = 0
@@ -96,6 +97,13 @@ func _process(_delta):
 		else:
 			get_tree().paused = false
 			settings.hide()
+	if menuuu = 7:
+		if game_paused == true:
+			get_tree().paused = true
+			ending.show()
+		else:
+			get_tree().paused = false
+			ending.hide()
 			
 func _on_button_2_pressed():
 	get_tree().paused = false
@@ -142,3 +150,7 @@ func _on_texture_button_pressed():
 func _on_mm_button_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+
+
+func _on_player_character_on_player_death():
+	menuuu = 7

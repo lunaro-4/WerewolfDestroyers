@@ -24,7 +24,7 @@ const DIFFICULTY_RAMP := 0.01
 const SPEED = 100
 
 signal player_got_hit(value)
-
+signal on_player_death
 
 
 func _ready():
@@ -40,6 +40,7 @@ func _ready():
 
 
 func _on_death():
+	on_player_death.emit()
 	queue_free()
 
 func _physics_process(_delta):
