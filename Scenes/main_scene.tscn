@@ -1,8 +1,7 @@
-<<<<<<< HEAD
+
 [gd_scene load_steps=34 format=3 uid="uid://bppxfgu0s0hi4"]
-=======
-[gd_scene load_steps=29 format=3 uid="uid://bppxfgu0s0hi4"]
->>>>>>> ed7e3e48dc981de0c71576922c40c7a8b94cd507
+
+
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tmsga"]
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="2_xrha5"]
