@@ -541,11 +541,12 @@ position = Vector2(576, 324)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_dmpe4")
-volume_db = -20.613
+volume_db = -10.751
 autoplay = true
 
 [node name="BF" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_kn1cf")
+volume_db = -7.172
 
 [node name="BossSpawn" type="Marker2D" parent="."]
 position = Vector2(576, -1519)
