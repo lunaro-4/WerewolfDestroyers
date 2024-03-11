@@ -53,7 +53,7 @@ layer_5/tile_data = PackedInt32Array()
 position = Vector2(376, 337)
 target_location = NodePath("../HeroTravelPoint")
 
-[node name="HeroTravelPoint" type="Marker2D" parent="."]
+[node name="HeroTravelPoint" type="Node2D" parent="."]
 position = Vector2(591, 64)
 
 [node name="MoveHeroTimer" type="Timer" parent="."]
