@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dmg6fwg7oxvxm" path="res://Scenes/errorche.tscn" id="13_w3auk"]
 [ext_resource type="PackedScene" uid="uid://cg3ph24q0cm1b" path="res://Scenes/settings.tscn" id="16_cwp0n"]
 [ext_resource type="AudioStream" uid="uid://mrv347qykt8r" path="res://Music/ZvukWind.mp3" id="17_sijob"]
-[ext_resource type="PackedScene" uid="uid://d2gesb1pix1h3" path="res://Scenes/big_boss.tscn" id="19_evlfk"]
+[ext_resource type="PackedScene" path="res://Scenes/big_boss.tscn" id="19_evlfk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5fhag"]
 texture = ExtResource("1_mqk1x")
