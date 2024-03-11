@@ -142,14 +142,15 @@ shape = SubResource("CircleShape2D_yhbgb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
 shape = SubResource("CircleShape2D_nlgtl")
 
+[node name="Sprite2D" parent="." index="6"]
+visible = false
+
 [node name="MainSprite" type="AnimatedSprite2D" parent="." index="8"]
 sprite_frames = SubResource("SpriteFrames_130ur")
-frame = 2
-frame_progress = 0.597826
+frame = 5
+frame_progress = 0.60278
 flip_h = true
 
 [node name="AttackSprite" type="AnimatedSprite2D" parent="." index="9"]
 visible = false
 flip_h = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="10"]

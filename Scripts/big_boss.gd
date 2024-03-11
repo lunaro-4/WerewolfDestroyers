@@ -3,7 +3,7 @@ class_name Boss extends CharacterBody2D
 
 
 
-const SPEED = 300.0
+const SPEED = 150
 
 
 
@@ -40,17 +40,18 @@ func _ready():
 
 func _physics_process(_delta):
 	#print(is_static)
+	direction = pathfinder.target_path_vector as Vector2
 	if is_static == true:
 		animate_sprite(false)
-	elif is_static == false:
-		animate_sprite(true)
-		direction = pathfinder.target_path_vector as Vector2
-		main_sprite.rotation =to_local(player.get_global_position()).angle()
-		#look_at(direction)
+	elif is_static == false and (player.global_position - global_position).length() > 300:
 		velocity = direction * SPEED
-		
-		
 		move_and_slide()
+	elif is_static == false and (player.global_position - global_position).length() < 300:
+		velocity = -direction * SPEED
+		move_and_slide()
+	if is_static == false:
+		animate_sprite(true)
+		main_sprite.rotation =to_local(player.get_global_position()).angle()
 
 func animate_sprite(swith : bool):
 	if swith:
