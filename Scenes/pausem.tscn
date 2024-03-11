@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdx88upr5nv6n"]
+[gd_scene load_steps=4 format=3 uid="uid://cdx88upr5nv6n"]
 
 [ext_resource type="Script" path="res://Scripts/pausem.gd" id="1_utk3g"]
 [ext_resource type="Texture2D" uid="uid://bckotsjc3wyhj" path="res://Fon.png" id="2_riy60"]
+[ext_resource type="Texture2D" uid="uid://5vrhjeeprdmo" path="res://Assets/EntitySprite/men.png" id="3_1ciat"]
 
 [node name="pausem" type="Control"]
 layout_mode = 3
@@ -30,6 +31,11 @@ offset_right = 144.0
 offset_bottom = 133.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(146, 115)
+scale = Vector2(0.466667, 0.745)
+texture = ExtResource("3_1ciat")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -64,16 +70,3 @@ text = "Управление
 layout_mode = 2
 text = "Выход
 "
-
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -63.3409
-offset_top = 6.72717
-offset_right = 62.6591
-offset_bottom = 29.7272
-grow_horizontal = 2
-text = "Пауза"
-horizontal_alignment = 1
