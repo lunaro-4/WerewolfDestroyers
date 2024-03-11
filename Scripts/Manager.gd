@@ -9,6 +9,7 @@ extends Node
 @onready var tichol = $"../Umri/Ticho/Panel/RichTextLabel"
 @onready var ending = $"../CanvasLayer/Control/Panel/RichTextLabel"
 @onready var ending_hud = $"../CanvasLayer/Control"
+@onready var BBT = $"../BBY"
 
 var tichol_text = "Подумай над своим поведением"
 var ending_text = "Посмотри! ТЫ СЛАБ. Ты ничтожество. Но я решил вернуть все обратно. Надоело"
@@ -156,6 +157,7 @@ func _on_mm_button_pressed():
 
 
 func _on_player_character_on_player_death():
+	BBT.play()
 	menuuu = 7
 
 
