@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var enemy_one = preload("res://Scenes/enemy_1.tscn")
+@onready var big_boss = preload("res://Scenes/big_boss.tscn")
 
 @onready var camera = $Camera2D as Camera2D
 @onready var player = $PlayerCharacter as ControlablePlayer
@@ -33,7 +33,7 @@ func spawn_boss():
 	count_kill = 0
 	count_slime.text = str(count_kill)
 	max_count.text = str(max_count_boss)
-	var boss_instance = enemy_one.instantiate() as EnemyOne
+	var boss_instance = big_boss.instantiate() as Boss
 	if player != null:
 		boss_instance.player = player
 	boss_instance.position = boss_spawn_pos.global_position
