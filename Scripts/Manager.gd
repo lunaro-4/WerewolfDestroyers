@@ -6,7 +6,9 @@ extends Node
 @onready var st = $"../ST"
 @onready var MMT = $"../MMTHEme"
 @onready var settings = $"../PauseMenulayer/settings"
+@onready var tichol = $"../Umri/Ticho/Panel/RichTextLabel"
 
+var tichol_text = "ПОДУМАЙ НАД СВОИМ ПОВЕДЕНИЕМ"
 var game_paused: bool = true
 var menuuu = 0
 var ent = 0
@@ -78,6 +80,7 @@ func _process(_delta):
 			shop_menu.hide()
 	
 	if menuuu == 3:
+		suget_procces(tichol_text)
 		if game_paused == true:
 			get_tree().paused = true
 			ticho.show()
@@ -124,3 +127,11 @@ func _on_settings_pressed():
 
 func _on_nazad_pressed():
 	menuuu = 1
+
+func suget_procces(input_text_2:String):
+	tichol.visible_characters = 0
+	tichol.text = input_text_2
+	for i in input_text_2:
+		tichol.visible_characters += 1
+		
+		await get_tree().create_timer(0.04).timeout
