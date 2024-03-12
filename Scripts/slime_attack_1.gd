@@ -20,9 +20,4 @@ func animate(_hit_wait):
 
 
 func _on_attack_sprite_animation_finished():
-	#print("signal!")
-	#here_animation_finished.emit()
-	#main_sprite.visible = true
-	#attack_sprite.visible = false
-	#attack_sprite.stop()
 	pass

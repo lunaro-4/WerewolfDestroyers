@@ -9,7 +9,7 @@ const SPEED = 200
 
 @onready var pathfinder = $PathfindingLogic as PathfinderLogic
 
-@onready var attack_hitbox = $Attacks/HitBoxComponent as HitBoxComponent
+@onready var attack_hitbox = $Attacks/AttackComponent as AttackComponent
 
 @onready var detection_area = $DetectionArea as DetectionArea
 
