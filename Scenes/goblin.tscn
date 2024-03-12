@@ -229,7 +229,8 @@ is_static = false
 [node name="HealthComponent" parent="." index="0"]
 max_health = 10
 
-[node name="HurtBoxComponent" parent="." index="1" node_paths=PackedStringArray("knockback_component")]
+[node name="HurtBoxComponent" parent="." index="1" node_paths=PackedStringArray("health_component", "knockback_component")]
+health_component = NodePath("../HealthComponent")
 knockback_component = NodePath("../KnockBackComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent" index="0"]
@@ -237,13 +238,10 @@ position = Vector2(-6.25003, -8.12504)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_enj3w")
 
-[node name="AttackComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hitbox")]
-delay = 0.8
-hit_window = 0.3
-hitbox = NodePath("../HitBoxComponent")
-
-[node name="HitBoxComponent" parent="Attacks" index="1" node_paths=PackedStringArray("hit_animation_object")]
+[node name="HitBoxComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hit_animation_object")]
 damage = 2.0
+delay = 0.2
+hit_window = 2.0
 hit_animation_object = NodePath("Animation")
 
 [node name="Animation" type="Node2D" parent="Attacks/HitBoxComponent" index="0" node_paths=PackedStringArray("main_sprite", "attack_sprite", "animation_component")]
@@ -259,6 +257,9 @@ shape = SubResource("CircleShape2D_gfiux")
 [node name="EntityCollision" parent="." index="3"]
 position = Vector2(-2, 5)
 shape = SubResource("CircleShape2D_bg21n")
+
+[node name="AttackArea" parent="." index="5" node_paths=PackedStringArray("attack_component")]
+attack_component = NodePath("../Attacks/HitBoxComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
 shape = SubResource("CircleShape2D_64rnj")
@@ -287,5 +288,3 @@ disabled = true
 [node name="AnimationComponent" parent="." index="11" node_paths=PackedStringArray("main_sprite", "attack_sprite_1") instance=ExtResource("7_i2jsl")]
 main_sprite = NodePath("../MainSprite")
 attack_sprite_1 = NodePath("../AttackSprite")
-
-[connection signal="animation_looped" from="AttackSprite" to="Attacks/HitBoxComponent/Animation" method="_on_attack_sprite_animation_finished"]
