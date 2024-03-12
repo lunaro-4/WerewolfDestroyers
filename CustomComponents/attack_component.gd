@@ -5,11 +5,16 @@ class_name AttackComponent extends Node
 @export var speed_modifyer : float = 1
 @export var hitbox : HitBoxComponent
 
+var attack_is_on : bool
+
 
 signal attack_finished
 
 ## Метод атаки
 func attack():
+	if attack_is_on:
+		return
+	attack_is_on = true
 	var delay_wait = delay * speed_modifyer
 	var hit_wait = hit_window * speed_modifyer
 	animate_delay(delay_wait, hit_wait)
@@ -20,6 +25,7 @@ func attack():
 	swich_hitbox_state(hitbox_collisions_array, false)
 	await wait(hit_wait)
 	swich_hitbox_state(hitbox_collisions_array, true)
+	attack_is_on = false
 	attack_finished.emit()
 
 
@@ -44,6 +50,7 @@ func swich_hitbox_state(array : Array, state : bool):
 		item.disabled = state
 
 func _ready():
+	PresenceCheck.check(hitbox, "HitBoxComponent", self, true)
 	if speed_modifyer == 0:
 		speed_modifyer = 1
 	else:

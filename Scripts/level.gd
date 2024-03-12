@@ -16,7 +16,6 @@ const MOVE_RADIUS = 500
 
 
 func _ready():
-	print(chosen_creature)
 	refresh_gold_lable()
 	$PauseMenulayer.visible = true
 	$Shop.visible = true
@@ -42,7 +41,7 @@ func _ready():
 
 
 @onready var total_spent = 0
-@onready var current_gold :=5
+@onready var current_gold :=500
 
 
 func set_gold_lable_text(text):
@@ -111,8 +110,8 @@ var eye = preload("res://Scenes/big_boss.tscn")
 @onready var eye_panel = %EyePanel as Panel
 
 
-@onready var goblin_unlocked : bool = false
-@onready var eye_unlocked : bool = false
+@onready var goblin_unlocked : bool = true
+@onready var eye_unlocked : bool = true
 
 @onready var mouse_over_button := false
 

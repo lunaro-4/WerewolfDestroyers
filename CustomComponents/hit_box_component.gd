@@ -30,17 +30,14 @@ const DEFAULT_POSITION = Vector2(0,0)
 ## Проверяем, что компонент атаки подключен. 
 ## иначе урон проходить не будет!
 func _ready():
-	if attack_component == null:
-		print("Attack component not attached at: ", self, " ", get_parent())
-		assert(attack_component != null)
-	pass 
+	PresenceCheck.check(attack_component, 'AttackComponent', self, true)
 
-## Если компонент анимации подключен, посылаем сигнал анимации
+## Если компонент анимации подключен, посылаем сигнал анимации атаки
 func animate(hit_wait):
-	#print("animate")
 	if hit_animation_object != null and hit_animation_object.has_method("animate"):
 		hit_animation_object.animate(hit_wait)
-
+		
+## Если компонент анимации подключен, посылаем сигнал анимации задержки
 func animate_delay(delay_wait, hit_wait):
 	if hit_animation_object != null and hit_animation_object.has_method("animate_delay"):
 		hit_animation_object.animate_delay(delay_wait, hit_wait)
@@ -49,11 +46,8 @@ func animate_delay(delay_wait, hit_wait):
 
 
 func _process(_delta):
-	#if mouse_position != DEFAULT_POSITION:
-		#position = mouse_position
 	if follow_coursor:
 		position =  get_global_mouse_position() - get_parent().global_position
-		#mouse_position =
 	if ray_coursor:
 		look_at(get_global_mouse_position())
 		rotation_degrees += add_rotation
