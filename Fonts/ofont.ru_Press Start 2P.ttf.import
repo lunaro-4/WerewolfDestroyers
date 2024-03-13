@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://d0ed5q2m057e8"
+path="res://.godot/imported/ofont.ru_Press Start 2P.ttf-d7d2aba65f01cf5ed4d8c3a1e44af6c3.fontdata"
+
+[deps]
+
+source_file="res://Fonts/ofont.ru_Press Start 2P.ttf"
+dest_files=["res://.godot/imported/ofont.ru_Press Start 2P.ttf-d7d2aba65f01cf5ed4d8c3a1e44af6c3.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

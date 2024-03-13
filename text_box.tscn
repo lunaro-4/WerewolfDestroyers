@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4g2uv6dcin0q"]
+
+[ext_resource type="Script" path="res://Text.gd" id="1_oeq8u"]
+[ext_resource type="Script" path="res://Node.gd" id="2_43r8i"]
+[ext_resource type="Texture2D" uid="uid://b3t1en2n8b0at" path="res://Assets/EntitySprite/textbox.png" id="2_kq5kq"]
+[ext_resource type="FontFile" uid="uid://d0ed5q2m057e8" path="res://Fonts/ofont.ru_Press Start 2P.ttf" id="3_grsqn"]
+
+[node name="TextBox" type="MarginContainer"]
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_oeq8u")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("2_43r8i")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_kq5kq")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TextLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_grsqn")
+vertical_alignment = 1
+
+[node name="LetterDisplayTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="finished_displaying" from="." to="Node" method="_on_text_box_finished_displaying"]
+[connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]
