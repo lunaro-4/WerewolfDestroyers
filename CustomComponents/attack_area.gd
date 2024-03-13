@@ -5,7 +5,7 @@ class_name AttackArea extends Area2D
 
 
 func _ready():
-	PresenceCheck.check(attack_component, "AttackComponent", self , true)
+	DebugTools.check_null(attack_component, "AttackComponent", self , true)
 	attack_component.attack_finished.connect(_on_attack_component_attack_finished)
 
 func _on_area_entered(area):

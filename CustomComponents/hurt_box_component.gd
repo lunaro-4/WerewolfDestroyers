@@ -20,7 +20,7 @@ func knockback(value : float, area: Node2D):
 ## Проверяем, что компонент здоровья подключен. 
 ## иначе урон проходить не будет!
 func _ready():
-	PresenceCheck.check(health_component, "HealthComponent", self, true)
+	DebugTools.check_null(health_component, "HealthComponent", self, true)
 
 
 

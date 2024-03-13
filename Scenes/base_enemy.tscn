@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/base_enemy.gd" id="1_j7k37"]
 [ext_resource type="PackedScene" uid="uid://cj6bda8y1k831" path="res://CustomComponents/health_component.tscn" id="1_ov811"]
 [ext_resource type="PackedScene" uid="uid://cuad5o64p42de" path="res://CustomComponents/hurt_box_component.tscn" id="2_l2qp2"]
-[ext_resource type="PackedScene" uid="uid://laivrmt2olyg" path="res://CustomComponents/hit_box_component.tscn" id="4_tolpl"]
+[ext_resource type="PackedScene" uid="uid://laivrmt2olyg" path="res://CustomComponents/attack_component.tscn" id="4_3lvdk"]
 [ext_resource type="PackedScene" uid="uid://bselw8ieny17t" path="res://CustomComponents/pathfinding_logic.tscn" id="6_5mq0u"]
 [ext_resource type="PackedScene" uid="uid://dawwlkm5gyaru" path="res://CustomComponents/attack_area.tscn" id="7_0yc2e"]
 [ext_resource type="PackedScene" uid="uid://h12e48p4ng5d" path="res://CustomComponents/knock_back_component.tscn" id="8_6bbbw"]
@@ -17,15 +17,14 @@ script = ExtResource("1_j7k37")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_ov811")]
 
-[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_l2qp2")]
+[node name="HurtBoxComponent" parent="." instance=ExtResource("2_l2qp2")]
 scale = Vector2(0.4, 0.4)
 collision_mask = 2
-health_component = NodePath("")
 
 [node name="Attacks" type="Node2D" parent="."]
 scale = Vector2(0.4, 0.4)
 
-[node name="HitBoxComponent" parent="Attacks" instance=ExtResource("4_tolpl")]
+[node name="AttackComponent" parent="Attacks" instance=ExtResource("4_3lvdk")]
 collision_mask = 0
 damage = 1.0
 
