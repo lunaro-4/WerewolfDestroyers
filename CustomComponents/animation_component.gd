@@ -40,6 +40,7 @@ func h_flip_sprite(sprite: AnimatedSprite2D):
 func animate(switch : bool, _direction: Vector2 = EMPTY_VECTOR):
 	direction = _direction
 	if switch:
+		print("main_sprite.play()")
 		main_sprite.play()
 	elif switch == false:
 		main_sprite.stop()

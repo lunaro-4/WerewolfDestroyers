@@ -266,8 +266,8 @@ shape = SubResource("CircleShape2D_64rnj")
 [node name="MainSprite" type="AnimatedSprite2D" parent="." index="6"]
 scale = Vector2(1.19, 1.19)
 sprite_frames = SubResource("SpriteFrames_ewpdl")
-frame = 9
-frame_progress = 0.449849
+frame = 5
+frame_progress = 0.0610301
 
 [node name="AttackSprite" type="AnimatedSprite2D" parent="." index="7"]
 visible = false
@@ -284,7 +284,6 @@ disabled = true
 [node name="AnimationComponent" parent="." index="9" node_paths=PackedStringArray("main_sprite", "attack_sprite_1") instance=ExtResource("7_i2jsl")]
 main_sprite = NodePath("../MainSprite")
 attack_sprite_1 = NodePath("../AttackSprite")
-invert_h_flip = true
 
 [node name="Sprite2D" parent="." index="10"]
 visible = false
