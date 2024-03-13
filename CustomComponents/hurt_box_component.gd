@@ -1,3 +1,4 @@
+@icon("res://CustomComponents/CustomComponentIcons/bell.png")
 class_name HurtBoxComponent extends Area2D
 
 

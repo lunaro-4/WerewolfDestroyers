@@ -238,53 +238,53 @@ position = Vector2(-6.25003, -8.12504)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_enj3w")
 
-[node name="HitBoxComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hit_animation_object")]
-damage = 2.0
-delay = 0.2
-hit_window = 2.0
-hit_animation_object = NodePath("Animation")
+[node name="AttackComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hit_animation_object")]
+hit_animation_object = NodePath("AttackAnimation")
 
-[node name="Animation" type="Node2D" parent="Attacks/HitBoxComponent" index="0" node_paths=PackedStringArray("main_sprite", "attack_sprite", "animation_component")]
+[node name="AttackCollision" type="CollisionShape2D" parent="Attacks/AttackComponent" index="0"]
+position = Vector2(112.5, -6.25)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_gfiux")
+
+[node name="AttackAnimation" type="Node2D" parent="Attacks/AttackComponent" index="1" node_paths=PackedStringArray("main_sprite", "attack_sprite", "animation_component")]
+scale = Vector2(2.5, 2.5)
 script = ExtResource("3_khu4d")
 main_sprite = NodePath("../../../MainSprite")
 attack_sprite = NodePath("../../../AttackSprite")
 animation_component = NodePath("../../../AnimationComponent")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attacks/HitBoxComponent" index="1"]
-position = Vector2(45, -2.5)
-shape = SubResource("CircleShape2D_gfiux")
 
 [node name="EntityCollision" parent="." index="3"]
 position = Vector2(-2, 5)
 shape = SubResource("CircleShape2D_bg21n")
 
 [node name="AttackArea" parent="." index="5" node_paths=PackedStringArray("attack_component")]
-attack_component = NodePath("../Attacks/HitBoxComponent")
+attack_component = NodePath("../Attacks/AttackComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
 shape = SubResource("CircleShape2D_64rnj")
 
-[node name="Sprite2D" parent="." index="6"]
-visible = false
-
-[node name="MainSprite" type="AnimatedSprite2D" parent="." index="8"]
+[node name="MainSprite" type="AnimatedSprite2D" parent="." index="6"]
 scale = Vector2(1.19, 1.19)
 sprite_frames = SubResource("SpriteFrames_ewpdl")
 frame = 9
 frame_progress = 0.449849
 
-[node name="AttackSprite" type="AnimatedSprite2D" parent="." index="9"]
+[node name="AttackSprite" type="AnimatedSprite2D" parent="." index="7"]
 visible = false
 scale = Vector2(1.19, 1.19)
 sprite_frames = SubResource("SpriteFrames_de0ie")
 
-[node name="DetectionArea" type="Area2D" parent="." index="10"]
+[node name="DetectionArea" type="Area2D" parent="." index="8"]
 script = ExtResource("5_kn1yv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
 shape = SubResource("CircleShape2D_283ls")
 disabled = true
 
-[node name="AnimationComponent" parent="." index="11" node_paths=PackedStringArray("main_sprite", "attack_sprite_1") instance=ExtResource("7_i2jsl")]
+[node name="AnimationComponent" parent="." index="9" node_paths=PackedStringArray("main_sprite", "attack_sprite_1") instance=ExtResource("7_i2jsl")]
 main_sprite = NodePath("../MainSprite")
 attack_sprite_1 = NodePath("../AttackSprite")
+invert_h_flip = true
+
+[node name="Sprite2D" parent="." index="10"]
+visible = false

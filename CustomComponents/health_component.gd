@@ -1,3 +1,4 @@
+@icon("res://CustomComponents/CustomComponentIcons/plus.png")
 class_name HealthComponent extends Node
 
 
