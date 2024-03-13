@@ -1,3 +1,4 @@
+@icon("res://CustomComponents/CustomComponentIcons/animation.png")
 class_name AnimationComponent extends Node
 
 @export var main_sprite : AnimatedSprite2D
@@ -19,7 +20,7 @@ var direction :Vector2
 #@onready var direction : Vector2
 
 func _ready():
-	PresenceCheck.check(main_sprite, 'AnimatedSprite2D', self, true)
+	DebugTools.check_null(main_sprite, 'AnimatedSprite2D', self, true)
 	if attack_sprite_1:
 		attack_sprite_1.animation_looped.connect(_on_attack_sprite_1_animaton_looped)
 	if delay_sprite_1:
@@ -52,7 +53,7 @@ func animate(switch : bool, _direction: Vector2 = EMPTY_VECTOR):
 func animate_attack(hit_wait : float, attack_index : int = 1):
 	main_sprite.visible = false
 	if attack_index == 1:
-		PresenceCheck.check(attack_sprite_1, "AttackSprite1", self, true)
+		DebugTools.check_null(attack_sprite_1, "AttackSprite1", self, true)
 		attack_sprite_1.sprite_frames.set_animation_speed("default", 1)
 		attack_sprite_1.set_frame(0)
 		attack_sprite_1.visible = true

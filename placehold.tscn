@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://h2obvna3vk1e"]
+
+[ext_resource type="Script" path="res://Scripts/slime_attack_1.gd" id="1_mjhc5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebmkn"]
+radius = 120.234
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(45, -2.5)
+shape = SubResource("CircleShape2D_ebmkn")
+
+[node name="Animation" type="Node2D" parent="." node_paths=PackedStringArray("main_sprite", "attack_sprite", "animation_component")]
+script = ExtResource("1_mjhc5")
+main_sprite = NodePath("")
+attack_sprite = NodePath("")
+animation_component = NodePath("")
