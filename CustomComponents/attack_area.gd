@@ -1,10 +1,11 @@
 class_name AttackArea extends Area2D
 
 
-@onready var attack_component := $"../Attacks/AttackComponent" as AttackComponent
+@export var attack_component : AttackComponent
 
 
 func _ready():
+	DebugTools.check_null(attack_component, "AttackComponent", self , true)
 	attack_component.attack_finished.connect(_on_attack_component_attack_finished)
 
 func _on_area_entered(area):

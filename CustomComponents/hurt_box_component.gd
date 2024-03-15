@@ -1,3 +1,4 @@
+@icon("res://CustomComponents/CustomComponentIcons/bell.png")
 class_name HurtBoxComponent extends Area2D
 
 
@@ -11,28 +12,24 @@ class_name HurtBoxComponent extends Area2D
 func hurt(damage: float):
 	health_component.decrease(damage)
 
-func knockback(value : float, area_owner: Node2D):
-	#print(value )
+func knockback(value : float, area: Node2D):
 	if knockback_component:
-		knockback_component.knockback(value, area_owner.global_position)
+		knockback_component.knockback(value, area.global_position)
 	pass
 
 
 ## Проверяем, что компонент здоровья подключен. 
 ## иначе урон проходить не будет!
 func _ready():
-	if health_component == null:
-		print("Health component not attached at: ", self, " ", get_parent())
-		assert(health_component != null) 
-	
+	DebugTools.check_null(health_component, "HealthComponent", self, true)
 
 
 
 
 func _on_area_entered(area):
 	#print("area detected ", area)
-	if (area is HitBoxComponent):
-		area = area as HitBoxComponent
+	if (area is AttackComponent):
+		area = area as AttackComponent
 		## проверяем, что этот хитбокс уже нанес урон в этой атаке
 		### (на случай если сущность будет крутится 
 		### и хитбокс попадет несколько раз)
@@ -43,8 +40,7 @@ func _on_area_entered(area):
 			#var this_thing = selfd
 			## привязываем сигнал об окончании атаки к удалению из массива
 			## чтобы хитбокс мог снова наносить урон
-			var area_owner = area.attack_component as AttackComponent
-			area_owner.attack_finished.connect(_on_attack_finished.bind(area), 4)
+			area.attack_finished.connect(_on_attack_finished.bind(area), 4)
 			
 			#print(area_owner.attack_finished, " bind ", area, " ", _on_attack_finished)
 			#print("Array is : ", got_hit_by_list)
@@ -54,6 +50,4 @@ func _on_area_entered(area):
 
 ## удаляем объект из массива перед тем, как атака повторится
 func _on_attack_finished(finished_attack):
-	#print("Entity deleted")
 	got_hit_by_list.erase(finished_attack)
-	#print(got_hit_by_list)

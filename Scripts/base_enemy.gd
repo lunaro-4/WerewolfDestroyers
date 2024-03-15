@@ -1,4 +1,4 @@
-@icon("res://CustomComponents/CustomIcons/EMPTY BLANK.svg")
+@icon("res://CustomComponents/CustomComponentIcons/file.png")
 class_name BaseEnemy  extends CharacterBody2D
 
 
@@ -12,7 +12,7 @@ var SPEED = 300.0
 
 @export var player : Player
 
-# Путь, по которому будет следовать сущность
+## Путь, по которому будет следовать сущность
 @onready var direction = pathfinder.target_path_vector
 
 

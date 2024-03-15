@@ -1,3 +1,4 @@
+@icon("res://CustomComponents/CustomComponentIcons/knockback.png")
 class_name KnockBackComponent extends Node
 
 

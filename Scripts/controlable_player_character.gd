@@ -59,8 +59,6 @@ func _physics_process(delta):
 
 
 func _ready():
-	#attack_component.attack()
-	#$RegenerationComponent.regen_start()
 	pass 
 
 

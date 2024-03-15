@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://1hfko7mx2quv"]
+[gd_scene load_steps=41 format=3 uid="uid://1hfko7mx2quv"]
 
 [ext_resource type="PackedScene" uid="uid://bvyo57sxna7be" path="res://Scenes/base_enemy.tscn" id="1_pomn3"]
 [ext_resource type="Script" path="res://Scripts/goblin.gd" id="2_j4ywj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/slime_attack_1.gd" id="3_khu4d"]
 [ext_resource type="Texture2D" uid="uid://blhi8rahhqeey" path="res://Assets/EntitySprite/goblin_attack.png" id="5_6k38q"]
 [ext_resource type="Script" path="res://CustomComponents/detection_area.gd" id="5_kn1yv"]
+[ext_resource type="PackedScene" uid="uid://c67gnj668snc6" path="res://CustomComponents/animation_component.tscn" id="7_i2jsl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enj3w"]
 size = Vector2(92.5, 113.75)
@@ -228,7 +229,8 @@ is_static = false
 [node name="HealthComponent" parent="." index="0"]
 max_health = 10
 
-[node name="HurtBoxComponent" parent="." index="1" node_paths=PackedStringArray("knockback_component")]
+[node name="HurtBoxComponent" parent="." index="1" node_paths=PackedStringArray("health_component", "knockback_component")]
+health_component = NodePath("../HealthComponent")
 knockback_component = NodePath("../KnockBackComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent" index="0"]
@@ -236,50 +238,54 @@ position = Vector2(-6.25003, -8.12504)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_enj3w")
 
-[node name="AttackComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hitbox")]
-delay = 0.8
+[node name="AttackComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hit_animation_object")]
+delay = 1.0
 hit_window = 0.3
-hitbox = NodePath("../HitBoxComponent")
+hit_animation_object = NodePath("AttackAnimation")
 
-[node name="HitBoxComponent" parent="Attacks" index="1" node_paths=PackedStringArray("hit_animation_object")]
-damage = 2.0
-hit_animation_object = NodePath("Animation")
+[node name="AttackCollision" type="CollisionShape2D" parent="Attacks/AttackComponent" index="0"]
+position = Vector2(112.5, -6.25)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_gfiux")
 
-[node name="Animation" type="Node2D" parent="Attacks/HitBoxComponent" index="0" node_paths=PackedStringArray("main_sprite", "attack_sprite")]
+[node name="AttackAnimation" type="Node2D" parent="Attacks/AttackComponent" index="1" node_paths=PackedStringArray("main_sprite", "attack_sprite", "animation_component")]
+scale = Vector2(2.5, 2.5)
 script = ExtResource("3_khu4d")
 main_sprite = NodePath("../../../MainSprite")
 attack_sprite = NodePath("../../../AttackSprite")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attacks/HitBoxComponent" index="1"]
-position = Vector2(45, -2.5)
-shape = SubResource("CircleShape2D_gfiux")
+animation_component = NodePath("../../../AnimationComponent")
 
 [node name="EntityCollision" parent="." index="3"]
 position = Vector2(-2, 5)
 shape = SubResource("CircleShape2D_bg21n")
 
+[node name="AttackArea" parent="." index="5" node_paths=PackedStringArray("attack_component")]
+attack_component = NodePath("../Attacks/AttackComponent")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
 shape = SubResource("CircleShape2D_64rnj")
 
-[node name="Sprite2D" parent="." index="6"]
-visible = false
-
-[node name="MainSprite" type="AnimatedSprite2D" parent="." index="8"]
+[node name="MainSprite" type="AnimatedSprite2D" parent="." index="6"]
 scale = Vector2(1.19, 1.19)
 sprite_frames = SubResource("SpriteFrames_ewpdl")
-frame = 9
-frame_progress = 0.449849
+frame = 5
+frame_progress = 0.0610301
 
-[node name="AttackSprite" type="AnimatedSprite2D" parent="." index="9"]
+[node name="AttackSprite" type="AnimatedSprite2D" parent="." index="7"]
 visible = false
 scale = Vector2(1.19, 1.19)
 sprite_frames = SubResource("SpriteFrames_de0ie")
 
-[node name="DetectionArea" type="Area2D" parent="." index="10"]
+[node name="DetectionArea" type="Area2D" parent="." index="8"]
 script = ExtResource("5_kn1yv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
 shape = SubResource("CircleShape2D_283ls")
 disabled = true
 
-[connection signal="animation_looped" from="AttackSprite" to="Attacks/HitBoxComponent/Animation" method="_on_attack_sprite_animation_finished"]
+[node name="AnimationComponent" parent="." index="9" node_paths=PackedStringArray("main_sprite", "attack_sprite_1") instance=ExtResource("7_i2jsl")]
+main_sprite = NodePath("../MainSprite")
+attack_sprite_1 = NodePath("../AttackSprite")
+
+[node name="Sprite2D" parent="." index="10"]
+visible = false

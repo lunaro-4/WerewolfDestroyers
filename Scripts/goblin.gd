@@ -9,7 +9,7 @@ const SPEED = 300.0
 
 @onready var pathfinder = $PathfindingLogic as PathfinderLogic
 
-@onready var attack_hitbox = $Attacks/HitBoxComponent as HitBoxComponent
+@onready var attack_hitbox = $Attacks/AttackComponent as AttackComponent
 
 @onready var detection_area = $DetectionArea as DetectionArea
 
@@ -42,26 +42,24 @@ func _ready():
 func _physics_process(_delta):
 	#print(is_static)
 	if is_static == true:
-		animate_sprite(false)
+		$AnimationComponent.animate(false)
 	elif is_static == false:
-		animate_sprite(true)
 		direction = pathfinder.target_path_vector
-		if direction.x< 0:
-			main_sprite.flip_h = true
-			attack_sprite.flip_h = true
-		else:
-			main_sprite.flip_h = false
-			attack_sprite.flip_h = false
+		$AnimationComponent.animate(true, direction)
+		#if direction.x< 0:
+			#main_sprite.flip_h = true
+			#attack_sprite.flip_h = true
+		#else:
+			#main_sprite.flip_h = false
+			#attack_sprite.flip_h = false
 		velocity = direction * SPEED
 		
 		
 		move_and_slide()
 
-func animate_sprite(swith : bool):
-	if swith:
-		main_sprite.play()
-	elif swith == false:
-		main_sprite.stop()
+func animate_sprite(switch : bool):
+	pass
+	
 
 func _on_health_component_on_health_decrease(_value):
 	#print(self, " got hit for ", value)

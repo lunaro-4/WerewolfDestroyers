@@ -32,17 +32,14 @@ func _physics_process(_delta : float):
 ## Выход для пути (куда должна двигаться сущность)
 @export var target_path_vector : Vector2
 
-## Задаем названия для локальных нодов
-
+# Задаем названия для локальных нодов
 @onready var nav_agent = $NavigationAgent2D as NavigationAgent2D
-
 @onready var pathfinding_timer = $UpdatePathTimer as Timer
 
 
 
 	
 func makepath():
-	#print("[]")
 	if target == null:
 		target_path_vector = Vector2(0,0)
 		if get_parent().has_method("animate_sprite"):
@@ -67,12 +64,3 @@ func start_pathfinding():
 func pathfinding_init():
 	start_pathfinding()
 	makepath()
-
-
-
-func _ready():
-	pass 
-
-
-func _process(_delta):
-	pass

@@ -83,7 +83,7 @@ func _process(delta):
 	$PanelContainer/HBoxContainer/LevelText.set_text(str(snapped(level, 0.001)))
 	attack_component.tweak_damage(level)
 	var upscale_value = ((level-1)/6)+1
-	upscale($Attacks/HitBox1Component, upscale_value)
+	upscale($Attacks/Attack1Component, upscale_value)
 	upscale($CollisionShape, upscale_value -0.5)
 	upscale($MainSprite, upscale_value+0.5)
 	upscale_health()
