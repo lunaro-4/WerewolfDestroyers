@@ -6,8 +6,6 @@ class_name Goblin  extends CharacterBody2D
 const SPEED = 300.0
 
 
-@onready var animation_component : AnimationComponent= $AnimationComponent
-
 
 @onready var pathfinder = $PathfindingLogic as PathfinderLogic
 
@@ -44,10 +42,10 @@ func _ready():
 func _physics_process(_delta):
 	#print(is_static)
 	if is_static == true:
-		animation_component.animate(false)
+		$AnimationComponent.animate(false)
 	elif is_static == false:
 		direction = pathfinder.target_path_vector
-		animation_component.animate(true, direction)
+		$AnimationComponent.animate(true, direction)
 		#if direction.x< 0:
 			#main_sprite.flip_h = true
 			#attack_sprite.flip_h = true
