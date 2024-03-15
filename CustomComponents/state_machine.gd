@@ -1,6 +1,6 @@
-class_name CustomStateMachine extends Node
+class_name CustomStateMachine
 
-@onready var states : Array[String]
+var states : Array[String]
 @export var current_state : String
 
 
