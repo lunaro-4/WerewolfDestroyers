@@ -239,6 +239,8 @@ scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_enj3w")
 
 [node name="AttackComponent" parent="Attacks" index="0" node_paths=PackedStringArray("hit_animation_object")]
+delay = 1.0
+hit_window = 0.3
 hit_animation_object = NodePath("AttackAnimation")
 
 [node name="AttackCollision" type="CollisionShape2D" parent="Attacks/AttackComponent" index="0"]
