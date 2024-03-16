@@ -3,7 +3,6 @@ class_name Goblin  extends CharacterBody2D
 
 
 
-const SPEED = 300.0
 
 
 
@@ -18,7 +17,9 @@ const SPEED = 300.0
 
 @export var is_static := false
 
-@export var player : CharacterBody2D
+@export var player : Node2D
+
+@export var SPEED: float = 300.0
 
 # Путь, по которому будет следовать сущность
 @onready var direction = pathfinder.target_path_vector
@@ -46,24 +47,13 @@ func _physics_process(_delta):
 	elif is_static == false:
 		direction = pathfinder.target_path_vector
 		$AnimationComponent.animate(true, direction)
-		#if direction.x< 0:
-			#main_sprite.flip_h = true
-			#attack_sprite.flip_h = true
-		#else:
-			#main_sprite.flip_h = false
-			#attack_sprite.flip_h = false
 		velocity = direction * SPEED
 		
 		
 		move_and_slide()
 
-func animate_sprite(switch : bool):
-	pass
-	
-
 func _on_health_component_on_health_decrease(_value):
-	#print(self, " got hit for ", value)
-	pass # Replace with function body.
+	pass
 
 
 func _on_health_component_on_death():
@@ -71,7 +61,5 @@ func _on_health_component_on_death():
 
 
 func _on_detection_area_target_detected():
-	#print("go")
 	is_static = false
-	#print(is_static)
-	pass # Replace with function body.
+	pass

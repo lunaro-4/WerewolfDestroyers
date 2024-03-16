@@ -115,13 +115,14 @@ var eye = preload("res://Scenes/big_boss.tscn")
 
 @onready var mouse_over_button := false
 
-func button_toggle(button : TextureButton,panel : Panel , state: bool):
-	button.button_pressed = state
+func button_toggle(button : TextureButton,panel : Panel , _state: bool):
+	var button_state : bool = button.button_pressed
 	var color : int
-	if state:
+	if button_state:
 		color = 1
 	else:
 		color = 0
+	button.button_pressed = !button_state
 	panel.modulate.a = color
 	#print(panel.self_modulate.a)
 	
@@ -130,14 +131,15 @@ func button_toggle(button : TextureButton,panel : Panel , state: bool):
 func summon_logic():
 	if Input.is_action_just_pressed("LMBclick")and !mouse_over_button:
 		if current_gold >= 0:
-			if chosen_creature == creatures[0]:
-				return
-			elif chosen_creature == creatures[1]:
-				spawn_enemy(slime, 5)
-			elif chosen_creature == creatures[2]:
-				spawn_enemy(goblin, 10)
-			elif chosen_creature == creatures[3]:
-				spawn_enemy(eye, 20)
+			match chosen_creature:
+				"None":
+					return
+				"Slime":
+					spawn_enemy(slime, 5)
+				"Goblin":
+					spawn_enemy(goblin, 10)
+				"Eye":
+					spawn_enemy(eye, 20)
 		else:
 			print("not enough gold!")
 		refresh_total_lable()
@@ -197,7 +199,7 @@ func _on_slime_button_toggled(toggled_on):
 		chosen_creature = creatures[0]
 		buttons_refresh()
 
-
+ 
 func _on_eye_button_toggled(toggled_on):
 	if !eye_unlocked:
 		return

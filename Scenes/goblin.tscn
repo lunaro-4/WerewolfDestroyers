@@ -225,6 +225,7 @@ radius = 342.374
 collision_mask = 7
 script = ExtResource("2_j4ywj")
 is_static = false
+SPEED = 300.0
 
 [node name="HealthComponent" parent="." index="0"]
 max_health = 10
@@ -289,3 +290,5 @@ attack_sprite_1 = NodePath("../AttackSprite")
 
 [node name="Sprite2D" parent="." index="10"]
 visible = false
+
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
